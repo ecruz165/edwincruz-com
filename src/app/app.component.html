@@ -1,1 +1,17 @@
-<h1>Hello</h1>
+<app-profile-toolbar></app-profile-toolbar>
+<main>
+  <session fxLayout="row">
+    <section fxLayout="column" fxFlex="45" fxFlex.sm="35" fxFlex.gt-sm="25">
+      <app-profile-card></app-profile-card>
+    </section>
+    <section fxLayout="column" fxFlex="55" fxFlex.sm="65" fxFlex.gt-sm="75" fxFlexAlign="center">
+      <app-resume-card></app-resume-card>
+      <app-profile-summary></app-profile-summary>
+    </section>
+  </session>
+  <session fxLayout="row" fxLayout.xs="column">
+    <section fxLayout="column" fxFlex="45" fxFlex.sm="35" fxFlex.gt-sm="25">
+      <app-stack-details></app-stack-details>
+    </section>
+  </session>
+</main>
