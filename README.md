@@ -4,6 +4,7 @@ Create a Angular Responsive Multi-theme Website using Angular 13
 ### 1. Planning
 - Defining project and identifying stake-holders
 - Planning website features with needed layout and behavior on Balsamiq Mockups
+- Identifying needed libs to support features
 ### 2. Basics
 - Creating a Angular 13 project with Angular Material Components and Angular Flex Layout [view >>](docs/2.md)
 - Responsive Layouts with Angular Flex-Layout

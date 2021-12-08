@@ -11,20 +11,24 @@ import {AppComponent} from './app.component';
 
 import {ProfileToolbarComponent} from './components/profile-toolbar/profile-toolbar.component';
 import {ProfileCardComponent} from './components/profile-card/profile-card.component';
-import {ResumeCardComponent} from './components/resume-card/resume-card.component';
 import {WorkHistoryCarouselComponent} from './components/work-history-carousel/work-history-carousel.component';
 import {ProfileSummaryComponent} from './components/profile-summary/profile-summary.component';
 import {StackDetailsComponent} from './components/stack-details/stack-details.component';
+import { ScheduleTimeWithMeComponent } from './components/schedule-time-with-me/schedule-time-with-me.component';
+import { BuyMeACoffeeComponent } from './components/buy-me-a-coffee/buy-me-a-coffee.component';
+import { InteractComponent } from './components/interact/interact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileToolbarComponent,
     ProfileCardComponent,
-    ResumeCardComponent,
     WorkHistoryCarouselComponent,
     ProfileSummaryComponent,
-    StackDetailsComponent
+    StackDetailsComponent,
+    ScheduleTimeWithMeComponent,
+    BuyMeACoffeeComponent,
+    InteractComponent
   ],
   imports: [
     BrowserModule,

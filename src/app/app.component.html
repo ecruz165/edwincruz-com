@@ -1,14 +1,20 @@
 <app-profile-toolbar></app-profile-toolbar>
 <main>
-  <session fxLayout="row">
-    <section fxLayout="column" fxFlex="45" fxFlex.sm="35" fxFlex.gt-sm="25">
+
+  <session fxLayout="row wrap">
+
+    <section fxLayout="column" fxFlex="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.gt-md="20">
       <app-profile-card></app-profile-card>
     </section>
-    <section fxLayout="column" fxFlex="55" fxFlex.sm="65" fxFlex.gt-sm="75" fxFlexAlign="center">
-      <app-resume-card></app-resume-card>
+    <section fxLayout="column" fxFlex="50" fxFlex.sm="65"  fxFlex.md="25" fxFlex.gt-md="25" fxFlexAlign="center">
+      <app-interact></app-interact>
+    </section>
+    <section fxLayout="column" fxFlex="100" fxFlex.md="50" fxFlex.gt-md="55" fxFlexAlign="center">
       <app-profile-summary></app-profile-summary>
     </section>
+
   </session>
+
   <session fxLayout="row" fxLayout.xs="column">
     <section fxLayout="column" fxFlex="45" fxFlex.sm="35" fxFlex.gt-sm="25">
       <app-stack-details></app-stack-details>
