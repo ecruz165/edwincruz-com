@@ -9,17 +9,10 @@ export class StackDetailsComponent implements OnInit {
 
   toolset = [
     {
-      category: "Frontend",
+      category: 'Languages',
       items: [
         {
-          name: 'Angular',
-          skillLevel: '',
-          since: '',
-          lastUsed: '',
-          lastUsedDescription: ''
-        },
-        {
-          name: 'Angular Material Components',
+          name: 'Java',
           skillLevel: '',
           since: '',
           lastUsed: '',
@@ -31,9 +24,48 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
+        },    {
+          name: 'Javascript',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
         },
         {
-          name: 'Javascript',
+          name: 'Groovy',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },
+        {
+          name: 'Bash',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },
+        {
+          name: 'Go',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        }
+      ]
+    },
+    {
+      category: "Frontend",
+      items: [
+        {
+          name: 'Angular',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },
+        {
+          name: 'Angular Material Components',
           skillLevel: '',
           since: '',
           lastUsed: '',
@@ -95,27 +127,6 @@ export class StackDetailsComponent implements OnInit {
         },
         {
           name: 'Hibernate',
-          skillLevel: '',
-          since: '',
-          lastUsed: '',
-          lastUsedDescription: ''
-        },
-        {
-          name: 'Java',
-          skillLevel: '',
-          since: '',
-          lastUsed: '',
-          lastUsedDescription: ''
-        },
-        {
-          name: 'Typescript',
-          skillLevel: '',
-          since: '',
-          lastUsed: '',
-          lastUsedDescription: ''
-        },
-        {
-          name: 'Go',
           skillLevel: '',
           since: '',
           lastUsed: '',
