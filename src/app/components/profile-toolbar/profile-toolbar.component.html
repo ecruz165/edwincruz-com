@@ -1,7 +1,7 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
 
-  <span>Edwin M. Cruz</span>
-  <span fxHide.lt-md>&nbsp;-&nbsp;NYC</span>
+  <span>(edwin: cruz)</span>
+  <span fxHide.lt-md>&nbsp;-> nyc</span>
   <span fxHide mat-icon-button fxShow.lt-md>&nbsp;-&nbsp;NYC </span>
   <span class="spacer"></span>
 
@@ -43,14 +43,6 @@
   </a>
   <a fxHide mat-icon-button fxShow.lt-md href="https://twitter.com/ecruz165" target="_twitter">
     <fa-icon [icon]="['fab', 'twitter']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <a mat-button fxHide.lt-md [matMenuTriggerFor]="contactMenu" >
-    <fa-icon [icon]="['fas', 'phone']" style="font-size:x-large"></fa-icon>
-    Contact
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md [matMenuTriggerFor]="contactMenu">
-    <fa-icon [icon]="['fas', 'phone']" style="font-size:x-large"></fa-icon>
   </a>
 
   <mat-slide-toggle></mat-slide-toggle>
