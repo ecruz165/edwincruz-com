@@ -14,9 +14,11 @@ import {ProfileCardComponent} from './components/profile-card/profile-card.compo
 import {WorkHistoryCarouselComponent} from './components/work-history-carousel/work-history-carousel.component';
 import {ProfileSummaryComponent} from './components/profile-summary/profile-summary.component';
 import {StackDetailsComponent} from './components/stack-details/stack-details.component';
-import { ScheduleTimeWithMeComponent } from './components/schedule-time-with-me/schedule-time-with-me.component';
-import { BuyMeACoffeeComponent } from './components/buy-me-a-coffee/buy-me-a-coffee.component';
-import { InteractComponent } from './components/interact/interact.component';
+
+import {InteractComponent} from './components/interact/interact.component';
+import {StatusComponent} from './components/status/status.component';
+import {PostListComponent} from './components/post-list/post-list.component';
+import {RecommendationsComponent} from "./components/recommendations/recommendations.component";
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { InteractComponent } from './components/interact/interact.component';
     WorkHistoryCarouselComponent,
     ProfileSummaryComponent,
     StackDetailsComponent,
-    ScheduleTimeWithMeComponent,
-    BuyMeACoffeeComponent,
-    InteractComponent
+    InteractComponent,
+    StatusComponent,
+    PostListComponent,
+    RecommendationsComponent
   ],
   imports: [
     BrowserModule,
