@@ -1,23 +1,30 @@
 <app-profile-toolbar></app-profile-toolbar>
 <main>
 
-  <session fxLayout="row wrap">
-
-    <section fxLayout="column" fxFlex="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.gt-md="20" fxFlexOrder.gt-sm="1">
+  <session fxLayout="row wrap" fxLayoutAlign="space-between start"  fxLayoutGap.xs="8px" fxLayoutGap.sm="12px" fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px" >
+    <section fxLayout="column" fxFlex="48" fxFlex.sm="42" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexOrder="1">
       <app-profile-card></app-profile-card>
     </section>
-    <section fxLayout="column" fxFlex="50" fxFlex.sm="65"  fxFlex.md="25" fxFlex.gt-md="20" fxFlexAlign="center" fxFlexOrder.gt-sm="3">
+    <section fxLayout="column" fxFlex="48" fxFlex.sm="50"  fxFlex.md="64" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexAlign="center" fxFlexOrder="2" fxFlexOrder.gt-md="3">
       <app-interact></app-interact>
     </section>
-    <section fxLayout="column" fxFlex="100" fxFlex.md="50" fxFlex.gt-md="60" fxFlexAlign="center"  fxFlexOrder.gt-sm="2">
+    <section fxLayout="column" fxFlex="100" fxFlex.md="100" fxFlex.lg="50" fxFlex.gt-lg="50" fxFlexAlign="center"  fxFlexOrder="3" fxFlexOrder.gt-md="2">
       <app-profile-summary></app-profile-summary>
     </section>
-
   </session>
 
-  <session fxLayout="row" fxLayout.xs="column">
-    <section fxLayout="column" fxFlex="45" fxFlex.sm="35" fxFlex.gt-sm="25">
+  <session fxLayout="row wrap"  fxLayoutAlign="space-between start" fxLayoutGap.xs="8px" fxLayoutGap.sm="12px"  fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px" >
+    <section fxLayout="column" fxFlex="100" fxFlex.md="64" fxFlex.lg="50" fxFlex.gt-lg="50"   fxFlexOrder="1" fxFlexOrder.gt-sm="2">
+      <app-post-list></app-post-list>
+    </section>
+    <section fxLayout="column" fxFlex="48" fxFlex.sm="49" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexOrder="2" fxFlexOrder.gt-sm="1">
+      <app-status></app-status>
       <app-stack-details></app-stack-details>
+      <app-recommendation  fxHide="true" fxShow.md="true"></app-recommendation>
+    </section>
+    <section fxLayout="column" fxFlex="48" fxFlex.sm="49"  fxFlex.md="32" fxFlex.gt-md="23"  fxFlexOrder="3">
+      <app-recommendation  fxHide.md="true"></app-recommendation>
     </section>
   </session>
+
 </main>
