@@ -1,13 +1,19 @@
 <mat-card class="profile-card">
-  <img mat-card-image src="/assets/pic-profile.jpg" alt="Edwin Cruz Profile Pic">
+  <div class="round">
+  <img image src="/assets/pic-profile.jpg" alt="Edwin Cruz Profile Pic">
+  </div>
+
+
   <mat-card-actions align="end">
-    <button mat-button disabled>Resume</button>
-    <button mat-mini-fab color="primary">
-      <mat-icon>visibility
-      </mat-icon>
-    </button>
-    <button mat-mini-fab color="primary">
-      <mat-icon>download</mat-icon>
-    </button>
+    <mat-toolbar>
+      <span>My Resume</span>
+      <a mat-icon-button  href="https://github.com/ecruz165" target="_github">
+        <fa-icon [icon]="['fas', 'eye']" style="font-size:large"></fa-icon>
+      </a>
+      <a mat-icon-button  href="https://github.com/ecruz165" target="_github">
+        <fa-icon [icon]="['fas', 'download']" style="font-size:large"></fa-icon>
+      </a>
+    </mat-toolbar>
+
   </mat-card-actions>
 </mat-card>
