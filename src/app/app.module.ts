@@ -19,6 +19,7 @@ import {InteractComponent} from './components/interact/interact.component';
 import {StatusComponent} from './components/status/status.component';
 import {PostListComponent} from './components/post-list/post-list.component';
 import {RecommendationsComponent} from "./components/recommendations/recommendations.component";
+import {YouTubeComponent} from './components/you-tube/you-tube.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {RecommendationsComponent} from "./components/recommendations/recommendat
     InteractComponent,
     StatusComponent,
     PostListComponent,
-    RecommendationsComponent
+    RecommendationsComponent,
+    YouTubeComponent
   ],
   imports: [
     BrowserModule,
