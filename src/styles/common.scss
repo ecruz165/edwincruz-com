@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@use 'app.component.scss-theme' as root;
+@use 'sass:map' as map;
+
+@function apply-extra-colors($theme, $extra-color-scheme) {
+  @return map.deep-merge(
+      $theme,
+      (
+        color:$extra-color-scheme
+      )
+  );
+}
+
+@mixin create-theme($theme) {
+  @include mat.all-component-themes($theme);
+  @include root.app-root-theme($theme);
+}

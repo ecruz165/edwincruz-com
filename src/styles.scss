@@ -1,7 +1,32 @@
+@use '@angular/material' as mat;
+@use './styles/typography' as typography;
+
+$typography: typography.$edwincruz-typography-lt-md;
+@include mat.core($typography);
+@include mat.typography-hierarchy($typography, "body");
+
+@media (min-width: 960px) and (max-width: 1280px - 1) {
+  $typography: typography.$edwincruz-typography-md;
+  @include mat.all-component-typographies($typography);
+  @include mat.typography-hierarchy($typography, "body");
+}
+
+@media (min-width: 1280px) {
+  $typography: typography.$edwincruz-typography-gt-md;
+  @include mat.all-component-typographies($typography);
+  @include mat.typography-hierarchy($typography, "body");
+}
+
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto, 'Helvetica Neue', sans-serif";
+}
 
 main {
   max-width: 1920px;

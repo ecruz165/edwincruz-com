@@ -1,0 +1,33 @@
+@use '@angular/material' as mat;
+@use './typography' as typography;
+@use './common.scss' as common;
+@use 'sass:map';
+
+$edwincruz-primary: mat.define-palette(mat.$blue-palette, 700, 400, 900);
+$edwincruz-accent: mat.define-palette(mat.$yellow-palette, A200, A100);
+$edwincruz-success: mat.define-palette(mat.$green-palette, 700, 500, 900);
+$edwincruz-info: mat.define-palette(mat.$blue-palette, A400, A300, A200);
+
+$edwincruz-color-scheme: (
+  success: $edwincruz-success,
+  info: $edwincruz-info,
+  background: (
+    background: map.get(mat.$blue-gray-palette, 900),
+  ),
+);
+
+$edwincruz-dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $edwincruz-primary,
+        accent: $edwincruz-accent,
+      ),
+      typography: typography.$edwincruz-typography,
+      density: default,
+    )
+);
+
+$edwincruz-dark-theme-set: common.apply-extra-colors($edwincruz-dark-theme, $edwincruz-color-scheme);
+
+
+@include common.create-theme($edwincruz-dark-theme);
