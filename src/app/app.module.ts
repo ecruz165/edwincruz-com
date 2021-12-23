@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -20,6 +20,13 @@ import {StatusComponent} from './components/status/status.component';
 import {PostListComponent} from './components/post-list/post-list.component';
 import {RecommendationsComponent} from "./components/recommendations/recommendations.component";
 import {YouTubeComponent} from './components/you-tube/you-tube.component';
+import {AppThemeService} from "./app-theme.service";
+
+export function initializeAppTheme(appThemeService: AppThemeService) {
+  return (): Promise<any> => {
+    return appThemeService.Init();
+  };
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +52,10 @@ import {YouTubeComponent} from './components/you-tube/you-tube.component';
     ExtendedModule,
     FontawesomeSetModule,
   ],
-  providers: [],
+  providers: [
+    {provide: Window, useValue: window},
+    {provide: APP_INITIALIZER, useFactory: initializeAppTheme, multi: true, deps: [AppThemeService]}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
