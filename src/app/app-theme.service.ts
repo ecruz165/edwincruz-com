@@ -1,5 +1,6 @@
-import {Inject, Injectable} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
+import {Inject, Injectable, Injector, PLATFORM_ID} from '@angular/core';
+import {DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
+import {REQUEST} from "@nguniversal/express-engine/tokens";
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,20 @@ import {DOCUMENT} from "@angular/common";
 export class AppThemeService {
 
   constructor(
-    private window: Window,
+    private injector: Injector, @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document) {
   }
 
   getHostname(): string {
-    return this.window.location.hostname;
+    let hostname = '';
+    if (isPlatformServer(this.platformId)) {
+      const request = this.injector.get(REQUEST);
+      hostname = request.hostname;
+    } else if (isPlatformBrowser(this.platformId)) {
+      const location = window.location;
+      hostname = location.hostname;
+    }
+    return hostname;
   }
 
   determineSite(hostName: string) {

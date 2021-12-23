@@ -43,7 +43,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     YouTubeComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -53,7 +53,6 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     FontawesomeSetModule,
   ],
   providers: [
-    {provide: Window, useValue: window},
     {provide: APP_INITIALIZER, useFactory: initializeAppTheme, multi: true, deps: [AppThemeService]}
   ],
   bootstrap: [AppComponent]
