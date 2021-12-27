@@ -38,7 +38,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
+              {
+                "input": "src/styles.scss",
+                "bundleName": "styles",
+                "inject": false
+              },
               {
                 "input": "src/styles/dark-theme.scss",
                 "bundleName": "dark-theme",
@@ -122,7 +126,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
+              {
+                "input": "src/styles.scss",
+                "bundleName": "styles",
+                "inject": false
+              },
               {
                 "input": "src/styles/dark-theme.scss",
                 "bundleName": "dark-theme",
