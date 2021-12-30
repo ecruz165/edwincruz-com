@@ -1,11 +1,11 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import {FontawesomeSetModule} from "./fontawesome/fontawesome.module";
-import {ExtendedModule, FlexModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {AppComponent} from './app.component';
 
@@ -21,6 +21,8 @@ import {PostListComponent} from './components/post-list/post-list.component';
 import {RecommendationsComponent} from "./components/recommendations/recommendations.component";
 import {YouTubeComponent} from './components/you-tube/you-tube.component';
 import {AppThemeService} from "./app-theme.service";
+import {TransferStateInterceptor} from "./interceptors/transfer-state.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 export function initializeAppTheme(appThemeService: AppThemeService) {
   return (): Promise<any> => {
@@ -43,17 +45,26 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     YouTubeComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserTransferStateModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-
-    FlexModule,
-    ExtendedModule,
+    FlexLayoutModule,
     FontawesomeSetModule,
   ],
   providers: [
-    {provide: APP_INITIALIZER, useFactory: initializeAppTheme, multi: true, deps: [AppThemeService]}
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TransferStateInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAppTheme,
+      multi: true,
+      deps: [AppThemeService]
+    }
   ],
   bootstrap: [AppComponent]
 })
