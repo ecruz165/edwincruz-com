@@ -38,6 +38,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               {
                 "input": "src/styles.scss",
                 "bundleName": "styles",
@@ -126,6 +127,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               {
                 "input": "src/styles.scss",
                 "bundleName": "styles",
