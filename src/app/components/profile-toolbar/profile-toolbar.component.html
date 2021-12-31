@@ -2,65 +2,25 @@
 
   <span>( edwin : cruz ) -> nyc</span>
   <span class="spacer"></span>
-
-  <a mat-button fxHide.lt-md href="https://www.linkedin.com/in/edwinmcruz/" target="_github">
-    <fa-icon [icon]="['fab', 'linkedin']" style="font-size:x-large"></fa-icon>
-    LinkedIn
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md  href="https://www.linkedin.com/in/edwinmcruz/"  target="_github" >
-    <fa-icon [icon]="['fab', 'linkedin']" style="font-size:x-large"></fa-icon>
-  </a>
-  <a mat-button fxHide.lt-md href="https://github.com/ecruz165" target="_github">
-    <fa-icon [icon]="['fab', 'github']" style="font-size:x-large"></fa-icon>
-    Github
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md  href="https://github.com/ecruz165"  target="_github" >
-    <fa-icon [icon]="['fab', 'github']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <a mat-button fxHide.lt-md href="https://www.hackerrank.com/ecruz165" target="_hackerrank">
-    <fa-icon [icon]="['fab', 'hackerrank']" style="font-size:x-large"></fa-icon>
-    Hackerrank
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md href="https://www.hackerrank.com/ecruz165" target="_hackerrank">
-    <fa-icon [icon]="['fab', 'hackerrank']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <a mat-button fxHide.lt-md href="https://stackoverflow.com/users/6226761/edwin-m-cruz" target="_stackoverflow">
-    <fa-icon [icon]="['fab', 'stack-overflow']" style="font-size:x-large"></fa-icon>
-    Stackoverflow
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md href="https://stackoverflow.com/users/6226761/edwin-m-cruz" target="_stackoverflow">
-    <fa-icon [icon]="['fab', 'stack-overflow']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <a mat-button fxHide.lt-md href="https://stackblitz.com/@ecruz165" target="_stackblitz">
-    <fa-icon [icon]="['fas', 'bolt']" style="font-size:x-large"></fa-icon>
-    Stackblitz
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md href="https://stackblitz.com/@ecruz165" target="_stackblitz">
-    <fa-icon [icon]="['fas', 'bolt']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <a mat-button fxHide.lt-md href="https://twitter.com/ecruz165" target="_twitter">
-    <fa-icon [icon]="['fab', 'twitter']" style="font-size:x-large"></fa-icon>
-    Twitter
-  </a>
-  <a fxHide mat-icon-button fxShow.lt-md href="https://twitter.com/ecruz165" target="_twitter">
-    <fa-icon [icon]="['fab', 'twitter']" style="font-size:x-large"></fa-icon>
-  </a>
-
-  <mat-slide-toggle></mat-slide-toggle>
-
+  <ng-container *ngFor="let item of menuItems">
+    <a mat-button fxHide.lt-md href="{{item.href}}" target="{{item.target}}">
+      <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
+      {{item.label}}
+    </a>
+    <a fxHide mat-icon-button fxShow.sm  href="{{item.href}}"  target="{{item.target}}" >
+      <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
+    </a>
+  </ng-container>
+  <button [matMenuTriggerFor]="dropMenu" mat-icon-button fxHide fxShow.xs>
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
 
-<mat-menu #contactMenu="matMenu">
-  <a mat-menu-item href="sms:19176267137">
-    <mat-icon>sms</mat-icon>
-    <span>Text me</span>
-  </a>
-  <a mat-menu-item href="tel:19176267137">
-    <mat-icon>phone</mat-icon>
-    <span>Call me</span>
-  </a>
+<mat-menu #dropMenu="matMenu">
+  <ng-container *ngFor="let item of menuItems">
+    <a mat-menu-item href="{{item.href}}" target="{{item.target}}">
+      <fa-icon [icon]="item.iconProp" style="font-size:large; padding-right: 8px;"></fa-icon>
+      <span>{{item.label}}</span>
+    </a>
+  </ng-container>
 </mat-menu>
