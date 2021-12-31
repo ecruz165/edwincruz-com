@@ -77,8 +77,8 @@ export class AppThemeService {
   }
 
   private onPositionSuccess(position: GeolocationPosition) {
-//    this.latitude = position.coords.latitude;
-//    this.longitude = position.coords.longitude
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude
   }
 
   private detectCurrentPosition() {
@@ -102,8 +102,8 @@ export class AppThemeService {
     // some logic to determine which mode to select base on whether client is in daytime or nighttime
     let timeOfDay = this.getTimeOfDay();
     if (timeOfDay === 'day-time')
-      return 'light-theme.css';
-    return 'dark-theme.css';
+      return '/light-theme.css';
+    return '/dark-theme.css';
   }
 
   private loadStylesheet(id: string, baseUrl: string, path: string, renderOnServer: boolean, renderOnBrowser: boolean) {
@@ -124,10 +124,8 @@ export class AppThemeService {
       link.type = 'text/css'
 
       if (renderOnBrowser && isPlatformBrowser(this.platformId)) {
-        console.log("load css on client")
         head.appendChild(link);
       } else if (renderOnServer && isPlatformServer(this.platformId)) {
-        console.log("load css on server")
         //  this.renderer.insertBefore(this.document.head,  link, this.document.head.firstChild);
         //  this.renderer.insertBefore(this.document.head, link, this.document.head.lastElementChild);
         this.renderer.appendChild(head, link);
@@ -144,7 +142,7 @@ export class AppThemeService {
     const themePathFromContextRoot = this.getTheme(tenantConfig);
     const baseUrl = this.getBaseUrl();
     this.loadStylesheet('app-styles', baseUrl, `/styles.css`, true, true);
-    this.loadStylesheet('app-theme', baseUrl, `/${themePathFromContextRoot}`, true, true );
+    this.loadStylesheet('app-theme', baseUrl, `${themePathFromContextRoot}`, true, true );
     return Promise.resolve();
   }
 
