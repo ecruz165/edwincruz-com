@@ -23,7 +23,13 @@ import {YouTubeComponent} from './components/you-tube/you-tube.component';
 import {AppThemeService} from "./app-theme.service";
 import {TransferStateInterceptor} from "./interceptors/transfer-state.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {SplashScreenService} from "./app-splash-screen.service";
 
+export function showSplashScreen(splashScreenService: SplashScreenService) {
+  return (): Promise<any> => {
+    return splashScreenService.Init();
+  };
+}
 export function initializeAppTheme(appThemeService: AppThemeService) {
   return (): Promise<any> => {
     return appThemeService.Init();
@@ -58,6 +64,12 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
       provide: HTTP_INTERCEPTORS,
       useClass: TransferStateInterceptor,
       multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: showSplashScreen,
+      multi: true,
+      deps: [SplashScreenService]
     },
     {
       provide: APP_INITIALIZER,
