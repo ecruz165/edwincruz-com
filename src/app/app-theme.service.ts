@@ -49,10 +49,10 @@ export class AppThemeService {
           modes: [
             {
               name: "day-time",
-              file_name: "light-theme.css"
+              file_name: "/light-theme.css"
             }, {
               name: "night-time",
-              file_name: "dark-theme.css"
+              file_name: "/dark-theme.css"
             }
           ]
         }
