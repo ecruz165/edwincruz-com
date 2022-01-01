@@ -77,8 +77,8 @@ export class AppThemeService {
   }
 
   private onPositionSuccess(position: GeolocationPosition) {
-      this.latitude = position.coords.latitude;
-      this.longitude = position.coords.longitude
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude
   }
 
   private detectCurrentPosition() {
@@ -142,7 +142,7 @@ export class AppThemeService {
     const themePathFromContextRoot = this.getTheme(tenantConfig);
     const baseUrl = this.getBaseUrl();
     this.loadStylesheet('app-styles', baseUrl, `/styles.css`, true, true);
-    this.loadStylesheet('app-theme', baseUrl, `${themePathFromContextRoot}`, true, true );
+    this.loadStylesheet('app-theme', baseUrl, `${themePathFromContextRoot}`, true, true);
     return Promise.resolve();
   }
 
