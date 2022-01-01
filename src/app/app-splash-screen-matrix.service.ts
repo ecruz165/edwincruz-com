@@ -81,7 +81,7 @@ export class AppSplashScreenMatrixService {
     let audio: HTMLAudioElement = new Audio();
     audio.src = '/assets/audio/dial-up-modem-alt2.mp3';
     audio.load();
-    audio.play().catch(reason => console.log('ERROR: Audio did not play'));
+    audio.play().catch(reason => console.warn('Audio did not play'));
   }
 
   private playAnimation(): any {
