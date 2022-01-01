@@ -17,6 +17,8 @@ interface ITenantConfig {
   assets_folder: string,
   themes: ITheme[],
 }
+var latitude: number = 40.8393845;
+var longitude: number = -73.9414518;
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +27,6 @@ export class AppThemeService {
 
   private renderer: Renderer2;
   // default location is New York, NY
-  latitude: number = 40.8393845;
-  longitude: number = -73.9414518;
 
   constructor(
     private injector: Injector,
@@ -77,22 +77,20 @@ export class AppThemeService {
   }
 
   private onPositionSuccess(position: GeolocationPosition) {
-    this.latitude = position.coords.latitude;
-    this.longitude = position.coords.longitude
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude
   }
 
   private detectCurrentPosition() {
-    if (isPlatformServer(this.platformId)) {
-      // use the default
-    } else {
+    if (isPlatformBrowser(this.platformId)) {
       navigator.geolocation.getCurrentPosition(this.onPositionSuccess, this.onPositionError);
     }
   }
 
   private getTimeOfDay() {
     const position = this.detectCurrentPosition();
-    const sunrise = getSunrise(this.latitude, this.longitude);
-    const sunset = getSunset(this.latitude, this.longitude);
+    const sunrise = getSunrise(latitude, longitude);
+    const sunset = getSunset(latitude, longitude);
     const now = new Date();
     if (now >= sunrise && now < sunset) return 'day-time';
     return 'night-time'
