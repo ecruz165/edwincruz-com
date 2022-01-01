@@ -2,6 +2,7 @@ import {Inject, Injectable, NgZone, PLATFORM_ID} from '@angular/core';
 import {DOCUMENT, isPlatformBrowser} from "@angular/common";
 import {debounceTime, filter, take} from "rxjs/operators";
 import {NavigationEnd, Router} from "@angular/router";
+import {animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style} from "@angular/animations";
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,14 @@ export class AppSplashScreenMatrixService {
   // @ts-ignore
   private ctx: CanvasRenderingContext2D;
   private refreshIntervalId: any;
+  // @ts-ignore
+  private player: AnimationPlayer;
 
   constructor(private ngZone: NgZone,
               private router: Router,
               @Inject(DOCUMENT) private document: Document,
-              @Inject(PLATFORM_ID) private platformId: Object
+              @Inject(PLATFORM_ID) private platformId: Object,
+              private animationBuilder: AnimationBuilder
   ) {
   }
 
@@ -128,7 +132,19 @@ export class AppSplashScreenMatrixService {
   stop() {
     this.enableScroll();
     clearInterval(this.refreshIntervalId);
-    this.canvas.remove();
+    const factory = this.animationBuilder.build(this.getFadeOutAnimation());
+    this.player = factory.create(this.canvas);
+    // todo: should listen to event denoting when sound ends
+    this.player.play();
+    this.player.onDone(() => {
+      this.canvas.remove();
+      this.player.destroy();
+    });
+     //
+  }
+
+  private getFadeOutAnimation(): AnimationMetadata[] {
+    return [style({ opacity: 1, transform: 'translateX(0)' }), animate('200ms', style({ opacity: 0, transform: 'translateX(0)' }))];
   }
 
 }
