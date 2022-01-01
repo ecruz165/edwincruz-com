@@ -36,7 +36,7 @@ export class AppSplashScreenMatrixService {
         console.log('start listening for load complete and minimum elapsedTime');
         this.router.events.pipe(
           filter(event => event instanceof NavigationEnd),
-          debounceTime(12000),
+          debounceTime(6500),
           take(1),
         ).subscribe(() => {
           console.log('stop playing splash screen');
@@ -52,8 +52,8 @@ export class AppSplashScreenMatrixService {
     // needed to avoid change detection on every change to screen
     this.ngZone.runOutsideAngular(() => {
       this.disableScroll();
-      this.playAnimation();
       this.playSound();
+      this.playAnimation();
     });
   }
 
@@ -75,7 +75,7 @@ export class AppSplashScreenMatrixService {
 
   private playSound() {
     let audio: HTMLAudioElement = new Audio();
-    audio.src = '/assets/audio/dial-up-modem-alt.mp3';
+    audio.src = '/assets/audio/dial-up-modem-alt2.mp3';
     audio.load();
     audio.play().catch(reason => console.log('ERROR: Audio did not play'));
   }
@@ -129,7 +129,6 @@ export class AppSplashScreenMatrixService {
     this.enableScroll();
     clearInterval(this.refreshIntervalId);
     this.canvas.remove();
-
   }
 
 }
