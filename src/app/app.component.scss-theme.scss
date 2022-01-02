@@ -7,9 +7,10 @@
   $density-scale: material.get-density-config($theme);
   $is-dark: map.get($theme, is-dark);
 
-  .content {
+  app-root {
     background-color: material.get-color-from-palette($backgrounds, background);
     min-height: calc(100vh - #{get-content-offset($density-scale)});
+    display:block;
   }
 }
 

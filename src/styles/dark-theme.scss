@@ -3,6 +3,51 @@
 @use './common.scss' as common;
 @use 'sass:map';
 
+$light-primary-text: map.get(mat.$grey-palette, 300);
+$light-secondary-text: map.get(mat.$grey-palette, 400);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+// Background palette for dark themes.
+$dark-theme-background-palette: (
+  status-bar: black,
+  app-bar: black,
+  background: map.get(mat.$grey-palette, 900),
+  hover: rgba(white, 0.04),
+  card: map.get(mat.$grey-palette, 900),
+  dialog: map.get(mat.$grey-palette, 900),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map.get(mat.$grey-palette, 800),
+  focused-button: $light-focused,
+  selected-button: map.get(mat.$grey-palette, 900),
+  selected-disabled-button: map.get(mat.$grey-palette, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map.get(mat.$grey-palette, 700),
+  disabled-list-option: black,
+  tooltip: map.get(mat.$grey-palette, 700),
+);
+
+// Foreground palette for dark themes.
+$dark-theme-foreground-palette: (
+  base: $light-primary-text,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba($light-primary-text, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: $light-primary-text,
+  icons: $light-primary-text,
+  text:$light-primary-text,
+  slider-min: $light-primary-text,
+  slider-off: rgba($light-primary-text, 0.3),
+  slider-off-active: rgba($light-primary-text, 0.3),
+);
+
+
 $edwincruz-primary: mat.define-palette(mat.$blue-palette, 700, 400, 900);
 $edwincruz-accent: mat.define-palette(mat.$yellow-palette, A200, A100);
 $edwincruz-success: mat.define-palette(mat.$green-palette, 700, 500, 900);
@@ -12,8 +57,39 @@ $edwincruz-color-scheme: (
   success: $edwincruz-success,
   info: $edwincruz-info,
   background: (
-    background: map.get(mat.$blue-gray-palette, 900),
+    status-bar: map.get($dark-theme-background-palette, status-bar),
+    app-bar:map.get($dark-theme-background-palette, app-bar),
+    background: map.get($dark-theme-background-palette, background),
+    hover: map.get($dark-theme-background-palette, hover),
+    card: map.get($dark-theme-background-palette, card),
+    dialog: map.get($dark-theme-background-palette, dialog),
+    disabled-button: map.get($dark-theme-background-palette, disabled-button),
+    raised-button: map.get($dark-theme-background-palette, raised-button),
+    focused-button: map.get($dark-theme-background-palette, focused-button),
+    selected-button: map.get($dark-theme-background-palette, selected-button),
+    selected-disabled-button: map.get($dark-theme-background-palette, selected-disabled-button),
+    disabled-button-toggle: map.get($dark-theme-background-palette, disabled-button-toggle),
+    unselected-chip: map.get($dark-theme-background-palette, unselected-chip),
+    disabled-list-option: map.get($dark-theme-background-palette, disabled-list-option),
+    tooltip: map.get($dark-theme-background-palette, tooltip),
   ),
+  foreground: (
+    base: map.get($dark-theme-foreground-palette, base),
+    divider: map.get($dark-theme-foreground-palette, divider),
+    dividers: map.get($dark-theme-foreground-palette, dividers),
+    disabled: map.get($dark-theme-foreground-palette, disabled),
+    disabled-button: map.get($dark-theme-foreground-palette, disabled-button),
+    disabled-text: map.get($dark-theme-foreground-palette, disabled-text),
+    elevation: map.get($dark-theme-foreground-palette, elevation),
+    hint-text: map.get($dark-theme-foreground-palette, hint-text),
+    secondary-text: map.get($dark-theme-foreground-palette, secondary-text),
+    icon: map.get($dark-theme-foreground-palette, icon),
+    icons: map.get($dark-theme-foreground-palette, icons),
+    text: map.get($dark-theme-foreground-palette, text),
+    slider-min: map.get($dark-theme-foreground-palette, slider-min),
+    slider-off: map.get($dark-theme-foreground-palette, slider-off),
+    slider-off-active: map.get($dark-theme-foreground-palette, slider-off-active),
+  )
 );
 
 $edwincruz-dark-theme: mat.define-dark-theme(
@@ -26,8 +102,9 @@ $edwincruz-dark-theme: mat.define-dark-theme(
       density: default,
     )
 );
-
 $edwincruz-dark-theme-set: common.apply-extra-colors($edwincruz-dark-theme, $edwincruz-color-scheme);
+@include common.create-theme($edwincruz-dark-theme-set);
 
-
-@include common.create-theme($edwincruz-dark-theme);
+a {
+  color: mat.get-color-from-palette($dark-theme-foreground-palette, secondary-text);
+}
