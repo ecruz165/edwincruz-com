@@ -17,8 +17,9 @@ interface ITenantConfig {
   assets_folder: string,
   themes: ITheme[],
 }
-var latitude: number = 40.8393845;
-var longitude: number = -73.9414518;
+
+let latitude: number = 40.8393845;
+let longitude: number = -73.9414518;
 
 @Injectable({
   providedIn: 'root'
