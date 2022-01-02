@@ -1,52 +1,12 @@
 @use '@angular/material' as mat;
 @use './typography' as typography;
+@use './palette' as palette;
 @use './common.scss' as common;
 @use 'sass:map';
 
-$light-primary-text: map.get(mat.$grey-palette, 300);
-$light-secondary-text: map.get(mat.$grey-palette, 400);
-$light-disabled-text: rgba(white, 0.5);
-$light-dividers: rgba(white, 0.12);
-$light-focused: rgba(white, 0.12);
 
-// Background palette for dark themes.
-$dark-theme-background-palette: (
-  status-bar: black,
-  app-bar: black,
-  background: map.get(mat.$grey-palette, 900),
-  hover: rgba(white, 0.04),
-  card: map.get(mat.$grey-palette, 900),
-  dialog: map.get(mat.$grey-palette, 900),
-  disabled-button: rgba(white, 0.12),
-  raised-button: map.get(mat.$grey-palette, 800),
-  focused-button: $light-focused,
-  selected-button: map.get(mat.$grey-palette, 900),
-  selected-disabled-button: map.get(mat.$grey-palette, 800),
-  disabled-button-toggle: black,
-  unselected-chip: map.get(mat.$grey-palette, 700),
-  disabled-list-option: black,
-  tooltip: map.get(mat.$grey-palette, 700),
-);
-
-// Foreground palette for dark themes.
-$dark-theme-foreground-palette: (
-  base: $light-primary-text,
-  divider: $light-dividers,
-  dividers: $light-dividers,
-  disabled: $light-disabled-text,
-  disabled-button: rgba($light-primary-text, 0.3),
-  disabled-text: $light-disabled-text,
-  elevation: black,
-  hint-text: $light-disabled-text,
-  secondary-text: $light-secondary-text,
-  icon: $light-primary-text,
-  icons: $light-primary-text,
-  text:$light-primary-text,
-  slider-min: $light-primary-text,
-  slider-off: rgba($light-primary-text, 0.3),
-  slider-off-active: rgba($light-primary-text, 0.3),
-);
-
+$dark-theme-background-palette: palette.$dark-theme-background-palette;
+$dark-theme-foreground-palette: palette.$dark-theme-foreground-palette;
 
 $edwincruz-primary: mat.define-palette(mat.$blue-palette, 700, 400, 900);
 $edwincruz-accent: mat.define-palette(mat.$yellow-palette, A200, A100);

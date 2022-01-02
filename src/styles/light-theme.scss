@@ -1,51 +1,11 @@
 @use '@angular/material' as mat;
 @use './typography' as typography;
+@use './palette' as palette;
 @use './common.scss' as common;
 @use 'sass:map';
 
-$dark-primary-text: rgba(black, 0.87);
-$dark-secondary-text: rgba(black, 0.54);
-$dark-disabled-text: rgba(black, 0.38);
-$dark-dividers: rgba(black, 0.12);
-$dark-focused: rgba(black, 0.12);
-
-// Background palette for light themes.
-$light-theme-background-palette: (
-  status-bar: map.get(mat.$grey-palette, 300),
-  app-bar:    map.get(mat.$grey-palette, 100),
-  background: map.get(mat.$grey-palette, 50),
-  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-  card:       white,
-  dialog:     white,
-  disabled-button: rgba(black, 0.12),
-  raised-button: white,
-  focused-button: $dark-focused,
-  selected-button: map.get(mat.$grey-palette, 300),
-  selected-disabled-button: map.get(mat.$grey-palette, 400),
-  disabled-button-toggle: map.get(mat.$grey-palette, 200),
-  unselected-chip: map.get(mat.$grey-palette, 300),
-  disabled-list-option: map.get(mat.$grey-palette, 200),
-  tooltip: map.get(mat.$grey-palette, 700),
-);
-
-// Foreground palette for light themes.
-$light-theme-foreground-palette: (
-  base:              black,
-  divider:           $dark-dividers,
-  dividers:          $dark-dividers,
-  disabled:          $dark-disabled-text,
-  disabled-button:   rgba(black, 0.26),
-  disabled-text:     $dark-disabled-text,
-  elevation:         black,
-  hint-text:         $dark-disabled-text,
-  secondary-text:    $dark-secondary-text,
-  icon:              rgba(black, 0.54),
-  icons:             rgba(black, 0.54),
-  text:              rgba(black, 0.87),
-  slider-min:        rgba(black, 0.87),
-  slider-off:        rgba(black, 0.26),
-  slider-off-active: rgba(black, 0.38),
-);
+$light-theme-background-palette: palette.$light-theme-background-palette;
+$light-theme-foreground-palette: palette.$light-theme-foreground-palette;
 
 $edwincruz-primary: mat.define-palette(mat.$blue-palette, 700, 400, 900);
 $edwincruz-accent: mat.define-palette(mat.$yellow-palette, A200, A100);
