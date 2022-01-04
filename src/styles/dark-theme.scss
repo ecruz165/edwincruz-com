@@ -4,7 +4,6 @@
 @use './common.scss' as common;
 @use 'sass:map';
 
-
 $dark-theme-background-palette: palette.$dark-theme-background-palette;
 $dark-theme-foreground-palette: palette.$dark-theme-foreground-palette;
 
@@ -62,9 +61,10 @@ $edwincruz-dark-theme: mat.define-dark-theme(
       density: default,
     )
 );
+
 $edwincruz-dark-theme-set: common.apply-extra-colors($edwincruz-dark-theme, $edwincruz-color-scheme);
 @include common.create-theme($edwincruz-dark-theme-set);
 
-a {
+h1, h2, h3 , h4, h5, h6, p, a {
   color: mat.get-color-from-palette($dark-theme-foreground-palette, secondary-text);
 }

@@ -14,7 +14,7 @@ $light-theme-background-palette: (
   app-bar: map.get(mat.$grey-palette, 100),
   background: map.get(mat.$grey-palette, 50),
   hover: rgba(black, 0.04),
-  card: white,
+  card: rgba(white,0),
   dialog: white,
   disabled-button: rgba(black, 0.12),
   raised-button: white,
@@ -55,11 +55,11 @@ $light-focused: rgba(white, 0.12);
 
 // Background palette for dark themes.
 $dark-theme-background-palette: (
-  status-bar: black,
-  app-bar: black,
-  background: map.get(mat.$grey-palette, 900),
+  status-bar: map.get(mat.$grey-palette, 900),
+  app-bar: map.get(mat.$grey-palette, 900),
+  background: black,
   hover: rgba(white, 0.04),
-  card: map.get(mat.$grey-palette, 900),
+  card: rgba(map.get(mat.$grey-palette, 900),.75),
   dialog: map.get(mat.$grey-palette, 900),
   disabled-button: rgba(white, 0.12),
   raised-button: map.get(mat.$grey-palette, 800),
