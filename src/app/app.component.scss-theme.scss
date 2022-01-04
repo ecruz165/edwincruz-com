@@ -12,6 +12,14 @@
     min-height: calc(100vh - #{get-content-offset($density-scale)});
     display:block;
   }
+
+  .svg {
+    @if $is-dark {
+      filter: invert(100%) hue-rotate(183deg) brightness(4);
+    } @else {
+      filter: invert(0);
+    }
+  }
 }
 
 @function get-content-offset($density: default) {

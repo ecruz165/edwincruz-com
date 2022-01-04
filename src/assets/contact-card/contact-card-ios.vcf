@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Edwin Manuel Cruz
+N:Cruz;Edwin;Manuel;;
+X-PHONETIC-FIRST-NAME:19176267137
+EMAIL;TYPE=INTERNET;TYPE=HOME:ecruz165@yahoo.com
+TEL;TYPE=CELL:(917) 626-7137
+item1.ADR:;;;New York;NY;10032;US;New York\, NY 10032\nUS
+item1.X-ABLabel:
+item2.ORG:Edwin Cruz
+item2.X-ABLabel:
+item3.TITLE:Lead Software Engineer
+item3.X-ABLabel:
+item4.URL:https\://edwincruz.com
+item4.X-ABLabel:homePage
+PHOTO:https://lh3.googleusercontent.com/contacts/AKUYANQMhG9-q9y962R9o0bIv7
+ kOHwr4SppZUaMrJ1tZEMexF979Gon5
+CATEGORIES:Lead Software Engineers,myContacts,starred
+END:VCARD
