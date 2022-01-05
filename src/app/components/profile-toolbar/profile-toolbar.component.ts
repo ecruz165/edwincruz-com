@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {AppThemeService} from "../../app-theme.service";
 
 export interface MenuItem {
   label: string;
@@ -17,6 +18,7 @@ export interface MenuItem {
   styleUrls: ['./profile-toolbar.component.scss']
 })
 export class ProfileToolbarComponent implements OnInit {
+  isDarkMode;
 
   menuItems: MenuItem[] = [
     {
@@ -70,10 +72,16 @@ export class ProfileToolbarComponent implements OnInit {
     }
   ]
 
-  constructor() {
+  constructor(private themeService:AppThemeService) {
+    const mode = this.themeService.getCurrentMode()
+    this.isDarkMode = mode?.is_dark;
   }
 
   ngOnInit(): void {
+  }
+
+  toggleThemeMode() {
+    this.themeService.toggleThemeMode()
   }
 
 }

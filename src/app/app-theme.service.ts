@@ -4,18 +4,19 @@ import {REQUEST} from "@nguniversal/express-engine/tokens";
 import {getSunrise, getSunset} from 'sunrise-sunset-js';
 
 interface IThemeMode {
-  name: string
-  file_name: string
+  is_dark: boolean;
+  name: string;
+  file_name: string;
 }
 
 interface ITheme {
-  name: string
+  name: string;
   modes: IThemeMode[];
 }
 
 interface ITenantConfig {
-  assets_folder: string,
-  themes: ITheme[],
+  assets_folder: string;
+  themes: ITheme[];
 }
 
 let latitude: number = 40.8393845;
@@ -27,7 +28,9 @@ let longitude: number = -73.9414518;
 export class AppThemeService {
 
   private renderer: Renderer2;
-  // default location is New York, NY
+  private themeConfig: ITenantConfig | undefined;
+  private currentTheme: ITheme | undefined;
+  private currentThemeMode?: IThemeMode;
 
   constructor(
     private injector: Injector,
@@ -49,9 +52,11 @@ export class AppThemeService {
           name: "default",
           modes: [
             {
+              is_dark: false,
               name: "day-time",
               file_name: "/light-theme.css"
             }, {
+              is_dark: true,
               name: "night-time",
               file_name: "/dark-theme.css"
             }
@@ -97,14 +102,6 @@ export class AppThemeService {
     return 'night-time'
   }
 
-  private getTheme(config: ITenantConfig) {
-    // some logic to determine which mode to select base on whether client is in daytime or nighttime
-    let timeOfDay = this.getTimeOfDay();
-    if (timeOfDay === 'day-time')
-      return '/light-theme.css';
-    return '/dark-theme.css';
-  }
-
   private loadStylesheet(id: string, baseUrl: string, path: string, renderOnServer: boolean, renderOnBrowser: boolean) {
     const head = this.document.getElementsByTagName('head')[0];
     let link = this.document.getElementById(id) as HTMLLinkElement;
@@ -132,17 +129,43 @@ export class AppThemeService {
     }
   }
 
-  toggleLightAndDarkTheme() {
+  private setThemeMode(theme: ITheme | undefined, mode: IThemeMode | undefined) {
+    const baseUrl = this.getBaseUrl();
+    this.loadStylesheet('app-styles', baseUrl, `/styles.css`, true, true);
+    this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
+  }
 
+  toggleThemeMode() {
+    this.currentThemeMode = this.currentTheme?.modes.filter(mode => mode.is_dark !== this.currentThemeMode?.is_dark)[0];
+    this.setThemeMode(this.currentTheme, this.currentThemeMode);
+  }
+
+  private getTheme(config: ITenantConfig, defaultName: string): ITheme {
+    // todo: bootstrap logic is needed to determine default
+    return config.themes.filter(theme => theme.name === defaultName)[0];
+  }
+
+  private getDefaultThemeName(): string {
+    return 'default';
+  }
+
+  private getThemeMode(theme: ITheme, defaultName: string): IThemeMode {
+    return theme.modes.filter(mode => mode.name === defaultName)[0];
+  }
+
+  private getDefaultThemeModeName(): string {
+    return this.getTimeOfDay();
   }
 
   Init() {
-    const tenantConfig = this.getTenantThemeConfig();
-    const themePathFromContextRoot = this.getTheme(tenantConfig);
-    const baseUrl = this.getBaseUrl();
-    this.loadStylesheet('app-styles', baseUrl, `/styles.css`, true, true);
-    this.loadStylesheet('app-theme', baseUrl, `${themePathFromContextRoot}`, true, true);
+    this.themeConfig = this.getTenantThemeConfig();
+    this.currentTheme = this.getTheme(this.themeConfig, this.getDefaultThemeName());
+    this.currentThemeMode = this.getThemeMode(this.currentTheme, this.getDefaultThemeModeName());
+    this.setThemeMode(this.currentTheme, this.currentThemeMode);
     return Promise.resolve();
   }
 
+  getCurrentMode() {
+    return this.currentThemeMode;
+  }
 }
