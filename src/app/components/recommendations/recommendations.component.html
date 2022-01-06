@@ -1,57 +1,28 @@
 <mat-card class="example-card">
   <h2>Recommendations</h2>
-  <h3>Industry Experts</h3>
+  <h3>INDUSTRY EXPORTS</h3>
   <p>Accelerate your learning by following these experts and using their published content and courses.</p>
-  <mat-card-title-group>
-    <mat-card-title><a href="https://www.javaspecialists.eu/" target="_industry_experts">Dr Heinz M. Kabutz</a></mat-card-title>
-    <mat-card-subtitle>Advanced Java topics</mat-card-subtitle>
-    <img mat-card-sm-image src="https://www.filepicker.io/api/file/WA9EOsGoRhG687gr1TlS" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title><a href="https://www.baeldung.com/" target="_industry_experts">Eugen Baeldung</a></mat-card-title>
-    <mat-card-subtitle>Spring Boot, Rest and Security</mat-card-subtitle>
-    <img mat-card-sm-image src="https://www.baeldung.com/wp-content/uploads/2018/02/photo-eugen.png" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title><a href="https://vladmihalcea.com/" target="_industry_experts">Vlad Mihalcea</a></mat-card-title>
-    <mat-card-subtitle>Hibernate.</mat-card-subtitle>
-    <img mat-card-sm-image src="https://avatars.githubusercontent.com/u/5571399?v=4" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title><a href="https://rieckpil.de/" target="_industry_experts">Philip Rieckpil</a></mat-card-title>
-    <mat-card-subtitle>Testing Spring Applications</mat-card-subtitle>
-    <img mat-card-sm-image src="https://cdn-aoloc.nitrocdn.com/LjZAnpMBiKRdWkhommfnyugsAOnHWdxL/assets/static/optimized/rev-ec83180/wp-content/uploads/2020/07/rieckpilParkBench-585x703.jpg.webp" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title><a href="https://www.decodedfrontend.io/" target="_industry_experts">Dmytro Mezhenskyi</a></mat-card-title>
-    <mat-card-subtitle>Angular and RXJS</mat-card-subtitle>
-    <img mat-card-sm-image src="https://pbs.twimg.com/profile_images/1428302019777998855/FePGJNv5_400x400.jpg" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title ><a href="https://basarat.com/" target="_industry_experts">Basarat Ali Syed</a></mat-card-title>
-    <mat-card-subtitle>Javascript/Typescript</mat-card-subtitle>
-    <img mat-card-sm-image src="https://avatars.githubusercontent.com/u/874898?v=4" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title ><a href="https://bobbyhadz.com/" target="_industry_experts">Borislav Hadzhiev</a></mat-card-title>
-    <mat-card-subtitle>AWS CDK, REACT, Javascript</mat-card-subtitle>
-    <img mat-card-sm-image src="https://bobbyhadz.com/images/global/avatar-big.webp" >
-  </mat-card-title-group>
-  <mat-card-content></mat-card-content>
 
-  <h3>Other Resource</h3>
+  <mat-card-title-group *ngFor="let expert of industryExperts">
+    <mat-card-title><a href="{{expert.website}}" target="{{expert.target}}"><h3>{{expert.name}}</h3></a></mat-card-title>
+
+    <mat-card-subtitle>    <mat-chip-list>
+      <mat-chip *ngFor="let skill of expert.expertise" >
+        {{skill}}
+      </mat-chip>
+    </mat-chip-list></mat-card-subtitle>
+    <img mat-card-sm-image src="{{expert.picUrl}}" />
+  </mat-card-title-group>
+
+
+
+  <h3>OTHER RESOURCES</h3>
 <ul>
   <li><a href="https://mkyong.com/" target="_resources">mykong.com</a> - Spring and Java snippets</li>
   <li><a href="https://refactoring.guru/" target="_resources">refactoring.guru</a> - Patterns</li>
   <li><a href="https://serverlessland.com/" target="_resources">serverlessland.com</a>- AWS Serverless Portal</li>
 </ul>
-  <h3>Cloud Apps</h3>
+  <h3>CLOUD APPS</h3>
   <ul>
     <li><a href="https://www.airtable.com/">Airtable</a> - Cloud Datasource/Spreadsheet</li>
     <li><a href="https://balsamiq.com/">Balsamiq Wireframes</a> - UI/UX design tool</li>
@@ -65,9 +36,12 @@
     <li><a href="https://lucid.co/">lucid Charts</a> - Spring and Java snippets</li>
     <li><a href="https://mailchimp.com/">Mailchimp</a> - Email Marketing</li>
     <li><a href="https://zoom.us/">Zoom</a> - Spring and Java snippets</li>
+    <li><a href="https://zoom.us/">Bitly</a> - Spring and Java snippets</li>
+    <li><a href="https://www.qr-code-generator.com/"> QR Code Generator</a></li>
   </ul>
 
-  <h3>Ipad Apps for Developers</h3>
+
+  <h3>IPAD APPS FOR DEVELOPERS</h3>
   <ul>
     <li><a href="https://www.airtable.com/">prompt</a> - Cloud Datasource/Spreadsheet</li>
   </ul>

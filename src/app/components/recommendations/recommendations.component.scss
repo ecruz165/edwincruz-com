@@ -2,3 +2,10 @@ img {
   border-radius: 50%;
   // filter: grayscale(100%);
 }
+
+@media (max-width: 1280px) {
+  .mat-card {
+    background: none !important;
+    box-shadow: none !important;
+  }
+}

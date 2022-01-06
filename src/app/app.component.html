@@ -1,29 +1,36 @@
 <app-profile-toolbar></app-profile-toolbar>
 <main>
 
-  <session fxLayout="row wrap" fxLayoutAlign="space-between start"  fxLayoutGap.xs="8px" fxLayoutGap.sm="12px" fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px" >
-    <section fxLayout="column" fxFlex="100" fxFlex.sm="46" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexOrder="1">
+  <session fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap.xs="8px" fxLayoutGap.sm="12px"
+           fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px">
+    <section fxLayout="column" fxFlex="100" fxFlex.sm="46" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23"
+             fxFlexOrder="1">
       <app-profile-card></app-profile-card>
     </section>
-    <section fxLayout="column" fxFlex="100" fxFlex.sm="46"  fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexAlign="center" fxFlexOrder="2" fxFlexOrder.gt-md="3">
+    <section fxLayout="column" fxFlex="100" fxFlex.sm="46" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23"
+             fxFlexAlign.lt-lg="center" fxFlexOrder="2" fxFlexOrder.gt-md="3">
       <app-interact></app-interact>
     </section>
-    <section fxLayout="column" fxFlex="100" fxFlex.md="100" fxFlex.lg="48" fxFlex.gt-lg="50" fxFlexAlign="center"  fxFlexOrder="3" fxFlexOrder.gt-md="2">
+    <section fxLayout="column" fxFlex="100" fxFlex.md="100" fxFlex.lg="50" fxFlex.gt-lg="50" fxFlexAlign.lt-lg="center"
+             fxFlexOrder="3" fxFlexOrder.gt-md="2">
       <app-profile-summary></app-profile-summary>
     </section>
   </session>
 
-  <session fxLayout="row wrap"  fxLayoutAlign="space-between start" fxLayoutGap.xs="8px" fxLayoutGap.sm="12px"  fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px" >
-    <section fxLayout="column" fxFlex="100" fxFlex.md="64" fxFlex.lg="50" fxFlex.gt-lg="50"   fxFlexOrder="1" fxFlexOrder.gt-sm="2">
+  <session fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap.xs="8px" fxLayoutGap.sm="12px"
+           fxLayoutGap.md="16px" fxLayoutGap.gt-md="24px">
+    <section fxLayout="column" fxFlex="100" fxFlex.md="64" fxFlex.lg="50" fxFlex.gt-lg="50" fxFlexOrder="1"
+             fxFlexOrder.gt-sm="2">
       <app-post-list></app-post-list>
     </section>
-    <section fxLayout="column" fxFlex="48" fxFlex.sm="49" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23" fxFlexOrder="2" fxFlexOrder.gt-sm="1">
+    <section fxLayout="column" fxFlex.xs="100" fxFlex.sm="49" fxFlex.md="32" fxFlex.lg="23" fxFlex.gt-lg="23"
+             fxFlexOrder="2" fxFlexOrder.gt-sm="1">
       <app-status></app-status>
       <app-stack-details></app-stack-details>
-      <app-recommendation  fxHide="true" fxShow.md="true"></app-recommendation>
+      <app-recommendation class="recommendation-card" fxHide="true" fxShow.md="true"></app-recommendation>
     </section>
-    <section fxLayout="column" fxFlex="48" fxFlex.sm="49"  fxFlex.md="32" fxFlex.gt-md="23"  fxFlexOrder="3">
-      <app-recommendation  fxHide.md="true"></app-recommendation>
+    <section fxLayout="column" fxFlex.xs="100" fxFlex.sm="49" fxFlex.md="32" fxFlex.gt-md="23" fxFlexOrder="3">
+      <app-recommendation class="recommendation-card" fxHide.md="true"></app-recommendation>
     </section>
   </session>
 
