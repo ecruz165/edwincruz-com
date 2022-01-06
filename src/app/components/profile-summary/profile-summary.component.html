@@ -1,7 +1,15 @@
-<mat-card class="profile-summary">
-  <mat-card-content>
-    <h2>Lead Software Engineer delivering solutions using Java and Typescript on the AWS Platform.</h2>
-    <ul class="mat-caption">
+<div id="profile-summary" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between center" fxLayoutAlign.gt-xs="space-between start" >
+  <div fxFlex="100" fxFlex.sm="46" fxFlex.md="68" fxFlex.gt-md="75">
+    <div  (mouseenter)="toggle()"
+          (mouseleave)="toggle()" style="display: block;">
+    <h2 id="profile-title"  >Lead Software Engineer delivering cloud solutions using Java and Typescript.</h2>
+      <p>My Resume: <a mat-icon-button href="https://github.com/ecruz165" target="_github">
+        <fa-icon [icon]="['fas', 'eye']" style="font-size:large"></fa-icon>
+      </a>
+        <a mat-icon-button href="https://github.com/ecruz165" target="_github">
+          <fa-icon [icon]="['fas', 'download']" style="font-size:large"></fa-icon>
+        </a></p>
+    <ul class="mat-caption viewable" *ngIf="viewable">
       <li>Expert on Spring, Hibernate, Ehcache, and Angular frameworks</li>
       <li>An Agile practitioner with many years of experience using Jira, TTD, and BDD</li>
       <li>Team leader and contributor who believes collaboration, sharing ideas, and mentoring lead to better team
@@ -14,5 +22,10 @@
         that include CI/CD, and pair programming
       </li>
     </ul>
-  </mat-card-content>
-</mat-card>
+    </div>
+
+  </div>
+  <div id="contact-card" fxFlex="100" fxFlex.sm="46" fxFlex.md="32" fxFlex.gt-md="23">
+    <a href="/assets/contact-card/contact-card-ios.vcf"><img class="svg" width="200px" src="/assets/contact-card/contact-card.svg" /></a>
+  </div>
+</div>
