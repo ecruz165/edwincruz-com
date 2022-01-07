@@ -70,6 +70,12 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
+        },        {
+          name: 'Ag-Grid and Ag-Charts',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
         },
         {
           name: 'HTML',
@@ -135,7 +141,7 @@ export class StackDetailsComponent implements OnInit {
       ]
     },
     {
-      category: 'Datasources',
+      category: 'Data Sources',
       items: [
         {
           name: 'MySQL',
@@ -161,7 +167,7 @@ export class StackDetailsComponent implements OnInit {
       ]
     },
     {
-      category: 'Build & Change Management',
+      category: 'Build & Deployment',
       items: [
         {
           name: 'Gradle',
@@ -298,7 +304,39 @@ export class StackDetailsComponent implements OnInit {
       ]
     },
     {
-      category: '3rd Party API Integrations',
+      category: 'Ipad Apps',
+      items: [
+        {
+          name: 'AWS Console',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },        {
+          name: 'AWS Workspaces',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },
+        {
+          name: 'Prompt',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },
+        {
+          name: 'Working Copy',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        }
+        ]
+    },
+    {
+      category: 'API Integrations',
       items: [
         {
           name: 'Microsoft Graph API',
