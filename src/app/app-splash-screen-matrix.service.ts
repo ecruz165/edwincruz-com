@@ -62,6 +62,7 @@ export class AppSplashScreenMatrixService {
   }
 
   private disableScroll() {
+    window.scrollTo(0, 0);
     // Get the current page scroll position
     let scrollTop = window.scrollX || document.documentElement.scrollTop;
     let scrollLeft = window.scrollY || document.documentElement.scrollLeft;
