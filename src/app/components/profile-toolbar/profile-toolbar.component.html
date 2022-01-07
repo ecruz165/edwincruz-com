@@ -1,20 +1,19 @@
-<mat-toolbar>
-
-  <span>( edwin : cruz ) -> nyc</span>
-  <span class="spacer"></span>
-  <ng-container *ngFor="let item of menuItems">
-    <a mat-button fxHide.lt-lg href="{{item.href}}" target="{{item.target}}">
-      <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
-      {{item.label}}
-    </a>
-    <a fxHide mat-icon-button fxShow.sm fxShow.md  href="{{item.href}}"  target="{{item.target}}" >
-      <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
-    </a>
-  </ng-container>
-  <button [matMenuTriggerFor]="dropMenu" mat-icon-button fxHide fxShow.xs>
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-slide-toggle (click)="toggleThemeMode()" [checked]="isDarkMode"></mat-slide-toggle>
+<mat-toolbar style="max-width:1920px; margin: auto;">
+    <span>( edwin : cruz ) -> nyc</span>
+    <span class="spacer"></span>
+    <ng-container *ngFor="let item of menuItems">
+      <a mat-button fxHide.lt-lg href="{{item.href}}" target="{{item.target}}">
+        <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
+        {{item.label}}
+      </a>
+      <a fxHide mat-icon-button fxShow.sm fxShow.md href="{{item.href}}" target="{{item.target}}">
+        <fa-icon [icon]="item.iconProp" style="font-size:x-large"></fa-icon>
+      </a>
+    </ng-container>
+    <button [matMenuTriggerFor]="dropMenu" mat-icon-button fxHide fxShow.xs>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-slide-toggle (click)="toggleThemeMode()" [checked]="isDarkMode"></mat-slide-toggle>
 </mat-toolbar>
 
 <mat-menu #dropMenu="matMenu">
