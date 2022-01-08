@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WorkHistoryCarouselComponent } from './work-history-carousel.component';
+import {WorkHistoryCarouselComponent} from './work-history-carousel.component';
 
 describe('WorkHistoryCarouselComponent', () => {
   let component: WorkHistoryCarouselComponent;
@@ -8,9 +8,9 @@ describe('WorkHistoryCarouselComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkHistoryCarouselComponent ]
+      declarations: [WorkHistoryCarouselComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

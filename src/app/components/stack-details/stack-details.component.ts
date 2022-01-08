@@ -24,7 +24,7 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
-        },    {
+        }, {
           name: 'Javascript',
           skillLevel: '',
           since: '',
@@ -70,7 +70,7 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
-        },        {
+        }, {
           name: 'Ag-Grid and Ag-Charts',
           skillLevel: '',
           since: '',
@@ -312,7 +312,7 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
-        },        {
+        }, {
           name: 'AWS Workspaces',
           skillLevel: '',
           since: '',
@@ -333,7 +333,7 @@ export class StackDetailsComponent implements OnInit {
           lastUsed: '',
           lastUsedDescription: ''
         }
-        ]
+      ]
     },
     {
       category: 'API Integrations',

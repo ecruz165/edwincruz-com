@@ -42,6 +42,23 @@ export class AppThemeService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  toggleThemeMode() {
+    this.currentThemeMode = this.currentTheme?.modes.filter(mode => mode.is_dark !== this.currentThemeMode?.is_dark)[0];
+    this.setThemeMode(this.currentTheme, this.currentThemeMode);
+  }
+
+  Init() {
+    this.themeConfig = this.getTenantThemeConfig();
+    this.currentTheme = this.getTheme(this.themeConfig, this.getDefaultThemeName());
+    this.currentThemeMode = this.getThemeMode(this.currentTheme, this.getDefaultThemeModeName());
+    this.setThemeMode(this.currentTheme, this.currentThemeMode);
+    return Promise.resolve();
+  }
+
+  getCurrentMode() {
+    return this.currentThemeMode;
+  }
+
   private getTenantThemeConfig(): ITenantConfig {
     // this can contain service call to pull theme config from service
     // or can determine tenant based on url
@@ -135,11 +152,6 @@ export class AppThemeService {
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
   }
 
-  toggleThemeMode() {
-    this.currentThemeMode = this.currentTheme?.modes.filter(mode => mode.is_dark !== this.currentThemeMode?.is_dark)[0];
-    this.setThemeMode(this.currentTheme, this.currentThemeMode);
-  }
-
   private getTheme(config: ITenantConfig, defaultName: string): ITheme {
     // todo: bootstrap logic is needed to determine default
     return config.themes.filter(theme => theme.name === defaultName)[0];
@@ -155,17 +167,5 @@ export class AppThemeService {
 
   private getDefaultThemeModeName(): string {
     return this.getTimeOfDay();
-  }
-
-  Init() {
-    this.themeConfig = this.getTenantThemeConfig();
-    this.currentTheme = this.getTheme(this.themeConfig, this.getDefaultThemeName());
-    this.currentThemeMode = this.getThemeMode(this.currentTheme, this.getDefaultThemeModeName());
-    this.setThemeMode(this.currentTheme, this.currentThemeMode);
-    return Promise.resolve();
-  }
-
-  getCurrentMode() {
-    return this.currentThemeMode;
   }
 }

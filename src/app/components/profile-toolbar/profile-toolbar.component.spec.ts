@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfileToolbarComponent } from './profile-toolbar.component';
+import {ProfileToolbarComponent} from './profile-toolbar.component';
 
 describe('ProfileToolbarComponent', () => {
   let component: ProfileToolbarComponent;
@@ -8,9 +8,9 @@ describe('ProfileToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileToolbarComponent ]
+      declarations: [ProfileToolbarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

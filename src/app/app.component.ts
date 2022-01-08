@@ -1,6 +1,6 @@
-import {Component, OnInit, Inject, Injector, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, Injector, OnInit, PLATFORM_ID} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'Edwin M. Cruz - Lead Software Engineer delivering solutions using Java and Typescript on the AWS Platform.';
+
   constructor(private titleService: Title,
               private metaTagService: Meta,
               private injector: Injector, @Inject(PLATFORM_ID) private platformId: Object,
@@ -19,7 +20,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      {name: 'description', content: "My name is Edwin M. Cruz and I reside in NYC. I'm a lead software engineer delivering solutions using Java and Typescript on the AWS Platform."}
+      {
+        name: 'description',
+        content: "My name is Edwin M. Cruz and I reside in NYC. I'm a lead software engineer delivering solutions using Java and Typescript on the AWS Platform."
+      }
     );
   }
 

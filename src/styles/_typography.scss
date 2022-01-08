@@ -3,57 +3,57 @@
 $font: 'Roboto, "Helvetica Neue", sans-serif';
 
 $edwincruz-typography-lt-md: mat.define-typography-config(
-  $font-family:   $font,
-  $display-4:     mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
-  $display-3:     mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
-  $display-2:     mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
-  $display-1:     mat.define-typography-level(34px, 40px, 400),
-  $headline:      mat.define-typography-level(24px, 32px, 400),
-  $title:         mat.define-typography-level(20px, 32px, 500),
-  $subheading-2:  mat.define-typography-level(16px, 28px, 400),
-  $subheading-1:  mat.define-typography-level(15px, 24px, 400),
-  $body-2:        mat.define-typography-level(14px, 24px, 500),
-  $body-1:        mat.define-typography-level(14px, 20px, 400),
-  $caption:       mat.define-typography-level(12px, 20px, 400),
-  $button:        mat.define-typography-level(14px, 14px, 500),
+  $font-family: $font,
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
     // Line-height must be unit-less fraction of the font-size.
-  $input:         mat.define-typography-level(inherit, 1.125, 400)
+  $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
 $edwincruz-typography-md: mat.define-typography-config(
-  $font-family:   $font,
-  $display-4:     mat.define-typography-level(114px, 114px, 300, $letter-spacing: -0.05em),
-  $display-3:     mat.define-typography-level(58px, 58px, 400, $letter-spacing: -0.02em),
-  $display-2:     mat.define-typography-level(47px, 50px, 400, $letter-spacing: -0.005em),
-  $display-1:     mat.define-typography-level(36px, 42px, 400),
-  $headline:      mat.define-typography-level(26px, 34px, 400),
-  $title:         mat.define-typography-level(22px, 34px, 500),
-  $subheading-2:  mat.define-typography-level(18px, 30px, 400),
-  $subheading-1:  mat.define-typography-level(17px, 26px, 400),
-  $body-2:        mat.define-typography-level(16px, 26px, 500),
-  $body-1:        mat.define-typography-level(16px, 22px, 400),
-  $caption:       mat.define-typography-level(14px, 22px, 400),
-  $button:        mat.define-typography-level(16px, 16px, 500),
+  $font-family: $font,
+  $display-4: mat.define-typography-level(114px, 114px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(58px, 58px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(47px, 50px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(36px, 42px, 400),
+  $headline: mat.define-typography-level(26px, 34px, 400),
+  $title: mat.define-typography-level(22px, 34px, 500),
+  $subheading-2: mat.define-typography-level(18px, 30px, 400),
+  $subheading-1: mat.define-typography-level(17px, 26px, 400),
+  $body-2: mat.define-typography-level(16px, 26px, 500),
+  $body-1: mat.define-typography-level(16px, 22px, 400),
+  $caption: mat.define-typography-level(14px, 22px, 400),
+  $button: mat.define-typography-level(16px, 16px, 500),
     // Line-height must be unit-less fraction of the font-size.
-  $input:         mat.define-typography-level(inherit, 1.125, 400)
+  $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
 $edwincruz-typography-gt-md: mat.define-typography-config(
-  $font-family:   $font,
-  $display-4:     mat.define-typography-level(116px, 116px, 300, $letter-spacing: -0.05em),
-  $display-3:     mat.define-typography-level(60px, 60px, 400, $letter-spacing: -0.02em),
-  $display-2:     mat.define-typography-level(49px, 52px, 400, $letter-spacing: -0.005em),
-  $display-1:     mat.define-typography-level(38px, 44px, 400),
-  $headline:      mat.define-typography-level(28px, 36px, 400),
-  $title:         mat.define-typography-level(24px, 36px, 500),
-  $subheading-2:  mat.define-typography-level(20px, 32px, 400),
-  $subheading-1:  mat.define-typography-level(19px, 28px, 400),
-  $body-2:        mat.define-typography-level(18px, 28px, 500),
-  $body-1:        mat.define-typography-level(18px, 24px, 400),
-  $caption:       mat.define-typography-level(16px, 24px, 400),
-  $button:        mat.define-typography-level(18px, 18px, 500),
+  $font-family: $font,
+  $display-4: mat.define-typography-level(116px, 116px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(60px, 60px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(49px, 52px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(38px, 44px, 400),
+  $headline: mat.define-typography-level(28px, 36px, 400),
+  $title: mat.define-typography-level(24px, 36px, 500),
+  $subheading-2: mat.define-typography-level(20px, 32px, 400),
+  $subheading-1: mat.define-typography-level(19px, 28px, 400),
+  $body-2: mat.define-typography-level(18px, 28px, 500),
+  $body-1: mat.define-typography-level(18px, 24px, 400),
+  $caption: mat.define-typography-level(16px, 24px, 400),
+  $button: mat.define-typography-level(18px, 18px, 500),
     // Line-height must be unit-less fraction of the font-size.
-  $input:         mat.define-typography-level(inherit, 1.125, 400)
+  $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
 

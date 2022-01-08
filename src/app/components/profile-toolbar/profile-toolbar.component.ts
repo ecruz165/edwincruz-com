@@ -72,7 +72,7 @@ export class ProfileToolbarComponent implements OnInit {
     }
   ]
 
-  constructor(private themeService:AppThemeService) {
+  constructor(private themeService: AppThemeService) {
     const mode = this.themeService.getCurrentMode()
     this.isDarkMode = mode?.is_dark;
   }

@@ -61,6 +61,20 @@ export class AppSplashScreenMatrixService {
     });
   }
 
+  stop() {
+    this.enableScroll();
+    clearInterval(this.refreshIntervalId);
+    const factory = this.animationBuilder.build(this.getFadeOutAnimation());
+    this.player = factory.create(this.canvas);
+    // todo: should listen to event denoting when sound ends
+    this.player.play();
+    this.player.onDone(() => {
+      this.canvas.remove();
+      this.player.destroy();
+    });
+    //
+  }
+
   private disableScroll() {
     window.scrollTo(0, 0);
     // Get the current page scroll position
@@ -130,22 +144,11 @@ export class AppSplashScreenMatrixService {
     this.refreshIntervalId = setInterval(matrix, 50);
   }
 
-  stop() {
-    this.enableScroll();
-    clearInterval(this.refreshIntervalId);
-    const factory = this.animationBuilder.build(this.getFadeOutAnimation());
-    this.player = factory.create(this.canvas);
-    // todo: should listen to event denoting when sound ends
-    this.player.play();
-    this.player.onDone(() => {
-      this.canvas.remove();
-      this.player.destroy();
-    });
-     //
-  }
-
   private getFadeOutAnimation(): AnimationMetadata[] {
-    return [style({ opacity: 1, transform: 'translateX(0)' }), animate('200ms', style({ opacity: 0, transform: 'translateX(0)' }))];
+    return [style({opacity: 1, transform: 'translateX(0)'}), animate('200ms', style({
+      opacity: 0,
+      transform: 'translateX(0)'
+    }))];
   }
 
 }

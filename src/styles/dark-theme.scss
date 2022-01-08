@@ -65,6 +65,6 @@ $edwincruz-dark-theme: mat.define-dark-theme(
 $edwincruz-dark-theme-set: common.apply-extra-colors($edwincruz-dark-theme, $edwincruz-color-scheme);
 @include common.create-theme($edwincruz-dark-theme-set);
 
-h1, h2, h3 , h4, h5, h6, p, a, li {
+h1, h2, h3, h4, h5, h6, p, a, li {
   color: mat.get-color-from-palette($dark-theme-foreground-palette, secondary-text);
 }

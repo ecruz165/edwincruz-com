@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { YouTubeComponent } from './you-tube.component';
+import {YouTubeComponent} from './you-tube.component';
 
 describe('YouTubeComponent', () => {
   let component: YouTubeComponent;
@@ -8,9 +8,9 @@ describe('YouTubeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ YouTubeComponent ]
+      declarations: [YouTubeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
