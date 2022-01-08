@@ -25,29 +25,44 @@ export class AppSplashScreenMatrixService {
   ) {
   }
 
+  pageRequestedIsHomePage() {
+    const location = window.location;
+    if (location.pathname === '/' || location.pathname === ''){
+      return true;
+    }
+    return false;
+  }
+
   init() {
+
+
     if (isPlatformBrowser(this.platformId)) {
+      if (this.pageRequestedIsHomePage()) {
+        // @ts-ignore
+        this.canvas = this.document.body.getElementsByClassName("splash").item(0);
 
-      // @ts-ignore
-      this.canvas = this.document.body.getElementsByClassName("splash").item(0);
+        // @ts-ignore
+        this.ctx = this.canvas.getContext('2d');
 
-      // @ts-ignore
-      this.ctx = this.canvas.getContext('2d');
+        if (this.canvas && this.ctx) {
+          console.log('start playing splash screen');
+          this.start();
+          console.log('start listening for load complete and minimum elapsedTime');
+          this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd),
+            debounceTime(6500),
+            take(1),
+          ).subscribe(() => {
+            console.log('stop playing splash screen');
+            this.stop();
+          });
+        }
 
-      if (this.canvas && this.ctx) {
-        console.log('start playing splash screen');
-        this.start();
-        console.log('start listening for load complete and minimum elapsedTime');
-        this.router.events.pipe(
-          filter(event => event instanceof NavigationEnd),
-          debounceTime(6500),
-          take(1),
-        ).subscribe(() => {
-          console.log('stop playing splash screen');
-          this.stop();
-        });
+      } else {
+        // @ts-ignore
+        this.canvas = this.document.body.getElementsByClassName("splash").item(0);
+        this.canvas.remove();
       }
-
     }
     return Promise.resolve(undefined);
   }
