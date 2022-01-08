@@ -7,9 +7,9 @@ import {animate, style, transition, trigger} from "@angular/animations";
   trigger('myInsertRemoveTrigger', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate('10s', style({ opacity: 1 })),
+      animate('400ms', style({ opacity: 1 }))
     ]),
-    transition(':leave', [animate('10s', style({ opacity: 0 }))]),
+    transition(':leave', [animate('200ms', style({ opacity: 0 }))]),
   ]),
 ],
   templateUrl: './profile-summary.component.html',
@@ -17,7 +17,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
 })
 export class ProfileSummaryComponent implements OnInit {
 
-  viewable = false
+  viewable = false;
   constructor() { }
 
   ngOnInit(): void {
