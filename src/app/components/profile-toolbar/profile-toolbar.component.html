@@ -1,5 +1,5 @@
 <mat-toolbar style="max-width:1920px; margin: auto;">
-  <span>( edwin : cruz ) -> nyc</span>
+  <span [routerLink]="'/home'">( edwin : cruz ) -> nyc</span>
   <span class="spacer"></span>
   <ng-container *ngFor="let item of menuItems">
     <a fxHide.lt-lg href="{{item.href}}" mat-button target="{{item.target}}">
