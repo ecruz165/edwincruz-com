@@ -71,11 +71,11 @@ export class AppThemeService {
             {
               is_dark: false,
               name: "day-time",
-              file_name: "/light-theme.css"
+              file_name: "light-theme.css"
             }, {
               is_dark: true,
               name: "night-time",
-              file_name: "/dark-theme.css"
+              file_name: "dark-theme.css"
             }
           ]
         }
@@ -92,7 +92,7 @@ export class AppThemeService {
       const request = this.injector.get(REQUEST);
       baseUrl = `${request.protocol}://${request.header("x-forwarded-host")}`;
     }
-    return baseUrl;
+    return '';
   }
 
   private onPositionError() {
@@ -148,7 +148,7 @@ export class AppThemeService {
 
   private setThemeMode(theme: ITheme | undefined, mode: IThemeMode | undefined) {
     const baseUrl = this.getBaseUrl();
-    this.loadStylesheet('app-styles', baseUrl, `/styles.css`, true, true);
+    this.loadStylesheet('app-styles', baseUrl, `styles.css`, true, true);
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
   }
 

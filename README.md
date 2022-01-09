@@ -33,3 +33,8 @@ Create a Angular Responsive Multi-theme Website using Angular 13
 
 - Adding titles and meta descriptions
 - Server Side rendering
+
+# https://www.seijivillafranca.com/post/serverless-angular-with-aws-lambda
+# https://github.com/SeijiV13/Angular-AWS-Lambda
+# https://medium.com/swlh/serverless-angular-universal-with-aws-lambda-99162975eed0
+#

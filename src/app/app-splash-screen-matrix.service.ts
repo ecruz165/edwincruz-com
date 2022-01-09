@@ -27,7 +27,7 @@ export class AppSplashScreenMatrixService {
 
   pageRequestedIsHomePage() {
     const location = window.location;
-    if (location.pathname === '/' || location.pathname === ''){
+    if (location.pathname === '/dev' || location.pathname === '/production' ||  location.pathname === '/' ||location.pathname === ''){
       return true;
     }
     return false;
@@ -109,7 +109,7 @@ export class AppSplashScreenMatrixService {
 
   private playSound() {
     let audio: HTMLAudioElement = new Audio();
-    audio.src = '/assets/audio/dial-up-modem-alt2.mp3';
+    audio.src = 'assets/audio/dial-up-modem-alt2.mp3';
     audio.load();
     audio.play().catch(reason => console.warn('Audio did not play'));
   }
