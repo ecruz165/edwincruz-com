@@ -1,5 +1,4 @@
 import {App, Stack, StackProps} from "aws-cdk-lib";
-import {Construct} from 'constructs';
 import {Certificate, CertificateValidation, DnsValidatedCertificate} from "aws-cdk-lib/aws-certificatemanager";
 import {HostedZone} from "aws-cdk-lib/aws-route53";
 
@@ -22,7 +21,7 @@ export class CertificateStack extends Stack {
       domainName: 'dev.edwincruz.com',
       subjectAlternativeNames: alternativeNames,
       hostedZone: hostedZone,
-      validation:  CertificateValidation.fromDns(hostedZone),
+      validation: CertificateValidation.fromDns(hostedZone),
     });
 
   }

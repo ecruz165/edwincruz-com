@@ -1,5 +1,5 @@
-import * as cdk from '@aws-cdk/core';
-import * as route53 from '@aws-cdk/aws-route53';
+import * as cdk from "aws-cdk-lib";
+import * as route53 from 'aws-cdk-lib/aws-route53';
 
 interface HostedZoneStackProps extends cdk.StackProps {
 }
