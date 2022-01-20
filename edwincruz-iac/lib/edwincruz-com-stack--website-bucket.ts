@@ -1,4 +1,4 @@
-import {Bucket, HttpMethods} from "aws-cdk-lib/aws-s3";
+import {BlockPublicAccess, Bucket, HttpMethods} from "aws-cdk-lib/aws-s3";
 import {RemovalPolicy, Stack, StackProps} from "aws-cdk-lib";
 import {Construct} from 'constructs';
 import {BucketDeployment, Source} from "aws-cdk-lib/aws-s3-deployment";
@@ -31,12 +31,11 @@ export class WebsiteBucketStack extends Stack {
         },
       ],
       bucketName: 'edwincruz-com--dev',
-
+      websiteIndexDocument: 'index.html',
       publicReadAccess: true,
       removalPolicy: RemovalPolicy.DESTROY, // NOT recommended for production code
       autoDeleteObjects: true, // NOT recommended for production code
-      transferAcceleration: true
-
+      transferAcceleration: true,
     });
 
     console.log('Path to zip archive: ' + pathToArchive);
