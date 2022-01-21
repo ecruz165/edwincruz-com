@@ -8,7 +8,7 @@ ENV=$1
 run_cdk() {
  echo $ENV
  echo $PROJECT_CONFIG
- cdk deploy ECWebsiteS3BucketStack --verbose
+ cdk deploy ECHttpApiStack --verbose
 # ECZipWebsiteContentsStack #ECWebsiteS3BucketStack
   #--parameters env=$ENV --parameters projectConfig=$PROJECT_CONFIG
 # S3Bucket  ECVpcStack

@@ -27,6 +27,7 @@ export class WebsiteBucketStack extends Stack {
         {
           allowedOrigins: ["*"],
           allowedMethods: [HttpMethods.GET],
+
           maxAge: 3000,
         },
       ],
