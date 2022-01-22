@@ -12,9 +12,15 @@ export class HostedZoneStack extends cdk.Stack {
     super(scope, id, props);
 
 
-    this.hostedZone = new route53.PublicHostedZone(this, 'HostedZone', {
-      zoneName: 'edwincruz.com',
+    this.hostedZone = new route53.PublicHostedZone(this, 'ECHostedZone', {
+      zoneName: 'dev.edwincruz.com',
     });
+
+    console.log("If you are using an external Registrar, update Name Servers:")
+    for (let n in this.hostedZone.hostedZoneNameServers)
+    {
+      console.log("- "+ n);
+    }
 
   }
 
