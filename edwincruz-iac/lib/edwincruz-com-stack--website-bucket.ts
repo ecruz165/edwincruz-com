@@ -1,4 +1,4 @@
-import {BlockPublicAccess, Bucket, HttpMethods} from "aws-cdk-lib/aws-s3";
+import {Bucket, HttpMethods} from "aws-cdk-lib/aws-s3";
 import {RemovalPolicy, Stack, StackProps} from "aws-cdk-lib";
 import {Construct} from 'constructs';
 import {BucketDeployment, Source} from "aws-cdk-lib/aws-s3-deployment";

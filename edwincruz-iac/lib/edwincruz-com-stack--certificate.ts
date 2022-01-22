@@ -1,10 +1,5 @@
 import {App, CfnOutput, Stack, StackProps} from "aws-cdk-lib";
-import {
-  Certificate,
-  CertificateValidation,
-  DnsValidatedCertificate,
-  ValidationMethod
-} from "aws-cdk-lib/aws-certificatemanager";
+import {Certificate, CertificateValidation} from "aws-cdk-lib/aws-certificatemanager";
 import {HostedZone} from "aws-cdk-lib/aws-route53";
 
 interface CertificateStackProps extends StackProps {
@@ -12,8 +7,6 @@ interface CertificateStackProps extends StackProps {
 }
 
 export class CertificateStack extends Stack {
-
-
 
   public readonly certificate: Certificate;
 
@@ -24,19 +17,18 @@ export class CertificateStack extends Stack {
     const {hostedZone} = props;
 
     console.log("If you are using an external Registrar, update Name Servers:")
-    for (let n in hostedZone.hostedZoneNameServers)
-    {
-      console.log("- "+ n);
+    for (let n in hostedZone.hostedZoneNameServers) {
+      console.log("- " + n);
     }
 
     let alternativeNames: string[] = ['dev.edwincruz.com'];
-    const certificate = new Certificate(this, "ECDomainCertificate", {
+    this.certificate = new Certificate(this, "ECDomainCertificate", {
       domainName: 'dev.edwincruz.com',
       subjectAlternativeNames: alternativeNames,
-      validation:CertificateValidation.fromDns(hostedZone),
+      validation: CertificateValidation.fromDns(hostedZone),
     });
 
-    const certificateArn = certificate.certificateArn;
+    const certificateArn = this.certificate.certificateArn;
     new CfnOutput(this, "ECCertificateArn", {
       value: certificateArn,
     });

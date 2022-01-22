@@ -8,6 +8,7 @@ import {HttpApiStack} from "../lib/edwincruz-com-stack--http-api";
 import {HostedZoneStack} from "../lib/edwincruz-com-stack--hosted-zone";
 import {CertificateStack} from "../lib/edwincruz-com-stack--certificate";
 import {CdnStack} from "../lib/edwincruz-com-stack--cdn-distribution";
+import {HostedZone} from "aws-cdk-lib/aws-route53";
 
 // https://medium.com/swlh/serverless-angular-universal-with-aws-lambda-99162975eed0
 // https://aws.amazon.com/blogs/mt/organize-parameters-by-hierarchy-tags-or-amazon-cloudwatch-events-with-amazon-ec2-systems-manager-parameter-store
@@ -53,8 +54,10 @@ const certificateStack = new CertificateStack(app, 'ECCertificateStack', {
   hostedZone: hostedZoneStack.hostedZone
 });
 
-const cdnStackProps = new CdnStack(app, 'ECCdnStackProps', {
+const cdnStack = new CdnStack(app, 'ECCdnStack', {
   env: env,
   websiteBucket: s3BucketStack.websiteBucket,
-  httpApi: httpApiStack.httpApi
-})
+  httpApi: httpApiStack.httpApi,
+  certificate: certificateStack.certificate,
+  hostedZone: hostedZoneStack.hostedZone
+});
