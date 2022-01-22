@@ -10,7 +10,7 @@ $dark-theme-foreground-palette: palette.$dark-theme-foreground-palette;
 $edwincruz-primary: mat.define-palette(mat.$blue-palette, 700, 400, 900);
 $edwincruz-accent: mat.define-palette(mat.$yellow-palette, A200, A100);
 $edwincruz-success: mat.define-palette(mat.$green-palette, 700, 500, 900);
-$edwincruz-info: mat.define-palette(mat.$blue-palette, A400, A300, A200);
+$edwincruz-info: mat.define-palette(mat.$blue-palette, A400, A200, A100);
 
 $edwincruz-color-scheme: (
   success: $edwincruz-success,
