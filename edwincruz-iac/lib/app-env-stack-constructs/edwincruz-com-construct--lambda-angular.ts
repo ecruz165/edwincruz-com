@@ -3,19 +3,19 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import {Construct} from "constructs";
 import * as s3 from "aws-cdk-lib/aws-s3";
 
-interface LambdaAngularStackProps extends StackProps {
-  websiteBucket: s3.Bucket
+interface LambdaAngularStackProps {
+  pathToLambdaCodeAsZipAsset: string
 }
 
-export class LambdaAngularStack extends Stack {
+export class LambdaAngularConstruct extends Construct {
 
   public readonly lambdaFunction: lambda.Function;
 
   constructor(scope: Construct, id: string, props: LambdaAngularStackProps) {
-    super(scope, id, props);
+    super(scope, id);
 
-    const {websiteBucket} = props;
-    
+    const {pathToLambdaCodeAsZipAsset} = props;
+
     this.lambdaFunction = new lambda.Function(this, 'LambdaAngularFunction', {
       runtime: lambda.Runtime.NODEJS_14_X,
       memorySize: 1024,
@@ -24,7 +24,7 @@ export class LambdaAngularStack extends Stack {
       handler: 'lambda.handler',
       // code requires bucket object and key, where is name of zip file
       // code: lambda.Code.fromBucket(websiteBucket, 'edwincruz-com--dev.zip'),
-      code: lambda.Code.fromAsset('cdk.out/edwincruz-com--dev.zip'),
+      code: lambda.Code.fromAsset(pathToLambdaCodeAsZipAsset),
       environment: {
         REGION: Stack.of(this).region,
         AVAILABILITY_ZONES: JSON.stringify(

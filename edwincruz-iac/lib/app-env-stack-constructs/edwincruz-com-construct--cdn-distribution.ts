@@ -4,26 +4,29 @@ import {HttpVersion, ViewerCertificate} from "aws-cdk-lib/aws-cloudfront";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha';
 import {Certificate} from "aws-cdk-lib/aws-certificatemanager";
-import {ARecord, HostedZone, RecordTarget} from "aws-cdk-lib/aws-route53";
+import {ARecord, HostedZone, IHostedZone, RecordTarget} from "aws-cdk-lib/aws-route53";
 import {CloudFrontTarget} from "aws-cdk-lib/aws-route53-targets";
+import {Construct} from "constructs";
+import {Environment} from "aws-cdk-lib";
 
-interface CdnStackProps extends cdk.StackProps {
-  websiteBucket: s3.Bucket,
+interface CdnStackProps {
+  websiteBucket: s3.IBucket,
+  env: Environment,
   httpApi: apigwv2.HttpApi;
   certificate: Certificate;
-  hostedZone: HostedZone;
+  hostedZone: IHostedZone;
 }
 
-export class CdnStack extends cdk.Stack {
+export class CdnConstruct extends Construct{
 
   public readonly cdn: cloudfront.CloudFrontWebDistribution;
 
-  constructor(scope: cdk.App, id: string, props: CdnStackProps) {
-    super(scope, id, props);
+  constructor(scope: Construct, id: string, props: CdnStackProps) {
+    super(scope, id);
 
     const {websiteBucket} = props;
-    const {httpApi} = props;
     const {env} = props;
+    const {httpApi} = props;
     const {certificate} = props;
     const {hostedZone} = props;
 
@@ -63,6 +66,12 @@ export class CdnStack extends cdk.Stack {
                 forwardedValues: {
                   queryString: true
                 }
+              },{
+                pathPattern: '*.*',
+                isDefaultBehavior: false,
+                forwardedValues: {
+                  queryString: true
+                }
               }
             ],
           },
@@ -70,8 +79,8 @@ export class CdnStack extends cdk.Stack {
             // make sure your backend origin is first in the originConfigs list so it takes precedence over the S3 origin
             customOriginSource: {
               originPath: '/dev',
-              domainName: 'x9it5seva9.execute-api.us-east-1.amazonaws.com',
-//            domainName: `${httpApi.httpApiId}.execute-api.${env?.region}.amazonaws.com`,
+//              domainName: 'x9it5seva9.execute-api.us-east-1.amazonaws.com',
+              domainName: `${httpApi.httpApiId}.execute-api.${env?.region}.amazonaws.com`,
             },
             behaviors: [
               {

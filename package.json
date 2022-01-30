@@ -12,7 +12,7 @@
     "build:ssr": "ng build && ng run edwincruz-com:server",
     "prerender": "ng run edwincruz-com:prerender",
     "serve:serverless": "serverless offline start",
-    "build:serverless": "ng build --prod ---base-href /dev/ && ng run edwincruz-com:serverless:production",
+    "build:serverless": "ng build --prod ---base-href / && ng run edwincruz-com:serverless:production",
     "deploy": "serverless deploy"
   },
   "private": true,

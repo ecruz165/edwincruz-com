@@ -1,14 +1,22 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import {ZipWebsiteContentsStack} from "../lib/edwincruz-com-stack--zip-website-contents";
-import {WebsiteBucketStack} from "../lib/edwincruz-com-stack--website-bucket";
-import {LambdaAngularStack} from "../lib/edwincruz-com-stack--lambda-angular";
-import {HttpApiStack} from "../lib/edwincruz-com-stack--http-api";
-import {HostedZoneStack} from "../lib/edwincruz-com-stack--hosted-zone";
-import {CertificateStack} from "../lib/edwincruz-com-stack--certificate";
-import {CdnStack} from "../lib/edwincruz-com-stack--cdn-distribution";
-import {HostedZone} from "aws-cdk-lib/aws-route53";
+import {Environment} from 'aws-cdk-lib';
+import {AppCommonHostedZoneStack} from "../lib/app-common-hosted-zone-stack";
+import {AppEnvAngularUniversalStack} from "../lib/app-env-angular-universal-stack";
+import {AppEnvWebsiteBucketsStack} from "../lib/app-env-website-buckets-stack";
+import {AppCommonCertificateStack} from "../lib/app-common-certificate-stack";
+
+interface EnvConfig {
+  isProd: boolean;
+  envName: string;
+  envKey: string;
+  accountId: number;
+  region: string;
+  envLabel: string;
+  domain: string;
+  alternativeNames: any[];
+}
 
 // https://medium.com/swlh/serverless-angular-universal-with-aws-lambda-99162975eed0
 // https://aws.amazon.com/blogs/mt/organize-parameters-by-hierarchy-tags-or-amazon-cloudwatch-events-with-amazon-ec2-systems-manager-parameter-store
@@ -16,48 +24,73 @@ import {HostedZone} from "aws-cdk-lib/aws-route53";
 // https://dev.to/aws-builders/how-to-migrate-cdk-v1-to-cdk-v2-in-10-minuets-6i6
 // https://thecodemon.com/referenceerror-primordials-is-not-defined/
 // https://levelup.gitconnected.com/use-aws-cdk-to-deploy-a-s3-bucket-static-content-and-create-route53-entries-219038d43eb
+// https://www.rehanvdm.com/blog/4-methods-to-configure-multiple-environments-in-the-aws-cdk
 const app = new cdk.App();
 
-const env = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION
+const envConfigAsString = process.env.ENV_CONFIG;
+
+function extractJson(parse: any): EnvConfig | undefined {
+  if (envConfigAsString != undefined) {
+    return JSON.parse(JSON.parse(envConfigAsString));
+  }
+  return undefined;
 }
 
-const zipWebsiteContentsStack = new ZipWebsiteContentsStack(app, 'ECZipWebsiteContentsStack', {
-  env: env
-});
+const envConfig = extractJson(envConfigAsString);
 
-const s3BucketStack = new WebsiteBucketStack(app, 'ECWebsiteS3BucketStack', {
+const env: Environment = {
+  account: process.env.ACCOUNT,
+  region: process.env.REGION
+}
+
+const projectName = process.env.PROJECT_NAME;
+const projectKey = process.env.PROJECT_KEY + '';
+const zoneName = process.env.PROJECT_ZONE_NAME;
+
+
+const appCommonHostedZoneStack = new AppCommonHostedZoneStack(app, `${projectKey}CommonHostedZoneStack`, {
   env: env,
-  pathToArchive: zipWebsiteContentsStack.pathToArchive,
-  pathToArchiveDir: zipWebsiteContentsStack.pathToArchiveExtracted
+  projectName: projectName,
+  projectKey: projectKey,
+  zoneName: zoneName
 });
 
-const lambdaAngularStack = new LambdaAngularStack(app, "ECLambdaAngularStack", {
+const appCommonCertificateStack = new AppCommonCertificateStack(app, `${projectKey}CommonCertificateStack`, {
   env: env,
-  websiteBucket: s3BucketStack.websiteBucket
+  projectKey: projectKey,
+  hostedZone: appCommonHostedZoneStack.hostedZone,
+  zoneName: zoneName
 });
 
-const httpApiStack = new HttpApiStack(app, "ECHttpApiStack", {
-  env: env,
-  lambdaFunction: lambdaAngularStack.lambdaFunction,
-  websiteBucket: s3BucketStack.websiteBucket
-});
 
-//Requires entering Name servers at external Registrar if not registered Amazon i.e. like Godaddy
-const hostedZoneStack = new HostedZoneStack(app, 'ECHostedZoneStack', {
-  env: env
-});
+if (envConfig != undefined) {
+  console.log('EnvConfig isProd: ' + envConfig.isProd);
+  console.log('EnvConfig envName: ' + envConfig.envName);
+  console.log('EnvConfig envKey: ' + envConfig.envKey);
+  console.log('EnvConfig accountId: ' + envConfig.accountId);
+  console.log('EnvConfig region: ' + envConfig.region);
+  console.log('EnvConfig envLabel: ' + envConfig.envLabel);
+  console.log('EnvConfig domain: ' + envConfig.domain);
 
-const certificateStack = new CertificateStack(app, 'ECCertificateStack', {
-  env: env,
-  hostedZone: hostedZoneStack.hostedZone
-});
+  const appEnvWebsiteBucketsStack = new AppEnvWebsiteBucketsStack(app, `${projectKey}${envConfig.envKey}EnvWebsiteBucketsStack`, {
+    env: env,
+    projectName: projectName,
+    projectKey: projectKey,
+    envLabel: envConfig.envLabel
+  });
+  appEnvWebsiteBucketsStack.addDependency(appCommonHostedZoneStack);
 
-const cdnStack = new CdnStack(app, 'ECCdnStack', {
-  env: env,
-  websiteBucket: s3BucketStack.websiteBucket,
-  httpApi: httpApiStack.httpApi,
-  certificate: certificateStack.certificate,
-  hostedZone: hostedZoneStack.hostedZone
-});
+  const appEnvAppStack = new AppEnvAngularUniversalStack(app, `${projectKey}${envConfig.envKey}EnvAppStack`, {
+    env: env,
+    projectName: projectName,
+    projectKey: projectKey,
+    zoneName: zoneName,
+    domain: envConfig.domain,
+    bucketName: projectName,
+    envName: envConfig.envName,
+    envLabel: envConfig.envLabel,
+    certificate: appCommonCertificateStack.certificate
+  });
+  appEnvAppStack.addDependency(appCommonHostedZoneStack);
+  appEnvAppStack.addDependency(appEnvWebsiteBucketsStack);
+}

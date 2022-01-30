@@ -1,16 +1,28 @@
-import {Stack, StackProps} from "aws-cdk-lib";
+import {Environment} from "aws-cdk-lib";
 import {Construct} from 'constructs';
 
+interface ZipWebsiteContentsConstructProps {
+  env: Environment,
+  projectName: string |undefined,
+  envName: string | undefined,
+  envLabel: string | undefined
+}
 
-export class ZipWebsiteContentsStack extends Stack {
+export class ZipWebsiteContentsConstruct extends Construct {
 
   public readonly pathToArchive: string;
   public readonly pathToArchiveExtracted: string;
 
-  constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
-    this.pathToArchive = __dirname + '/../cdk.out/edwincruz-com--dev.zip';
-    this.pathToArchiveExtracted = __dirname + '/../cdk.out/edwincruz-com--dev'
+  constructor(scope: Construct, id: string, props: ZipWebsiteContentsConstructProps) {
+    super(scope, id);
+
+    const {projectName} = props;
+    const {envLabel} = props;
+
+    this.pathToArchive = `${__dirname}/../../cdk.out/${projectName}--${envLabel}.zip`;
+    this.pathToArchiveExtracted = `${__dirname}/../../cdk.out/${projectName}--${envLabel}`;
+
+    const {envName} = props;
 
     const AdmZip = require("adm-zip");
     // creating archives
@@ -24,14 +36,14 @@ export class ZipWebsiteContentsStack extends Stack {
     zip.addLocalFolder('../node_modules/binary-case', '/node_modules/binary-case');
     zip.addLocalFolder('../node_modules/aws-serverless-express', '/node_modules/aws-serverless-express');
     zip.addLocalFolder('../node_modules/@vendia', '/node_modules/@vendia');
-    zip.writeZip(this.pathToArchive);
 
+    zip.writeZip(this.pathToArchive);
 
     const unzipFile = async function (source: string, targetDir: string) {
       const zip = new AdmZip(source);
       zip.extractAllTo(targetDir);
     }
-    unzipFile(this.pathToArchive, this.pathToArchiveExtracted).then(r => console.log('extraction done!'));
+    unzipFile(this.pathToArchive, this.pathToArchiveExtracted).then(r => console.log('Extraction complete!'));
 
   }
 
