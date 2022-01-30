@@ -1,7 +1,6 @@
-import {Duration, Stack, StackProps} from "aws-cdk-lib";
+import {Duration, Stack} from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import {Construct} from "constructs";
-import * as s3 from "aws-cdk-lib/aws-s3";
 
 interface LambdaAngularStackProps {
   pathToLambdaCodeAsZipAsset: string

@@ -1,6 +1,6 @@
-import {App, CfnOutput, Stack, StackProps} from "aws-cdk-lib";
+import {CfnOutput} from "aws-cdk-lib";
 import {Certificate, CertificateValidation} from "aws-cdk-lib/aws-certificatemanager";
-import {HostedZone, IHostedZone} from "aws-cdk-lib/aws-route53";
+import {IHostedZone} from "aws-cdk-lib/aws-route53";
 import {Construct} from "constructs";
 
 interface CertificateStackProps {

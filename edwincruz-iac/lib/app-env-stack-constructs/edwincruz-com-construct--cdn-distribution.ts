@@ -1,23 +1,25 @@
 import * as cdk from "aws-cdk-lib";
+import {Environment} from "aws-cdk-lib";
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
 import {HttpVersion, ViewerCertificate} from "aws-cdk-lib/aws-cloudfront";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha';
 import {Certificate} from "aws-cdk-lib/aws-certificatemanager";
-import {ARecord, HostedZone, IHostedZone, RecordTarget} from "aws-cdk-lib/aws-route53";
+import {ARecord, IHostedZone, RecordTarget} from "aws-cdk-lib/aws-route53";
 import {CloudFrontTarget} from "aws-cdk-lib/aws-route53-targets";
 import {Construct} from "constructs";
-import {Environment} from "aws-cdk-lib";
 
 interface CdnStackProps {
   websiteBucket: s3.IBucket,
   env: Environment,
-  httpApi: apigwv2.HttpApi;
-  certificate: Certificate;
-  hostedZone: IHostedZone;
+  envName: string | undefined,
+  httpApi: apigwv2.HttpApi,
+  certificate: Certificate,
+  hostedZone: IHostedZone,
+  domain: string | undefined,
 }
 
-export class CdnConstruct extends Construct{
+export class CdnConstruct extends Construct {
 
   public readonly cdn: cloudfront.CloudFrontWebDistribution;
 
@@ -26,9 +28,11 @@ export class CdnConstruct extends Construct{
 
     const {websiteBucket} = props;
     const {env} = props;
+    const {envName} = props;
     const {httpApi} = props;
     const {certificate} = props;
     const {hostedZone} = props;
+    const {domain} = props;
 
     /*
    const cloudfrontOAI = new cloudfront.OriginAccessIdentity(this, 'cloudfront-OAI', {
@@ -46,7 +50,7 @@ export class CdnConstruct extends Construct{
   */
 
     this.cdn = new cloudfront.CloudFrontWebDistribution(this, "CdnDistribution", {
-        viewerCertificate: ViewerCertificate.fromAcmCertificate(certificate, {aliases: ['dev.edwincruz.com']}),
+        viewerCertificate: ViewerCertificate.fromAcmCertificate(certificate, {aliases: [`${domain}`]}),
         comment: "CDN for Angular Universal Web App",
         httpVersion: HttpVersion.HTTP2,
         defaultRootObject: "index.html",
@@ -66,7 +70,7 @@ export class CdnConstruct extends Construct{
                 forwardedValues: {
                   queryString: true
                 }
-              },{
+              }, {
                 pathPattern: '*.*',
                 isDefaultBehavior: false,
                 forwardedValues: {
@@ -78,7 +82,7 @@ export class CdnConstruct extends Construct{
           {
             // make sure your backend origin is first in the originConfigs list so it takes precedence over the S3 origin
             customOriginSource: {
-              originPath: '/dev',
+              originPath: `/${envName}`,
 //              domainName: 'x9it5seva9.execute-api.us-east-1.amazonaws.com',
               domainName: `${httpApi.httpApiId}.execute-api.${env?.region}.amazonaws.com`,
             },
@@ -103,7 +107,7 @@ export class CdnConstruct extends Construct{
     const aliasRecord = new ARecord(this, 'AliasRecordForCdn', {
       target: RecordTarget.fromAlias(new CloudFrontTarget(this.cdn)),
       zone: hostedZone,
-      recordName: 'dev.edwincruz.com'
+      recordName: `${domain}`
     });
 
   }

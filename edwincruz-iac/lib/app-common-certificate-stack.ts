@@ -2,7 +2,6 @@ import {Environment, Stack, StackProps} from "aws-cdk-lib";
 import {Construct} from "constructs";
 import {HostedZone} from "aws-cdk-lib/aws-route53";
 import {Certificate, CertificateValidation} from "aws-cdk-lib/aws-certificatemanager";
-import * as apigwv2 from "@aws-cdk/aws-apigatewayv2-alpha";
 
 
 interface AppCommonCertificateStackProps extends StackProps {
@@ -14,6 +13,7 @@ interface AppCommonCertificateStackProps extends StackProps {
 
 export class AppCommonCertificateStack extends Stack {
   public readonly certificate: Certificate;
+
   constructor(scope: Construct, id: string, props: AppCommonCertificateStackProps) {
     super(scope, id, props);
 

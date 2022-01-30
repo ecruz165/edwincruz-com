@@ -1,13 +1,12 @@
-import * as cdk from "aws-cdk-lib";
 import {Environment} from "aws-cdk-lib";
+import {Construct} from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha';
 import * as apigwv2int from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
 import * as s3 from "aws-cdk-lib/aws-s3";
-import {Construct} from "constructs";
-import {CnameRecord, IHostedZone} from "aws-cdk-lib/aws-route53";
-
-import {Certificate, CertificateValidation} from "aws-cdk-lib/aws-certificatemanager";
+import *  as route53 from "aws-cdk-lib/aws-route53";
+import {Certificate} from "aws-cdk-lib/aws-certificatemanager";
+import {ApiGatewayv2DomainProperties} from "aws-cdk-lib/aws-route53-targets";
 
 
 //https://gregorypierce.medium.com/cdk-restapi-custom-domains-554175a4b1f6
@@ -16,10 +15,13 @@ interface HttpApiConstructProps {
   env: Environment,
   projectKey: string | undefined,
   projectName: string | undefined,
+  projectZoneName: string | undefined,
+  envName: string | undefined,
+  envKey: string | undefined,
   envLabel: string | undefined,
   lambdaFunction: lambda.Function,
   websiteBucket: s3.IBucket,
-  hostedZone: IHostedZone,
+  hostedZone: route53.IHostedZone,
   certificate: Certificate
 }
 
@@ -33,6 +35,9 @@ export class HttpApiConstruct extends Construct {
     const {env} = props;
     const {projectKey} = props;
     const {projectName} = props;
+    const {projectZoneName} = props;
+    const {envName} = props;
+    const {envKey} = props;
     const {envLabel} = props;
     const {lambdaFunction} = props;
     const {hostedZone} = props;
@@ -51,7 +56,7 @@ export class HttpApiConstruct extends Construct {
     this.httpApi = new apigwv2.HttpApi(this, `${projectKey}HttpApi`, {
       createDefaultStage: false,
       defaultIntegration: webBaseIntegration,
-      disableExecuteApiEndpoint: true
+      disableExecuteApiEndpoint: false
     });
     this.httpApi.addRoutes({
       path: '/assets',
@@ -68,31 +73,24 @@ export class HttpApiConstruct extends Construct {
     this.addRoute(
       'Blog', apigwv2.HttpMethod.GET,
       `${projectKey}AngularIntegrationBlog`, lambdaFunction);
+
     this.addRoute(
       'Home', apigwv2.HttpMethod.GET,
       `${projectKey}AngularIntegrationHome`, lambdaFunction);
+
     this.addRoute(
       'Resume', apigwv2.HttpMethod.GET,
       `${projectKey}AngularIntegrationResume`, lambdaFunction);
 
-  //  console.log('apiEndpoint: ' + this.httpApi.apiEndpoint );
-    console.log('httpApiId: ' + this.httpApi.httpApiId );
-    console.log('apiId: ' + this.httpApi.apiId );
-    const cnameRecord = new CnameRecord(this, `${projectKey}CnameRecord`, {
-      recordName: 'www-dev',
-      domainName: `${this.httpApi.apiId}.execute-api.${env.region}.amazonaws.com.`,
-      zone: hostedZone
-    });
-
     const customDomain = new apigwv2.DomainName(this, 'DomainName', {
-      domainName: "www-dev.edwincruz.com",
+      domainName: `${envLabel}.${projectZoneName}`,
       certificate: certificate,
       endpointType: apigwv2.EndpointType.REGIONAL,
     });
 
-    this.httpApi.addStage('DevStage',
+    this.httpApi.addStage(`${projectKey}${envKey}Stage`,
       {
-        stageName: 'dev',
+        stageName: `${envName}`,
         autoDeploy: true,
         domainMapping: {
           domainName: customDomain,
@@ -100,7 +98,21 @@ export class HttpApiConstruct extends Construct {
       }
     );
 
-   // new cdk.CfnOutput(this, 'HttpStageURL: ', {value: `${this.httpApi.url}`});
+    const aRecord = new route53.ARecord(this, `${projectKey}ARecord`, {
+      zone: hostedZone,
+      recordName: `${envLabel}`,
+      target: route53.RecordTarget
+        .fromAlias(new ApiGatewayv2DomainProperties(customDomain.regionalDomainName, customDomain.regionalHostedZoneId))
+
+    })
+
+    /*
+      Custom domain needed a ARecord
+      const cnameRecord = new CnameRecord(this, `${projectKey}CnameRecord`, {
+        recordName: `${envLabel}`,
+        domainName: `${this.httpApi.apiId}.execute-api.${env.region}.amazonaws.com.`,
+        zone: hostedZone
+      });*/
 
   }
 

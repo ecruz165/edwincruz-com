@@ -28,7 +28,7 @@ export class WebsiteEnvironmentBucketConstruct extends Construct {
     this.websiteBucket = Bucket.fromBucketName(
       this,
       `${projectKey}WebsiteBucket`,
-     `${bucketName}`,
+      `${bucketName}`,
     );
 
     new BucketDeployment(this, 'DeployWebsite', {

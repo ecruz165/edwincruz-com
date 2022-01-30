@@ -6,7 +6,7 @@ import {
 } from "./app-env-stack-constructs/edwincruz-com-construct--website-env-bucket";
 import {LambdaAngularConstruct} from "./app-env-stack-constructs/edwincruz-com-construct--lambda-angular";
 import {HttpApiConstruct} from "./app-env-stack-constructs/edwincruz-com-construct--gateway-http-api";
-import {CnameRecord, HostedZone} from "aws-cdk-lib/aws-route53";
+import {HostedZone} from "aws-cdk-lib/aws-route53";
 import {Certificate} from "aws-cdk-lib/aws-certificatemanager";
 import {CdnConstruct} from "./app-env-stack-constructs/edwincruz-com-construct--cdn-distribution";
 
@@ -14,11 +14,13 @@ import {CdnConstruct} from "./app-env-stack-constructs/edwincruz-com-construct--
 interface AppEnvStackProps extends StackProps {
   env: Environment,
   projectName: string | undefined,
+  projectZoneName: string | undefined,
   projectKey: string | undefined,
   zoneName: string | undefined,
   domain: string | undefined,
   bucketName: string | undefined,
   envName: string | undefined,
+  envKey: string | undefined,
   envLabel: string | undefined,
   certificate: Certificate
 }
@@ -30,9 +32,13 @@ export class AppEnvAngularUniversalStack extends Stack {
 
     const {env} = props;
     const {projectName} = props;
+    const {projectZoneName} = props;
     const {projectKey} = props;
     const {zoneName} = props;
+    const {domain} = props;
+    const {bucketName} = props;
     const {envName} = props;
+    const {envKey} = props;
     const {envLabel} = props;
     const {certificate} = props;
 
@@ -64,13 +70,14 @@ export class AppEnvAngularUniversalStack extends Stack {
     console.log('BEFORE CNAME: ' + hostedZone.zoneName);
 
 
-
-
     const
       httpApiConstruct = new HttpApiConstruct(this, `${projectKey}HttpApiConstruct`, {
         env: env,
         projectKey: projectKey,
         projectName: projectName,
+        projectZoneName: projectZoneName,
+        envName: envName,
+        envKey: envKey,
         envLabel: envLabel,
         lambdaFunction: lambdaAngularConstruct.lambdaFunction,
         websiteBucket: websiteBucketConstruct.websiteBucket,
@@ -80,11 +87,13 @@ export class AppEnvAngularUniversalStack extends Stack {
 
     const
       cdnStack = new CdnConstruct(this, `${projectKey}CdnConstruct`, {
-        env: env,
         websiteBucket: websiteBucketConstruct.websiteBucket,
+        env: env,
+        envName: envName,
         httpApi: httpApiConstruct.httpApi,
         certificate: certificate,
-        hostedZone: hostedZone
+        hostedZone: hostedZone,
+        domain: domain
       });
 
   }

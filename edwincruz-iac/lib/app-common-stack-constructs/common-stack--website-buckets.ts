@@ -21,7 +21,7 @@ export class WebsiteBucketConstruct extends Construct {
     const {projectName} = props;
     const {envLabel} = props;
 
-    const bucketName=projectName+'--'+envLabel
+    const bucketName = projectName + '--' + envLabel
 
     const websiteBucket = new Bucket(this, `${projectKey}WebsiteBucket`, {
       // blockPublicAccess: BlockPublicAccess.BLOCK_ALL,

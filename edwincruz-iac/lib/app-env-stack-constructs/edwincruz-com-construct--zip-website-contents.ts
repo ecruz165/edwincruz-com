@@ -3,7 +3,7 @@ import {Construct} from 'constructs';
 
 interface ZipWebsiteContentsConstructProps {
   env: Environment,
-  projectName: string |undefined,
+  projectName: string | undefined,
   envName: string | undefined,
   envLabel: string | undefined
 }
