@@ -21,9 +21,11 @@ export class AppCommonCertificateStack extends Stack {
     const {zoneName} = props;
     const {hostedZone} = props;
 
+
     this.certificate = new Certificate(this, `${projectKey}DomainCertificate`, {
-      domainName: `*.${zoneName}`,
-      validation: CertificateValidation.fromDns(hostedZone)
+      domainName: `${zoneName}`,
+      validation: CertificateValidation.fromDns(hostedZone),
+      subjectAlternativeNames: [`*.${zoneName}`]
     });
 
   }

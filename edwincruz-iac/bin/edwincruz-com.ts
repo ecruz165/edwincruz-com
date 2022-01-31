@@ -44,7 +44,8 @@ const env: Environment = {
 }
 
 const projectName = process.env.PROJECT_NAME;
-const projectKey = process.env.PROJECT_KEY + '';
+const projectKey = process.env.PROJECT_KEY;
+const projectZoneName = process.env.PROJECT_ZONE_NAME;
 const zoneName = process.env.PROJECT_ZONE_NAME;
 
 
@@ -83,11 +84,13 @@ if (envConfig != undefined) {
   const appEnvAppStack = new AppEnvAngularUniversalStack(app, `${projectKey}${envConfig.envKey}EnvAppStack`, {
     env: env,
     projectName: projectName,
+    projectZoneName: projectZoneName,
     projectKey: projectKey,
     zoneName: zoneName,
     domain: envConfig.domain,
     bucketName: projectName,
     envName: envConfig.envName,
+    envKey: envConfig.envKey,
     envLabel: envConfig.envLabel,
     certificate: appCommonCertificateStack.certificate
   });

@@ -65,7 +65,7 @@ export class AppEnvAngularUniversalStack extends Stack {
 
     // hosted name worked when a trailing dot was added to domainName
     const hostedZone = HostedZone.fromLookup(
-      this, `${projectKey}HostedZone`, {domainName: 'edwincruz.com.'});
+      this, `${projectKey}HostedZone`, {domainName: `${projectZoneName}.`});
 
     console.log('BEFORE CNAME: ' + hostedZone.zoneName);
 
@@ -88,6 +88,7 @@ export class AppEnvAngularUniversalStack extends Stack {
     const
       cdnStack = new CdnConstruct(this, `${projectKey}CdnConstruct`, {
         websiteBucket: websiteBucketConstruct.websiteBucket,
+        projectZoneName: projectZoneName,
         env: env,
         envName: envName,
         httpApi: httpApiConstruct.httpApi,

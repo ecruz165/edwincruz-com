@@ -1,7 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import {Environment} from "aws-cdk-lib";
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
-import {HttpVersion, ViewerCertificate} from "aws-cdk-lib/aws-cloudfront";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha';
 import {Certificate} from "aws-cdk-lib/aws-certificatemanager";
@@ -11,6 +10,7 @@ import {Construct} from "constructs";
 
 interface CdnStackProps {
   websiteBucket: s3.IBucket,
+  projectZoneName: string | undefined,
   env: Environment,
   envName: string | undefined,
   httpApi: apigwv2.HttpApi,
@@ -27,6 +27,7 @@ export class CdnConstruct extends Construct {
     super(scope, id);
 
     const {websiteBucket} = props;
+    const {projectZoneName} = props;
     const {env} = props;
     const {envName} = props;
     const {httpApi} = props;
@@ -49,10 +50,22 @@ export class CdnConstruct extends Construct {
       );
   */
 
+    const redirectToNonWWW = new cloudfront.Function(this, 'ViewerResponseFunction', {
+      functionName: 'RedirectURIFunction',
+      code: cloudfront.FunctionCode.fromFile({filePath: 'lib/util-cloudfront-functions/redirect-www-to-nonwww.js'}),
+      comment: "Redirect www to non-www"
+    });
+
+    let aliases = [`${domain}`];
+    if ( 'production'===envName) {
+      aliases.push(`${projectZoneName}`);
+    }
+
     this.cdn = new cloudfront.CloudFrontWebDistribution(this, "CdnDistribution", {
-        viewerCertificate: ViewerCertificate.fromAcmCertificate(certificate, {aliases: [`${domain}`]}),
+        viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(certificate, {aliases: aliases}),
+
         comment: "CDN for Angular Universal Web App",
-        httpVersion: HttpVersion.HTTP2,
+        httpVersion: cloudfront.HttpVersion.HTTP2,
         defaultRootObject: "index.html",
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         priceClass: cloudfront.PriceClass.PRICE_CLASS_ALL,
@@ -67,12 +80,20 @@ export class CdnConstruct extends Construct {
               {
                 pathPattern: '/assets/*',
                 isDefaultBehavior: false,
+                functionAssociations: [{
+                  eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+                  function: redirectToNonWWW,
+                }],
                 forwardedValues: {
                   queryString: true
                 }
               }, {
                 pathPattern: '*.*',
                 isDefaultBehavior: false,
+                functionAssociations: [{
+                  eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+                  function: redirectToNonWWW,
+                }],
                 forwardedValues: {
                   queryString: true
                 }
@@ -90,6 +111,10 @@ export class CdnConstruct extends Construct {
               {
                 pathPattern: '*',
                 isDefaultBehavior: true,
+                functionAssociations: [{
+                  eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+                  function: redirectToNonWWW,
+                }],
                 allowedMethods: cloudfront.CloudFrontAllowedMethods.ALL,
                 defaultTtl: cdk.Duration.seconds(0),
                 forwardedValues: {
@@ -104,7 +129,13 @@ export class CdnConstruct extends Construct {
       }
     );
 
-    const aliasRecord = new ARecord(this, 'AliasRecordForCdn', {
+    const aliasRecordForCdnProjectZone = new ARecord(this, 'AliasRecordForCdnProjectZone', {
+      target: RecordTarget.fromAlias(new CloudFrontTarget(this.cdn)),
+      zone: hostedZone,
+      recordName: `${projectZoneName}`
+    });
+
+    const aliasRecordDomain = new ARecord(this, 'AliasRecordForCdn', {
       target: RecordTarget.fromAlias(new CloudFrontTarget(this.cdn)),
       zone: hostedZone,
       recordName: `${domain}`

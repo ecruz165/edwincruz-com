@@ -78,7 +78,7 @@ runCommand() {
     PROJECT_KEY=$PROJECT_KEY \
     PROJECT_ZONE_NAME=$PROJECT_ZONE_NAME \
     ENV_CONFIG=$ENV_CONFIG \
-    cdk $1 $PROJECT_KEY$ENV_KEY'EnvWebsiteBucketsStack' $PROJECT_KEY$ENV_KEY'EnvAppStack'
+    cdk $1 $PROJECT_KEY$ENV_KEY'EnvWebsiteBucketsStack' $PROJECT_KEY$ENV_KEY'EnvAppStack' --require-approval never
 }
 
 validateCdkCommand() {
