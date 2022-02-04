@@ -12,10 +12,12 @@ import {StatusComponent} from "../components/status/status.component";
 import {PostListComponent} from "../components/post-list/post-list.component";
 import {RecommendationsComponent} from "../components/recommendations/recommendations.component";
 import {YouTubeComponent} from "../components/you-tube/you-tube.component";
-import {MaterialModule} from "../material/material.module";
-import {FontawesomeSetModule} from "../fontawesome/fontawesome.module";
+import {MaterialModule} from "../modules/material/material.module";
+import {FontawesomeSetModule} from "../modules/fontawesome/fontawesome.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
+import {SomeInterfaceComponent} from "../components/some-interface/some-interface.component";
+import {IntentDetectionModule} from "../modules/intent-detection/intent-detection.module";
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import {RouterModule} from "@angular/router";
     InteractComponent,
     StatusComponent,
     PostListComponent,
+    SomeInterfaceComponent,
     RecommendationsComponent,
     YouTubeComponent
   ],
@@ -39,6 +42,10 @@ import {RouterModule} from "@angular/router";
     FontawesomeSetModule,
     MaterialModule,
     RouterModule,
+    IntentDetectionModule
+  ],
+  exports: [
+
   ]
 })
 export class PagesModule {

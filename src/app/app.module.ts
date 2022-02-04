@@ -3,7 +3,7 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
 
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FontawesomeSetModule} from "./fontawesome/fontawesome.module";
+import {FontawesomeSetModule} from "./modules/fontawesome/fontawesome.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AppComponent} from './app.component';
 import {ProfileToolbarComponent} from './components/profile-toolbar/profile-toolbar.component';
@@ -13,7 +13,8 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AppSplashScreenMatrixService} from "./app-splash-screen-matrix.service";
 import {FooterComponent} from "./components/footer/footer.component";
 import {PagesModule} from "./pages/pages.module";
-import {MaterialModule} from "./material/material.module";
+import {MaterialModule} from "./modules/material/material.module";
+
 
 export function showSplashScreen(splashScreenService: AppSplashScreenMatrixService) {
   return (): Promise<any> => {
@@ -31,7 +32,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
   declarations: [
     ProfileToolbarComponent,
     AppComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -41,7 +42,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     FlexLayoutModule,
     FontawesomeSetModule,
     MaterialModule,
-    PagesModule,
+    PagesModule
   ],
   providers: [
     {
