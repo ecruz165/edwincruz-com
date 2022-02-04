@@ -1,5 +1,5 @@
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { filter, Observable } from 'rxjs';
+import {filter, interval, Observable, throttle} from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { SizeInfo } from '../model/intent-event.interface';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -17,7 +17,9 @@ export class WindowELService implements OnDestroy {
 
   public event$: Observable<SizeInfo> = this.eventBS
     .asObservable()
-    .pipe(filter((val) => !!val));
+    .pipe(
+      throttle(val => interval(200)),
+      filter((val) => !!val));
 
   constructor(
     private readonly viewportRuler: ViewportRuler,

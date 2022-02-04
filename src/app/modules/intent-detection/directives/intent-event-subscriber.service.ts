@@ -22,18 +22,16 @@ export class IntentSubDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('onInit in directive')
   }
 
   onIntentUpdate(next: IntentInfo): void {
-    console.log("should see 5 at a time");
     // window resize or viewport change can affect width of component
     this.updateBoundingClientRect();
+    //Some event has occurred
   }
 
   updateBoundingClientRect() {
     let matCardElem: Element = this.template.elementRef.nativeElement.previousElementSibling;
-    console.log(matCardElem);
     const rect = (matCardElem as HTMLElement).getBoundingClientRect();
     let contentElem = matCardElem.firstElementChild;
 

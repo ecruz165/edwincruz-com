@@ -1,13 +1,9 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { debounce, filter, interval, Observable, scan, timer } from 'rxjs';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import {
-  SizeInfo,
-  IntentInfo,
-  PositionInfo,
-} from '../model/intent-event.interface';
-import { WindowELService } from './window-events-listener.service';
-import { MouseELService } from './mouse-events-listener.service';
+import {Injectable, OnDestroy} from '@angular/core';
+import {filter, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+import {IntentInfo, PositionInfo, SizeInfo,} from '../model/intent-event.interface';
+import {WindowELService} from './window-events-listener.service';
+import {MouseELService} from './mouse-events-listener.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +20,10 @@ export class IntentEventPublisherService implements OnDestroy {
     .pipe(filter((val) => !!val));
 
   constructor(
-    private mouseListner: MouseELService,
+    private mouseListener: MouseELService,
     private windowListener: WindowELService
   ) {
-    mouseListner.event$
-      .pipe(debounce(() => timer(200)))
+    mouseListener.event$
       .subscribe((next: PositionInfo) => this.onMouseUpdate(next));
     windowListener.event$.subscribe((next: SizeInfo) =>
       this.onWindowUpdate(next)
@@ -36,6 +31,7 @@ export class IntentEventPublisherService implements OnDestroy {
   }
 
   onMouseUpdate(next: PositionInfo): void {
+    console.log('mouse update')
     this.mousePosition = next;
     this.position =
       this.windowSize !== undefined
@@ -47,6 +43,7 @@ export class IntentEventPublisherService implements OnDestroy {
   }
 
   onWindowUpdate(next: SizeInfo): void {
+    console.log('window update')
     this.windowSize = next;
     this.position =
       this.mousePosition !== undefined

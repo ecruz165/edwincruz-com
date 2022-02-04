@@ -4,7 +4,7 @@ export interface PositionInfo {
   timestamp: number;
   posXChange: number;
   posYChange: number;
-  timeElaspsed: number;
+  timeElapsed: number;
 }
 
 export interface SizeInfo {
