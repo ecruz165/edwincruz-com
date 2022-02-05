@@ -1,6 +1,11 @@
-#mouseDetails{
-  position: absolute;
-  display:flex;
-  top: 500px;
-  left:500px;
+
+#stateInfo{
+  top: 200px;
+  left:300px;
+  width: 220px;
+  height: 280px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  overflow: hidden;
+  z-index: 10;
 }
