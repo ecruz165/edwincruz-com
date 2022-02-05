@@ -41,8 +41,7 @@ export class ScrollELService implements OnDestroy {
         this.timeElapsed = curTimestamp - this.timestamp;
         this.timestamp = curTimestamp;
       }),
-      switchMap(val => of(this.getEvent())),
-      tap(pos => console.log(pos))
+      switchMap(val => of(this.getEvent()))
     );
 
   constructor(

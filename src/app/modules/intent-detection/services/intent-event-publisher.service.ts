@@ -35,7 +35,6 @@ export class IntentEventPublisherService implements OnDestroy {
   }
 
   onMouseUpdate(next: PositionInfo): void {
-    console.log('mouse update')
     this.mousePosition = next;
     this.position =
       this.windowSize !== undefined
