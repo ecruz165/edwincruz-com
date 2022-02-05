@@ -16,3 +16,17 @@
   <app-some-interface fxFlexAlign="center" *intentSub></app-some-interface>
   <app-some-interface fxFlexAlign="end" *intentSub></app-some-interface>
 </section>
+
+<mat-card id="mouseDetails">
+  <mat-card-header>Mouse details</mat-card-header>
+  <mat-card-content>
+    posX: {{intentInfo?.mouseInfo?.posX}}<br/>
+    posY: {{intentInfo?.mouseInfo?.posY}}<br/>
+    timestamp: {{intentInfo?.mouseInfo?.timestamp}}<br/>
+
+    posXChange: {{intentInfo?.mouseInfo?.posXChange}}<br/>
+    posYChange: {{intentInfo?.mouseInfo?.posYChange}}<br/>
+    timeElapsed: {{intentInfo?.mouseInfo?.timeElapsed}}<br/>
+  </mat-card-content>
+
+</mat-card>

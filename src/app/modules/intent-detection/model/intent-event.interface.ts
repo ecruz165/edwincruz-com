@@ -6,6 +6,16 @@ export interface PositionInfo {
   posYChange: number;
   timeElapsed: number;
 }
+export interface ScrollInfo {
+  scrollX: number|undefined;
+  scrollY: number|undefined;
+  timestamp: number;
+  scrollXChange: number|undefined;
+  scrollYChange: number|undefined;
+  scrollHeight: number;
+  scrollWidth: number;
+  timeElapsed: number;
+}
 
 export interface SizeInfo {
   width: number;

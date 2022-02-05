@@ -1,9 +1,10 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
-import {IntentInfo, PositionInfo, SizeInfo,} from '../model/intent-event.interface';
+import {IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
 import {WindowELService} from './window-events-listener.service';
 import {MouseELService} from './mouse-events-listener.service';
+import {ScrollELService} from "./scroll-events-listener.service";
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +22,16 @@ export class IntentEventPublisherService implements OnDestroy {
 
   constructor(
     private mouseListener: MouseELService,
-    private windowListener: WindowELService
+    private windowListener: WindowELService,
+    private scrollListener: ScrollELService
   ) {
     mouseListener.event$
       .subscribe((next: PositionInfo) => this.onMouseUpdate(next));
     windowListener.event$.subscribe((next: SizeInfo) =>
       this.onWindowUpdate(next)
     );
+    scrollListener.event$
+      .subscribe((next: ScrollInfo) => this.onScrollUpdate(next));
   }
 
   onMouseUpdate(next: PositionInfo): void {
@@ -43,11 +47,29 @@ export class IntentEventPublisherService implements OnDestroy {
   }
 
   onWindowUpdate(next: SizeInfo): void {
-    console.log('window update')
     this.windowSize = next;
     this.position =
       this.mousePosition !== undefined
         ? this.windowSize.width / 2 - this.mousePosition.posX < 0
+          ? -1
+          : 1
+        : 0;
+    this.eventBS.next(this.getLatestIntent());
+  }
+
+  onScrollUpdate(next: ScrollInfo): void {
+    // @ts-ignore
+    this?.mousePosition?.posX = this?.mousePosition?.posX + next.scrollXChange;
+    // @ts-ignore
+    this?.mousePosition?.posY = this?.mousePosition?.posY + next.scrollYChange;
+    // @ts-ignore
+    this?.mousePosition?.posXChange =  next.scrollXChange;
+    // @ts-ignore
+    this?.mousePosition?.posYChange =  next.scrollYChange;
+    this.position =
+      this.mousePosition !== undefined
+        // @ts-ignore
+        ? next.scrollWidth / 2 - this.mousePosition.posX < 0
           ? -1
           : 1
         : 0;
