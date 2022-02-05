@@ -18,7 +18,6 @@
 </section>
 
 <mat-card id="mouseDetails">
-  <mat-card-header>Mouse details</mat-card-header>
   <mat-card-content>
     posX: {{intentInfo?.mouseInfo?.posX}}<br/>
     posY: {{intentInfo?.mouseInfo?.posY}}<br/>
@@ -26,6 +25,13 @@
 
     posXChange: {{intentInfo?.mouseInfo?.posXChange}}<br/>
     posYChange: {{intentInfo?.mouseInfo?.posYChange}}<br/>
+
+    scrollXChange: {{document?.defaultView?.scrollX}}<br/>
+    scrollYChange: {{document?.defaultView?.scrollY}}<br/>
+
+    scrollWidth: {{document.body.scrollWidth}}<br/>
+    scrollHeight: {{document.body.scrollHeight}}<br/>
+
     timeElapsed: {{intentInfo?.mouseInfo?.timeElapsed}}<br/>
   </mat-card-content>
 

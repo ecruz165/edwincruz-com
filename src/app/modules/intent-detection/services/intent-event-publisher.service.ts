@@ -1,10 +1,11 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {Inject, Injectable, OnDestroy} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 import {IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
 import {WindowELService} from './window-events-listener.service';
 import {MouseELService} from './mouse-events-listener.service';
 import {ScrollELService} from "./scroll-events-listener.service";
+import {DOCUMENT} from "@angular/common";
 
 @Injectable({
   providedIn: 'root',

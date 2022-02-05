@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {IntentEventPublisherService} from "../../modules/intent-detection/services/intent-event-publisher.service";
 import {IntentInfo} from "../../modules/intent-detection/model/intent-event.interface";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-blog',
@@ -10,7 +11,9 @@ import {IntentInfo} from "../../modules/intent-detection/model/intent-event.inte
 export class BlogComponent implements OnInit {
   public intentInfo: IntentInfo | undefined;
 
-  constructor(    private intentPublisher: IntentEventPublisherService) {
+  constructor(
+    @Inject(DOCUMENT) public document: Document,
+    private intentPublisher: IntentEventPublisherService) {
     intentPublisher.event$.subscribe((next) => this.onIntentUpdate(next));
   }
 
