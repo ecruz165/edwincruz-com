@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
-import {IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
+import {GestureDirection, IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
 import {WindowELService} from './window-events-listener.service';
 import {MouseELService} from './mouse-events-listener.service';
 import {ScrollELService} from "./scroll-events-listener.service";
@@ -14,6 +14,7 @@ export class IntentEventPublisherService implements OnDestroy {
   private windowSize: SizeInfo | undefined;
   private scrollInfo: ScrollInfo | undefined;
   position: number = 0;
+  direction: GestureDirection | undefined;
 
   private eventBS: BehaviorSubject<IntentInfo> = new BehaviorSubject<any>(null);
 
@@ -43,6 +44,8 @@ export class IntentEventPublisherService implements OnDestroy {
           ? -1
           : 1
         : 0;
+    // @ts-ignore
+    this.direction = this.getDirection(this?.mousePosition?.posXChange, this?.mousePosition?.posYChange);
     this.eventBS.next(this.getLatestIntent());
   }
 
@@ -74,7 +77,34 @@ export class IntentEventPublisherService implements OnDestroy {
           ? -1
           : 1
         : 0;
+    // @ts-ignore
+    this.direction = this.getDirection(this?.mousePosition?.posXChange, this?.mousePosition?.posYChange);
+
     this.eventBS.next(this.getLatestIntent());
+  }
+
+  private getDirection(posXChange: number, posYChange: number): GestureDirection {
+    if (posYChange > 0) {
+      if (posXChange == 0) {
+        return GestureDirection.SOUTH
+      } else {
+        return posXChange > 0 ? GestureDirection.SOUTH_EAST : GestureDirection.SOUTH_WEST;
+      }
+    }
+    if (posYChange < 0) {
+      if (posXChange == 0) {
+        return GestureDirection.NORTH
+      } else {
+        return posXChange > 0 ? GestureDirection.NORTH_EAST : GestureDirection.NORTH_WEST;
+      }
+    } else {
+      if (posXChange == 0) {
+        return GestureDirection.INSIDE;
+      } else {
+        return posXChange > 0 ? GestureDirection.EAST : GestureDirection.WEST;
+      }
+    }
+
   }
 
   getLatestIntent(): IntentInfo {
@@ -83,6 +113,7 @@ export class IntentEventPublisherService implements OnDestroy {
       windowInfo: this.windowSize,
       scrollInfo: this.scrollInfo,
       position: this.position,
+      direction: this.direction,
     };
   }
 

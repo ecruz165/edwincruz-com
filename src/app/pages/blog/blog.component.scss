@@ -9,3 +9,43 @@
   overflow: hidden;
   z-index: 10;
 }
+
+
+#balloon {
+  height: 125px;
+  width: 105px;
+  opacity: .5;
+  border-radius: 75% 75% 70% 70%;
+  position: relative;
+  background-color: rgba(255,0,0,0.7);
+  color: rgba(255,0,0,0.7);
+  box-shadow: inset -7px -3px 10px rgba(255-10,0-10,0-10,0.7);
+  margin: 50px 0 0 50px;
+  animation: float 10s ease-in infinite
+}
+
+#balloon:before {
+  content: "";
+  height: 75px;
+  width: 1px;
+  padding: 1px;
+  background-color: #FDFD96;
+  display: block;
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#balloon:after {
+  content: "▲";
+  text-align: center;
+  display: block;
+  position: absolute;
+  color: inherit;
+  top: 120px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

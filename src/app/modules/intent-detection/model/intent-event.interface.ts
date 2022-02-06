@@ -28,6 +28,7 @@ export interface IntentInfo {
   windowInfo: SizeInfo | undefined;
   scrollInfo: ScrollInfo | undefined;
   position: number; // -1 left, 0 middle, 1 right
+  direction: GestureDirection| undefined;
 }
 
 export enum ComponentLocation {
@@ -42,7 +43,7 @@ export enum ComponentLocation {
   ABOVE_RIGHT = 11
 }
 
-export enum MouseMovementDirection {
+export enum GestureDirection {
   SOUTH = 1,
   WEST = 2,
   SOUTH_WEST = 3,
