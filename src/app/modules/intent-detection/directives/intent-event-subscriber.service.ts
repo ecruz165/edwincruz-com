@@ -1,7 +1,8 @@
-import {Directive, Input, OnInit, TemplateRef, ViewContainerRef,} from '@angular/core';
+import {Directive, Inject, Input, OnInit, TemplateRef, ViewContainerRef,} from '@angular/core';
 
 import {IntentEventPublisherService} from '../services/intent-event-publisher.service';
-import {IntentInfo} from '../model/intent-event.interface';
+import {ComponentLocation, IntentInfo} from '../model/intent-event.interface';
+import {DOCUMENT} from "@angular/common";
 
 @Directive({
   selector: '[intentSub]',
@@ -15,7 +16,8 @@ export class IntentSubDirective implements OnInit {
   constructor(
     private intentPublisher: IntentEventPublisherService,
     private template: TemplateRef<any>,
-    private container: ViewContainerRef
+    private container: ViewContainerRef,
+    @Inject(DOCUMENT) private document: Document,
   ) {
     this.container.createEmbeddedView(this.template);
     intentPublisher.event$.subscribe((next) => this.onIntentUpdate(next));
@@ -25,16 +27,67 @@ export class IntentSubDirective implements OnInit {
   }
 
   onIntentUpdate(next: IntentInfo): void {
-    // window resize or viewport change can affect width of component
-    this.updateBoundingClientRect();
-    //Some event has occurred
+    let matCardElem: Element = this.template.elementRef.nativeElement.previousElementSibling;
+    const rect = this.getBoundingClientRect(matCardElem);
+
+
+    // @ts-ignore
+    const componentLocationOnX = this.getComponentRelativeLocation(next?.mouseInfo.posX, next.scrollInfo.scrollX, rect.right, rect.left);
+    // @ts-ignore
+    const componentLocationOnY = this.getComponentRelativeLocation(next?.mouseInfo.posY, next.scrollInfo.scrollY, rect.bottom, rect.top);
+    const location: ComponentLocation = this.getLocation(componentLocationOnX, componentLocationOnY);
+    this.displayBoundingClientRect(matCardElem, rect, location);
+
   }
 
-  updateBoundingClientRect() {
-    let matCardElem: Element = this.template.elementRef.nativeElement.previousElementSibling;
-    const rect = (matCardElem as HTMLElement).getBoundingClientRect();
-    let contentElem = matCardElem.firstElementChild;
+  private getLocation(componentLocationOnX: number, componentLocationOnY: number) {
+    if (componentLocationOnY > 0) {
+      if (componentLocationOnX == 0) {
+        return ComponentLocation.BELOW
+      } else {
+        return componentLocationOnX > 0 ? ComponentLocation.BELOW_RIGHT : ComponentLocation.BELOW_LEFT;
+      }
+    }
+    if (componentLocationOnY < 0) {
+      if (componentLocationOnX == 0) {
+        return ComponentLocation.ABOVE
+      } else {
+        return componentLocationOnX > 0 ? ComponentLocation.ABOVE_RIGHT : ComponentLocation.ABOVE_LEFT;
+      }
+    } else {
+      if (componentLocationOnX == 0) {
+        return ComponentLocation.INSIDE;
+      } else {
+        return componentLocationOnX > 0 ? ComponentLocation.RIGHT : ComponentLocation.LEFT;
+      }
+    }
 
+  }
+
+  private getComponentRelativeLocation(mousePosition: number, scrollDelta: number, uCord: number, lCord: number): number {
+    const mousePos = mousePosition - scrollDelta;
+
+    if (mousePos > uCord) {
+      if (mousePos > lCord) {
+        return -1;
+      }
+      return 0;
+    } else {
+      if (mousePos < lCord) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  }
+
+  getBoundingClientRect(matCardElem: Element): DOMRect {
+    const rect = (matCardElem as HTMLElement).getBoundingClientRect();
+    return rect;
+  }
+
+  displayBoundingClientRect(matCardElem: Element, rect: DOMRect, location: ComponentLocation) {
+    let contentElem = matCardElem.firstElementChild;
     (contentElem as HTMLElement).innerHTML = '';
     for (let key in rect) {
       // @ts-ignore
@@ -45,7 +98,12 @@ export class IntentSubDirective implements OnInit {
         (contentElem as HTMLElement).appendChild(para);
       }
     }
+    let para = document.createElement('p');
+    // @ts-ignore
+    para.textContent = `location : ${location}`;
+    (contentElem as HTMLElement).appendChild(para);
   }
+
 
 }
 

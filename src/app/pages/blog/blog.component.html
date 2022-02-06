@@ -12,13 +12,14 @@
     posXChange: {{intentInfo?.mouseInfo?.posXChange}}<br/>
     posYChange: {{intentInfo?.mouseInfo?.posYChange}}<br/>
 
-    scrollXChange: {{document?.defaultView?.scrollX}}<br/>
-    scrollYChange: {{document?.defaultView?.scrollY}}<br/>
+    scrollXChange: {{intentInfo?.scrollInfo?.scrollXChange}}<br/>
+    scrollYChange: {{intentInfo?.scrollInfo?.scrollYChange}}<br/>
 
-    scrollWidth: {{document.body.scrollWidth}}<br/>
-    scrollHeight: {{document.body.scrollHeight}}<br/>
+    scrollWidth: {{intentInfo?.scrollInfo?.scrollWidth}}<br/>
+    scrollHeight: {{intentInfo?.scrollInfo?.scrollHeight}}<br/>
 
     timeElapsed: {{intentInfo?.mouseInfo?.timeElapsed}}<br/>
+
   </mat-card-content>
 
 </mat-card>

@@ -1,11 +1,10 @@
-import {Inject, Injectable, OnDestroy} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 import {IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
 import {WindowELService} from './window-events-listener.service';
 import {MouseELService} from './mouse-events-listener.service';
 import {ScrollELService} from "./scroll-events-listener.service";
-import {DOCUMENT} from "@angular/common";
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +12,7 @@ import {DOCUMENT} from "@angular/common";
 export class IntentEventPublisherService implements OnDestroy {
   private mousePosition: PositionInfo | undefined;
   private windowSize: SizeInfo | undefined;
+  private scrollInfo: ScrollInfo | undefined;
   position: number = 0;
 
   private eventBS: BehaviorSubject<IntentInfo> = new BehaviorSubject<any>(null);
@@ -58,14 +58,15 @@ export class IntentEventPublisherService implements OnDestroy {
   }
 
   onScrollUpdate(next: ScrollInfo): void {
+    this.scrollInfo = next;
     // @ts-ignore
     this?.mousePosition?.posX = this?.mousePosition?.posX + next.scrollXChange;
     // @ts-ignore
     this?.mousePosition?.posY = this?.mousePosition?.posY + next.scrollYChange;
     // @ts-ignore
-    this?.mousePosition?.posXChange =  next.scrollXChange;
+    this?.mousePosition?.posXChange = next.scrollXChange;
     // @ts-ignore
-    this?.mousePosition?.posYChange =  next.scrollYChange;
+    this?.mousePosition?.posYChange = next.scrollYChange;
     this.position =
       this.mousePosition !== undefined
         // @ts-ignore
@@ -80,6 +81,7 @@ export class IntentEventPublisherService implements OnDestroy {
     return {
       mouseInfo: this.mousePosition,
       windowInfo: this.windowSize,
+      scrollInfo: this.scrollInfo,
       position: this.position,
     };
   }
