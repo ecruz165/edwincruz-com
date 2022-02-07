@@ -42,7 +42,7 @@ export class IntentSubDirective implements OnInit {
     const location: ComponentLocation = this.getLocation(componentLocationOnX, componentLocationOnY);
     const componentAlignmentX: number = this.getAlignmentX(rect, next);
 
-    this.displayBoundingClientRect(matCardElem, rect, location, componentAlignmentX);
+   // this.displayBoundingClientRect(matCardElem, rect, location, componentAlignmentX);
 
     if (this.viewInitialized == true && next.direction !== location.valueOf()) {
       this.outFieldOfView(matCardElem);
@@ -78,7 +78,7 @@ export class IntentSubDirective implements OnInit {
           return true;
         } else if (adjustedPosX2 >= rect.left && adjustedPosX2 <= rect.right) {
           return true;
-        } else if (adjustedPosX1 <= rect.left && adjustedPosX2 >= rect.right) {
+        } else if ( adjustedPosX2 >= rect.right) {
           return true;
         }
         return false;
@@ -92,7 +92,7 @@ export class IntentSubDirective implements OnInit {
           return true;
         } else if (adjustedPosX2 >= rect.left && adjustedPosX2 <= rect.right) {
           return true;
-        } else if (adjustedPosX1 <= rect.left && adjustedPosX2 >= rect.right) {
+        } else if (adjustedPosX2 >= rect.right ) {
           return true;
         }
         return false;
@@ -106,7 +106,7 @@ export class IntentSubDirective implements OnInit {
           return true;
         } else if (adjustedPosX2 >= rect.left && adjustedPosX2 <= rect.right) {
           return true;
-        } else if (adjustedPosX1 <= rect.left && adjustedPosX2 >= rect.right) {
+        } else if ( adjustedPosX2 <= rect.left ) {
           return true;
         }
         return false;
@@ -114,13 +114,13 @@ export class IntentSubDirective implements OnInit {
       }
       case GestureDirection.NORTH_WEST: {
         const adjustedPosX1 = posX + (Math.abs(posXChange / posYChange)) * (rect.top - posY);
-        const adjustedPosX2 = posX + (Math.abs(posXChange / posYChange)) * (-rect.bottom - posY);
+        const adjustedPosX2 = posX + (Math.abs(posXChange / posYChange)) * (rect.bottom - posY);
 
         if (adjustedPosX1 >= rect.left && adjustedPosX1 <= rect.right) {
           return true;
         } else if (adjustedPosX2 >= rect.left && adjustedPosX2 <= rect.right) {
           return true;
-        } else if (adjustedPosX1 <= rect.left && adjustedPosX2 >= rect.right) {
+        } else if (adjustedPosX1 <= rect.right) {
 
           return true;
         }
