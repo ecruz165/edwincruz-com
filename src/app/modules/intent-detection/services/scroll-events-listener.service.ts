@@ -10,11 +10,11 @@ import {tap} from "rxjs/operators";
   providedIn: 'root',
 })
 export class ScrollELService implements OnDestroy {
-  scrollX: number | undefined = 0;
-  scrollY: number | undefined = 0;
+  scrollX: number = 0;
+  scrollY: number = 0;
   timestamp: number = new Date().getTime();
-  scrollXChange: number | undefined = 0;
-  scrollYChange: number | undefined = 0;
+  scrollXChange: number = 0;
+  scrollYChange: number = 0;
   scrollHeight: number = 0;
   scrollWidth: number = 0;
   timeElapsed: number = 0;
@@ -26,17 +26,19 @@ export class ScrollELService implements OnDestroy {
   public event$: Observable<ScrollInfo> = this.eventBS
     .asObservable()
     .pipe(
-      throttle(val => interval(200)),
+      throttle(val => interval(100)),
       filter((val) => !!val),
       tap((val) => {
-        // @ts-ignore
-        this.scrollXChange = this?.document?.defaultView?.scrollX - this?.scrollX;
-        // @ts-ignore
-        this.scrollYChange = this?.document?.defaultView?.scrollY - this?.scrollY;
-        this.scrollX = this.document.defaultView?.scrollX;
-        this.scrollY = this.document.defaultView?.scrollY;
-        this.scrollHeight = this.document.body.scrollHeight;
-        this.scrollWidth = this.document.body.scrollWidth;
+        const _document = this.document;
+        const _window = _document.defaultView
+        if (_window !== null) {
+          this.scrollXChange = _window.scrollX - this.scrollX;
+          this.scrollYChange = _window.scrollY - this.scrollY;
+          this.scrollX = _window.scrollX;
+          this.scrollY = _window.scrollY;
+        }
+        this.scrollHeight = _document.body.scrollHeight;
+        this.scrollWidth = _document.body.scrollWidth;
         const curTimestamp = new Date().getTime();
         this.timeElapsed = curTimestamp - this.timestamp;
         this.timestamp = curTimestamp;

@@ -18,14 +18,15 @@ export class WindowELService implements OnDestroy {
   public event$: Observable<SizeInfo> = this.eventBS
     .asObservable()
     .pipe(
-      throttle(val => interval(200)),
-      filter((val) => !!val));
+    //  throttle(val => interval(100)),
+      filter((val) => !!val)
+    );
 
   constructor(
     private readonly viewportRuler: ViewportRuler,
     private readonly ngZone: NgZone
   ) {
-    this.viewportChange = this.viewportRuler.change(200).subscribe(() => {
+    this.viewportChange = this.viewportRuler.change(100).subscribe(() => {
       this.ngZone.run(() => this.eventBS.next(this.getEvent()));
     });
 

@@ -1,4 +1,4 @@
-export interface PositionInfo {
+export interface MouseInfo {
   posX: number;
   posY: number;
   timestamp: number;
@@ -8,11 +8,11 @@ export interface PositionInfo {
 }
 
 export interface ScrollInfo {
-  scrollX: number | undefined;
-  scrollY: number | undefined;
+  scrollX: number;
+  scrollY: number;
   timestamp: number;
-  scrollXChange: number | undefined;
-  scrollYChange: number | undefined;
+  scrollXChange: number;
+  scrollYChange: number;
   scrollHeight: number;
   scrollWidth: number;
   timeElapsed: number;
@@ -24,11 +24,11 @@ export interface SizeInfo {
 }
 
 export interface IntentInfo {
-  mouseInfo: PositionInfo | undefined;
-  windowInfo: SizeInfo | undefined;
-  scrollInfo: ScrollInfo | undefined;
-  position: number; // -1 left, 0 middle, 1 right
-  direction: GestureDirection| undefined;
+  mouseInfo: MouseInfo;
+  windowInfo: SizeInfo ;
+  scrollInfo: ScrollInfo ;
+  alignmentX: number; // -1 left, 0 middle, 1 right
+  direction: GestureDirection;
 }
 
 export enum ComponentLocation {

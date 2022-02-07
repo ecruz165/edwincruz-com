@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable, OnDestroy, Renderer2, RendererFactory2,} from '@angular/core';
 import {filter, interval, Observable, of, switchMap, throttle} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
-import {PositionInfo} from '../model/intent-event.interface';
+import {MouseInfo} from '../model/intent-event.interface';
 import {tap} from "rxjs/operators";
 
 // https://dmitripavlutin.com/react-throttle-debounce/
@@ -22,10 +22,10 @@ export class MouseELService implements OnDestroy {
 
 
   private eventBS: BehaviorSubject<MouseEvent> = new BehaviorSubject<any>(null);
-  public event$: Observable<PositionInfo> = this.eventBS
+  public event$: Observable<MouseInfo> = this.eventBS
     .asObservable()
     .pipe(
-      throttle(val => interval(200)),
+      throttle(val => interval(100)),
       filter((val) => !!val),
       filter((current) => Math.abs(current.pageX - this.posX) > 8 || Math.abs(current.pageY - this.posY) > 8),
       tap((val) => {
@@ -63,7 +63,7 @@ export class MouseELService implements OnDestroy {
     return event;
   }
 
-  getEvent(): PositionInfo {
+  getEvent(): MouseInfo {
     return {
       posX: this.posX,
       posY: this.posY,

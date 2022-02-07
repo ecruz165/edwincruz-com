@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
-import {GestureDirection, IntentInfo, PositionInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
+import {GestureDirection, IntentInfo, MouseInfo, ScrollInfo, SizeInfo,} from '../model/intent-event.interface';
 import {WindowELService} from './window-events-listener.service';
 import {MouseELService} from './mouse-events-listener.service';
 import {ScrollELService} from "./scroll-events-listener.service";
@@ -10,11 +10,34 @@ import {ScrollELService} from "./scroll-events-listener.service";
   providedIn: 'root',
 })
 export class IntentEventPublisherService implements OnDestroy {
-  private mousePosition: PositionInfo | undefined;
-  private windowSize: SizeInfo | undefined;
-  private scrollInfo: ScrollInfo | undefined;
-  position: number = 0;
-  direction: GestureDirection | undefined;
+
+  private mouseInfo: MouseInfo = {
+    posX: 0,
+    posY: 0,
+    timestamp: 0,
+    posXChange: 0,
+    posYChange: 0,
+    timeElapsed: 0
+  };
+
+  private windowSize: SizeInfo = {
+    width: 0,
+    height: 0
+  };
+
+  private scrollInfo: ScrollInfo = {
+    scrollX: 0,
+    scrollY: 0,
+    timestamp: 0,
+    scrollXChange: 0,
+    scrollYChange: 0,
+    scrollHeight: 0,
+    scrollWidth: 0,
+    timeElapsed: 0
+  };
+
+  alignmentX: number = 0;
+  direction: GestureDirection=0;
 
   private eventBS: BehaviorSubject<IntentInfo> = new BehaviorSubject<any>(null);
 
@@ -28,7 +51,7 @@ export class IntentEventPublisherService implements OnDestroy {
     private scrollListener: ScrollELService
   ) {
     mouseListener.event$
-      .subscribe((next: PositionInfo) => this.onMouseUpdate(next));
+      .subscribe((next: MouseInfo) => this.onMouseUpdate(next));
     windowListener.event$.subscribe((next: SizeInfo) =>
       this.onWindowUpdate(next)
     );
@@ -36,51 +59,36 @@ export class IntentEventPublisherService implements OnDestroy {
       .subscribe((next: ScrollInfo) => this.onScrollUpdate(next));
   }
 
-  onMouseUpdate(next: PositionInfo): void {
-    this.mousePosition = next;
-    this.position =
-      this.windowSize !== undefined
-        ? this.windowSize.width / 2 - this.mousePosition.posX < 0
-          ? -1
-          : 1
-        : 0;
-    // @ts-ignore
-    this.direction = this.getDirection(this?.mousePosition?.posXChange, this?.mousePosition?.posYChange);
+  onMouseUpdate(next: MouseInfo): void {
+    this.mouseInfo = next;
+    this.alignmentX = this.getPosition(this.scrollInfo, this.mouseInfo);
+    this.direction = this.getDirection(this.mouseInfo.posXChange, this.mouseInfo.posYChange);
     this.eventBS.next(this.getLatestIntent());
   }
 
   onWindowUpdate(next: SizeInfo): void {
     this.windowSize = next;
-    this.position =
-      this.mousePosition !== undefined
-        ? this.windowSize.width / 2 - this.mousePosition.posX < 0
-          ? -1
-          : 1
-        : 0;
+    this.alignmentX = this.getPosition(this.scrollInfo, this.mouseInfo);
     this.eventBS.next(this.getLatestIntent());
   }
 
   onScrollUpdate(next: ScrollInfo): void {
     this.scrollInfo = next;
-    // @ts-ignore
-    this?.mousePosition?.posX = this?.mousePosition?.posX + next.scrollXChange;
-    // @ts-ignore
-    this?.mousePosition?.posY = this?.mousePosition?.posY + next.scrollYChange;
-    // @ts-ignore
-    this?.mousePosition?.posXChange = next.scrollXChange;
-    // @ts-ignore
-    this?.mousePosition?.posYChange = next.scrollYChange;
-    this.position =
-      this.mousePosition !== undefined
-        // @ts-ignore
-        ? next.scrollWidth / 2 - this.mousePosition.posX < 0
-          ? -1
-          : 1
-        : 0;
-    // @ts-ignore
-    this.direction = this.getDirection(this?.mousePosition?.posXChange, this?.mousePosition?.posYChange);
-
+    this.mouseInfo.posX = this.mouseInfo.posX + next.scrollXChange;
+    this.mouseInfo.posY = this.mouseInfo.posY + next.scrollYChange;
+    this.mouseInfo.posXChange = next.scrollXChange;
+    this.mouseInfo.posYChange = next.scrollYChange;
+    this.alignmentX = this.getPosition(this.scrollInfo, this.mouseInfo);
+    this.direction = this.getDirection(this.mouseInfo.posXChange, this.mouseInfo.posYChange);
     this.eventBS.next(this.getLatestIntent());
+  }
+
+  private getPosition(scrollInfo: ScrollInfo, mouseInfo: MouseInfo) {
+    const halfscreen = this.scrollInfo.scrollWidth / 2;
+    if (Math.abs(this.mouseInfo.posX-halfscreen ) < 32) {
+      return 0;
+    }
+    return halfscreen > this.mouseInfo.posX ? -1 : 1;
   }
 
   private getDirection(posXChange: number, posYChange: number): GestureDirection {
@@ -109,10 +117,10 @@ export class IntentEventPublisherService implements OnDestroy {
 
   getLatestIntent(): IntentInfo {
     return {
-      mouseInfo: this.mousePosition,
+      mouseInfo: this.mouseInfo,
       windowInfo: this.windowSize,
       scrollInfo: this.scrollInfo,
-      position: this.position,
+      alignmentX: this.alignmentX,
       direction: this.direction,
     };
   }
