@@ -18,7 +18,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
 import {SomeInterfaceComponent} from "../components/some-interface/some-interface.component";
 import {IntentDetectionModule} from "../modules/intent-detection/intent-detection.module";
-
+import {SlidesComponent} from "../components/slides/slides.component";
+import {PresentationsComponent} from './presentations/presentations.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import {IntentDetectionModule} from "../modules/intent-detection/intent-detectio
     PostListComponent,
     SomeInterfaceComponent,
     RecommendationsComponent,
-    YouTubeComponent
+    YouTubeComponent,
+    SlidesComponent,
+    PresentationsComponent
   ],
   imports: [
     CommonModule,
@@ -44,9 +47,7 @@ import {IntentDetectionModule} from "../modules/intent-detection/intent-detectio
     RouterModule,
     IntentDetectionModule
   ],
-  exports: [
-
-  ]
+  exports: []
 })
 export class PagesModule {
 }

@@ -150,6 +150,8 @@ export class AppThemeService {
     const baseUrl = this.getBaseUrl();
     this.loadStylesheet('app-styles', baseUrl, `styles.css`, true, true);
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
+    const themeHighlightJS = `stackoverflow-${mode?.is_dark ? 'dark': 'light'}.css`;
+    this.loadStylesheet('app-theme-highlightjs', baseUrl, `/assets/highlight.js/styles/${themeHighlightJS}`, true, true);
   }
 
   private getTheme(config: ITenantConfig, defaultName: string): ITheme {

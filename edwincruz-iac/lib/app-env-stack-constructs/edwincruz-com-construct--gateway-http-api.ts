@@ -82,6 +82,10 @@ export class HttpApiConstruct extends Construct {
       'Resume', apigwv2.HttpMethod.GET,
       `${projectKey}AngularIntegrationResume`, lambdaFunction);
 
+    this.addRoute(
+      'Presentations', apigwv2.HttpMethod.GET,
+      `${projectKey}AngularIntegrationPresentations`, lambdaFunction);
+
     const customDomain = new apigwv2.DomainName(this, 'DomainName', {
       domainName: `${envLabel}.${projectZoneName}`,
       certificate: certificate,
