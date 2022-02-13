@@ -39,6 +39,7 @@
     "@nguniversal/express-engine": "^13.0.2",
     "@types/highlightjs": "^9.12.2",
     "@types/marked": "^4.0.2",
+    "@types/reveal": "^4.2.0",
     "aws-serverless-express": "^3.4.0",
     "express": "^4.17.2",
     "highlight.js": "^11.4.0",
