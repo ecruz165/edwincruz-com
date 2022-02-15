@@ -1,12 +1,50 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {animate, animateChild, group, query, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-stack-details',
   templateUrl: './stack-details.component.html',
-  styleUrls: ['./stack-details.component.scss']
+  styleUrls: ['./stack-details.component.scss'],
+  animations: [
+    trigger('visibilityState', [
+      state('hideDetails', style({margin: '0 0 466px 0', minHeight: '78px'})),
+      state('showDetails', style({margin: '0 0 0 0', minHeight: '544px'})),
+      transition('hideDetails => showDetails', [
+        group([
+          animate(200, style({margin: '0 0 0 0', minHeight: '544px'})),
+          query('@childVisibilityState', animateChild()),
+        ])
+      ]),
+
+      transition('showDetails => hideDetails', [
+        group([
+          query('@childVisibilityState', animateChild()),
+          animate(200, style({margin: '0 0 466px 0', minHeight: '78px'}))
+        ])
+      ])
+
+    ]),
+
+    trigger('childVisibilityState', [
+      state('hideDetails', style({opacity: '0', display: 'none'})),
+      state('showDetails', style({opacity: '1', display: 'block'})),
+      transition('* <=> *', [
+        animate(200),
+      ]),
+    ]),
+
+  ]
 })
 export class StackDetailsComponent implements OnInit {
+  @Input()
+  visibilityState = 'hideDetails';
+  viewable = false;
 
+  toggle() {
+    this.viewable = !this.viewable;
+    this.visibilityState = this.viewable ? 'showDetails' : 'hideDetails';
+    console.log(this.viewable);
+  }
   toolset = [
     {
       category: 'Languages',

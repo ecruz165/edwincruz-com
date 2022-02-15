@@ -1,7 +1,11 @@
-<mat-card>
-  <h2>My Toolset: Technologies, Frameworks, APis..</h2>
+<mat-card           style="margin:0 0 466px 0"
+                    [@visibilityState]="visibilityState"
+                    (mouseenter)="toggle()"
+                    (mouseleave)="toggle()">
+  <h2>What technologies, frameworks, and APIs do I have experience using?</h2>
 
-  <mat-card-content>
+  <mat-card-content style="opacity: 0; display: none;"
+                    [@childVisibilityState]="visibilityState">
     <mat-accordion>
       <mat-expansion-panel *ngFor="let category of toolset">
         <mat-expansion-panel-header>
