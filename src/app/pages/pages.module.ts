@@ -20,6 +20,7 @@ import {SomeInterfaceComponent} from "../components/some-interface/some-interfac
 import {IntentDetectionModule} from "../modules/intent-detection/intent-detection.module";
 import {SlidesComponent} from "../components/slides/slides.component";
 import {PresentationsComponent} from './presentations/presentations.component';
+import {VisibilityCloakModule} from "../modules/visibility-cloak/visibility-cloak.module";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {PresentationsComponent} from './presentations/presentations.component';
     FontawesomeSetModule,
     MaterialModule,
     RouterModule,
-    IntentDetectionModule
+    IntentDetectionModule,
+    VisibilityCloakModule,
   ],
   exports: []
 })
