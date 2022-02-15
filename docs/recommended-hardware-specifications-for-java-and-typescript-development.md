@@ -1,6 +1,6 @@
 # Recommended hardware specifications for Java and Typescript Development.
 
-In 2002, you do not need what is considered currently a high-end computer to do software development. However, if you work on complex projects that require spinning up several virtual machines on your local development environment you will benefit from having a mid-level laptop or better. 
+In 2022, you do not need what is considered currently a high-end computer to do software development. However, if you work on complex projects that require spinning up several virtual machines on your local development environment you will benefit from having a mid-level laptop or better. 
 
 Also, if you use some coding tools that help with productivity like IntelliJ or eclipse or Visual Code loaded with plugins you may also benefit from having extra horsepower and memory.
 
