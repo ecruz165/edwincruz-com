@@ -1,22 +1,25 @@
 <mat-card class="example-card">
   <h2>Recommendations</h2>
-  <h3>INDUSTRY EXPORTS</h3>
+  <h3>INDUSTRY EXPERTS</h3>
   <p>Accelerate your learning by following these experts and using their published content and courses.</p>
 
   <mat-card-title-group *ngFor="let expert of industryExperts">
     <mat-card-title><a href="{{expert.website}}" target="{{expert.target}}"><h3>{{expert.name}}</h3></a>
     </mat-card-title>
 
-    <mat-card-subtitle>
+    <mat-card-subtitle style="visibility:hidden">
       <mat-chip-list>
         <mat-chip *ngFor="let skill of expert.expertise">
           {{skill}}
         </mat-chip>
       </mat-chip-list>
     </mat-card-subtitle>
-    <img mat-card-sm-image src="{{expert.picUrl}}"/>
+    <img style="filter: grayscale(1.0);" mat-card-sm-image src="{{expert.picUrl}}"/>
   </mat-card-title-group>
 
+</mat-card>
+
+<mat-card>
   <h3>OTHER ON-DEMAND LEARNING</h3>
   <ul>
     <li><a href="https://acloudguru.com/" target="_resources">A Cloud Guru</a> - Digital Cloud Certification Training
@@ -30,7 +33,8 @@
     </li>
     <li><a href="https://udemy.com/" target="_resources">Udemy</a> - Online Courses</li>
   </ul>
-
+</mat-card>
+<mat-card>
   <h3>OTHER RESOURCES</h3>
   <ul>
     <li><a href="https://indepth.dev/" target="_resources">InDepth.dev</a> - Community of passionate web developers</li>
@@ -40,7 +44,8 @@
     <li><a href="https://serverlessland.com/" target="_resources">Serverlessland.com</a> - AWS Serverless Portal</li>
 
   </ul>
-
+</mat-card>
+<mat-card>
   <h3>CLOUD APPS</h3>
   <ul>
     <li><a href="https://www.airtable.com/">Airtable</a> - Cloud Datasource/Spreadsheet</li>
