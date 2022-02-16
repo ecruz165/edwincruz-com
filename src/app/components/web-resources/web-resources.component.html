@@ -1,0 +1,28 @@
+<mat-card           style="margin:0 0 466px 0"
+                    [@visibilityState]="visibilityState"
+                    (mouseenter)="toggle()"
+                    (mouseleave)="toggle()">
+  <h2>What do I use for learning, keeping up with trends and productivity?</h2>
+
+  <mat-card-content style="opacity: 0; display: none;"
+                    [@childVisibilityState]="visibilityState">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let resource of resources">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{resource.category}}
+          </mat-panel-title>
+          <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+          <mat-selection-list  [multiple]="false">
+            <mat-list-option *ngFor="let item of resource.items" >
+              <div mat-line>{{item.title}}</div>
+              <div style="font-size:smaller" mat-line>{{item.description}}</div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>

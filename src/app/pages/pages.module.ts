@@ -21,6 +21,7 @@ import {IntentDetectionModule} from "../modules/intent-detection/intent-detectio
 import {SlidesComponent} from "../components/slides/slides.component";
 import {PresentationsComponent} from './presentations/presentations.component';
 import {VisibilityCloakModule} from "../modules/visibility-cloak/visibility-cloak.module";
+import {WebResourcesComponent} from "../components/web-resources/web-resources.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {VisibilityCloakModule} from "../modules/visibility-cloak/visibility-cloa
     RecommendationsComponent,
     YouTubeComponent,
     SlidesComponent,
-    PresentationsComponent
+    PresentationsComponent,
+    WebResourcesComponent
   ],
   imports: [
     CommonModule,
