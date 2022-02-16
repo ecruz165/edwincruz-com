@@ -2,21 +2,24 @@
   <h2>Recommendations</h2>
   <h3>INDUSTRY EXPERTS</h3>
   <p>Accelerate your learning by following these experts and using their published content and courses.</p>
+</mat-card>
 
-  <mat-card-title-group *ngFor="let expert of industryExperts">
-    <mat-card-title><a href="{{expert.website}}" target="{{expert.target}}"><h3>{{expert.name}}</h3></a>
-    </mat-card-title>
-
-    <mat-card-subtitle style="visibility:hidden">
-      <mat-chip-list>
-        <mat-chip *ngFor="let skill of expert.expertise">
-          {{skill}}
-        </mat-chip>
-      </mat-chip-list>
-    </mat-card-subtitle>
-    <img style="filter: grayscale(1.0);" mat-card-sm-image src="{{expert.picUrl}}"/>
-  </mat-card-title-group>
-
+<mat-card fxLayout="row" *ngFor="let expert of industryExperts" >
+  <mat-card-header fxFlex="70" >
+    <mat-card-title-group >
+      <mat-card-title><a href="{{expert.website}}" target="{{expert.target}}"><h3>{{expert.name}}</h3></a></mat-card-title>
+      <mat-card-subtitle style="visibility:visible">
+        <mat-chip-list>
+          <mat-chip *ngFor="let skill of expert.expertise" style="font-size: smaller">
+            {{skill}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content fxFlex="30">
+      <img width="100%" src="{{expert.picUrl}}" style="border-radius:50%;  filter: grayscale(100%);" />
+  </mat-card-content>
 </mat-card>
 
 <mat-card>
