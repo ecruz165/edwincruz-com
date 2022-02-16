@@ -1,30 +1,56 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BlogComponent} from "./pages/blog/blog.component";
-import {ResumeComponent} from "./pages/resume/resume.component";
-import {HomeComponent} from "./pages/home/home.component";
-import {SlidesComponent} from "./components/slides/slides.component";
-import {PresentationsComponent} from "./pages/presentations/presentations.component";
+import {BlogLayoutComponent} from "./pages/blog/blog-layout.component";
+import {PresentationsLayoutComponent} from "./pages/presentations/presentations-layout.component";
+import {ResumeLayoutComponent} from "./pages/resume/resume-layout.component";
+import {LayoutComponent} from "./layout/layout/layout.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+      }
+    ]
   }, {
     path: 'home',
-    component: HomeComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+      }
+    ]
   }, {
     path: 'resume',
-    component: ResumeComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/resume/resume.module').then(m => m.ResumeModule)
+      }
+    ]
   }, {
     path: 'blog',
-    component: BlogComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule)
+      }
+    ]
   }, {
-    path: 'slides',
-    component: SlidesComponent
-  },{
     path: 'presentations',
-    component: PresentationsComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/presentations/presentations.module').then(m => m.PresentationsModule)
+      }
+    ]
   }
 ];
 
