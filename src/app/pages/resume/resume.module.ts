@@ -5,6 +5,8 @@ import {ResumeComponent} from "./resume.component";
 import {RouterModule, Routes} from '@angular/router';
 import {ResumeLayoutComponent} from "./resume-layout.component";
 import {AppLayoutModule} from "../../layout/layout.module";
+import {MarkdownViewerComponent} from "../../components/markdown-viewer/markdown-viewer.component";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes: Routes = [
@@ -17,11 +19,13 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ResumeComponent,
-    ResumeLayoutComponent
+    ResumeLayoutComponent,
+    MarkdownViewerComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    HttpClientModule,
     AppLayoutModule
   ]
 })
