@@ -7,6 +7,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {FontawesomeSetModule} from "../modules/fontawesome/fontawesome.module";
 import {MaterialModule} from "../modules/material/material.module";
 import {LayoutComponent} from "./layout/layout.component";
+import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {LayoutComponent} from "./layout/layout.component";
     ProfileToolbarComponent,
     FooterComponent,
     LayoutComponent,
+    MainToolbarComponent,
   ],
   imports: [
     CommonModule,
