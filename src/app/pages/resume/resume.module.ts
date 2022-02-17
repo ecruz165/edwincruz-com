@@ -7,6 +7,8 @@ import {ResumeLayoutComponent} from "./resume-layout.component";
 import {AppLayoutModule} from "../../layout/layout.module";
 import {MarkdownViewerComponent} from "../../components/markdown-viewer/markdown-viewer.component";
 import {HttpClientModule} from "@angular/common/http";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatCardModule} from "@angular/material/card";
 
 
 const routes: Routes = [
@@ -24,9 +26,11 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     RouterModule.forChild(routes),
     HttpClientModule,
-    AppLayoutModule
+    AppLayoutModule,
+    MatCardModule
   ]
 })
 export class ResumeModule {

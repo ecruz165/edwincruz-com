@@ -1,0 +1,20 @@
+main {
+  margin: 64px;
+}
+
+@media (max-width: 600px - 1) {
+  main {
+    margin: 64px 32px;
+  }
+}
+
+@media (min-width: 600px) and ( max-width: 1280px - 1){
+  main {
+    margin: 64px 48px;
+  }
+}
+@media (min-width: 1280px) {
+  main {
+    margin: 64px;
+  }
+}
