@@ -1,6 +1,10 @@
-<app-profile-toolbar></app-profile-toolbar>
-
-<app-main-toolbar></app-main-toolbar>
-
-<router-outlet></router-outlet>
+<header>
+  <app-profile-toolbar></app-profile-toolbar>
+  <section class="paddingHorizontal paddingVertical" >
+    <app-main-toolbar></app-main-toolbar>
+  </section>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
 <app-footer></app-footer>

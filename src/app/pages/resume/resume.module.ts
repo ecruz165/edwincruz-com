@@ -5,10 +5,11 @@ import {ResumeComponent} from "./resume.component";
 import {RouterModule, Routes} from '@angular/router';
 import {ResumeLayoutComponent} from "./resume-layout.component";
 import {AppLayoutModule} from "../../layout/layout.module";
-import {MarkdownViewerComponent} from "../../components/markdown-viewer/markdown-viewer.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCardModule} from "@angular/material/card";
+import {MarkdownViewerModule} from "../../modules/markdown-viewer/markdown-viewer.module";
+import {FontawesomeSetModule} from "../../modules/fontawesome/fontawesome.module";
 
 
 const routes: Routes = [
@@ -22,7 +23,6 @@ const routes: Routes = [
   declarations: [
     ResumeComponent,
     ResumeLayoutComponent,
-    MarkdownViewerComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +30,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     AppLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MarkdownViewerModule,
+    FontawesomeSetModule
   ]
 })
 export class ResumeModule {

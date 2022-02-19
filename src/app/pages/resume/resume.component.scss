@@ -1,21 +1,74 @@
 main {
-  margin: 64px auto;
+  section: 0 auto;
 }
 
 
 @media (max-width: 600px - 1) {
-  main {
-    margin: 64px 32px;
+  section {
+    margin: 0 32px;
   }
 }
 
 @media (min-width: 600px) and ( max-width: 1280px - 1){
-  main {
-    margin: 64px  64px;
+  section {
+    margin: 0  64px;
   }
 }
 @media (min-width: 1280px) {
-  main {
-    margin: 64px auto;
+  section {
+    margin: 0 auto;
   }
+}
+
+
+
+#stateInfo{
+  top: 200px;
+  left:300px;
+  width: 240px;
+  height: 280px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  overflow: hidden;
+  z-index: 10;
+}
+
+
+#balloon {
+  height: 125px;
+  width: 105px;
+  opacity: .5;
+  border-radius: 75% 75% 70% 70%;
+  position: relative;
+  background-color: rgba(255,0,0,0.7);
+  color: rgba(255,0,0,0.7);
+  box-shadow: inset -7px -3px 10px rgba(255-10,0-10,0-10,0.7);
+  margin: 50px 0 0 50px;
+  animation: float 10s ease-in infinite
+}
+
+#balloon:before {
+  content: "";
+  height: 75px;
+  width: 1px;
+  padding: 1px;
+  background-color: #FDFD96;
+  display: block;
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#balloon:after {
+  content: "▲";
+  text-align: center;
+  display: block;
+  position: absolute;
+  color: inherit;
+  top: 120px;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

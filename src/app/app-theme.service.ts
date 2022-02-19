@@ -2,6 +2,8 @@ import {Inject, Injectable, Injector, Optional, PLATFORM_ID, Renderer2, Renderer
 import {DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
 import {REQUEST} from "@nguniversal/express-engine/tokens";
 import {getSunrise, getSunset} from 'sunrise-sunset-js';
+import {IntentInfo} from "./modules/intent-detection/model/intent-event.interface";
+import {BehaviorSubject, filter, Observable} from "rxjs";
 
 interface IThemeMode {
   is_dark: boolean;
@@ -32,6 +34,9 @@ export class AppThemeService {
   private currentTheme: ITheme | undefined;
   private currentThemeMode?: IThemeMode;
 
+  private themeBS: BehaviorSubject<IThemeMode> = new BehaviorSubject<any>(null);
+  public theme$: Observable<IThemeMode> = this.themeBS.asObservable().pipe(filter((val) => !!val));
+
   constructor(
     private injector: Injector,
     @Optional() @Inject(REQUEST) private request: any,
@@ -53,6 +58,7 @@ export class AppThemeService {
     this.currentThemeMode = this.getThemeMode(this.currentTheme, this.getDefaultThemeModeName());
     this.setThemeMode(this.currentTheme, this.currentThemeMode);
     return Promise.resolve();
+
   }
 
   getCurrentMode() {
@@ -152,6 +158,9 @@ export class AppThemeService {
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
     const themeHighlightJS = `stackoverflow-${mode?.is_dark ? 'dark': 'light'}.css`;
     this.loadStylesheet('app-theme-highlightjs', baseUrl, `/assets/highlight.js/styles/${themeHighlightJS}`, true, true);
+    if (mode) {
+      this.themeBS.next(mode);
+    }
   }
 
   private getTheme(config: ITenantConfig, defaultName: string): ITheme {

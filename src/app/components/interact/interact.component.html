@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-list>
+  <mat-list dense>
     <mat-list-item>
       <img class="svg" mat-list-icon src="assets/bmcbrand/svg-files/bmc-logo.svg"/>
       <a href="https://www.buymeacoffee.com/edwincruz" mat-line target="_buy">Buy Me a Coffee</a>
@@ -9,12 +9,8 @@
       <a href="https://calendly.com/edwincruz/15min" mat-line target="_schedule">Schedule Time with Me</a>
     </mat-list-item>
     <mat-list-item>
-      <mat-icon mat-list-icon>sms</mat-icon>
-      <a href="sms:+19176267137" mat-line target="_sms">Send Me an SMS</a>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon mat-list-icon>mail</mat-icon>
-      <a href="mailto:ecruz165@yahoo.com" mat-line target="_mail">Send Me an E-mail</a>
+      <fa-icon mat-list-icon  [icon]="['fas', 'address-card']"></fa-icon>
+      <a href="sms:+19176267137" mat-line target="_sms">Contact Me</a>
     </mat-list-item>
   </mat-list>
 </mat-card>

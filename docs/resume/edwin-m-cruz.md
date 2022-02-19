@@ -8,10 +8,13 @@ I'm an enthusiastic engineer seeking complex projects that leverage my Java and 
 
 Past solutions use Multi-threading Java, Messaging, Batching implemented with Core Java, Spring Boot, Spring Integration/Batch, Hibernate, and Ehcache.
 
-The user Interface framework of choice is Google Angular and Material Design components for Angular.
-
-Most recent solutions leverage AWS platform: AWS CDK, AWS Fargate, AWS Lambda, AWS Gateway, Amazon Aurora RDS, S3, SQS, and SES. Additional APIs/frameworks used recently include Zoom API, Twilio API, Mailchimp API, AirTable API, and JotForm API.
+Most recent software projects leverage Angular and Spring Framework on AWS platform: AWS CDK, AWS Fargate, AWS Lambda, AWS Gateway, Amazon Aurora RDS, S3, SQS, and SES. Additional APIs/frameworks used recently include Zoom API, Twilio API, Mailchimp API, AirTable API, and JotForm API.
 
 ### Development Tools
 Atlassian Jira, Jetbrains IntelliJ, Visual Studio Code, Lucid Charts, Balsamiq Mockup Wireframes, Postman, HTTPie, Adobe Creative Suite Master
 
+## Representative Accomplishments
+
+
+## Educational Background
+Bachelor of Science in Physics, SUNY at Oswego

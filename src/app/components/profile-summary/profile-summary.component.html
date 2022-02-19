@@ -1,34 +1,22 @@
-<div fxFlex="100" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-evenly center"
-     fxLayoutAlign.gt-xs="space-between start" fxLayoutGap.gt-md="24px"
-     fxLayoutGap.md="16px" fxLayoutGap.sm="12px" fxLayoutGap.xs="8px" id="profile-summary">
-  <div fxFlex="100" fxFlex.gt-lg="77" fxFlex.lg="70" fxFlex.md="68" fxFlex.sm="46">
-    <div (mouseenter)="toggle()"
-         (mouseleave)="toggle()" style="display: block;">
-      <h2 id="profile-title">Lead Software Engineer delivering cloud solutions using Java and Typescript.</h2>
-      <p>My Resume: <a [routerLink]="['/resume']"  href="#" mat-icon-button>
-        <fa-icon [icon]="['fas', 'eye']" style="font-size:large"></fa-icon>
-      </a>
-        <a href="https://github.com/ecruz165" mat-icon-button target="_github">
-          <fa-icon [icon]="['fas', 'download']" style="font-size:large"></fa-icon>
-        </a></p>
-      <ul *ngIf="viewable" [@myInsertRemoveTrigger] class="mat-caption viewable">
-        <li>Expert on Spring, Hibernate, Ehcache, and Angular frameworks</li>
-        <li>An Agile practitioner with many years of experience using Jira, TTD, and BDD</li>
-        <li>Team leader and contributor who believes collaboration, sharing ideas, and mentoring lead to better team
-          culture and software
-        </li>
-        <li>Team-player who can also work independently and enjoys all hands-on/hands-off duties of the software
-          development process
-        </li>
-        <li>Motivated to drive the use of best practices, methodologies and processes that improve the team and software
-          that include CI/CD, and pair programming
-        </li>
-      </ul>
-    </div>
+<mat-card
+  (mouseenter)="toggle()"
+  (mouseleave)="toggle()"
 
-  </div>
-  <div fxFlex="100" fxFlex.gt-lg="23" fxFlex.lg="26" fxFlex.md="32" fxFlex.sm="46" id="contact-card">
-    <a href="assets/contact-card/contact-card-ios.vcf"><img class="svg" src="assets/contact-card/contact-card.svg"
-                                                             width="200px"/></a>
-  </div>
-</div>
+>
+  <h2>What am I?</h2>
+
+  <ul *ngIf="viewable" [@myInsertRemoveTrigger] class="mat-caption viewable">
+    <li>Expert on Spring, Hibernate, Ehcache, and Angular frameworks</li>
+    <li>An Agile practitioner with many years of experience using Jira, TTD, and BDD</li>
+    <li>Team leader and contributor who believes collaboration, sharing ideas, and mentoring lead to better team
+      culture and software
+    </li>
+    <li>Team-player who can also work independently and enjoys all hands-on/hands-off duties of the software
+      development process
+    </li>
+    <li>Motivated to drive the use of best practices, methodologies and processes that improve the team and software
+      that include CI/CD, and pair programming
+    </li>
+  </ul>
+
+</mat-card>

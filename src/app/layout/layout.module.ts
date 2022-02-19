@@ -8,6 +8,9 @@ import {FontawesomeSetModule} from "../modules/fontawesome/fontawesome.module";
 import {MaterialModule} from "../modules/material/material.module";
 import {LayoutComponent} from "./layout/layout.component";
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
+import {ProfileCardComponent} from "../components/profile-card/profile-card.component";
+import {InteractComponent} from "../components/interact/interact.component";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -16,12 +19,15 @@ import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
     FooterComponent,
     LayoutComponent,
     MainToolbarComponent,
+    ProfileCardComponent,
+    InteractComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FlexLayoutModule,
     MaterialModule,
+    MatCardModule,
     FontawesomeSetModule
   ]
 })
