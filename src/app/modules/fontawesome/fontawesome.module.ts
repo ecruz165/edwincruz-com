@@ -13,11 +13,11 @@ import {
   faAddressCard
 } from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faHackerrank, faLinkedin, faStackOverflow, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 
-const fontawesomeComponents = [
-  faPhone, faBolt, faTwitter, faHackerrank, faStackOverflow, faGithub, faDownload, faEye, faLinkedin, faFile, faBlog,
-  faHome, faAddressCard
-]
+
+// @ts-ignore
+const fontawesomeComponents:IconDefinition[] = [faPhone, faBolt, faTwitter, faHackerrank, faStackOverflow, faGithub, faDownload, faEye, faLinkedin, faFile, faBlog, faHome, faAddressCard];
 
 @NgModule({
   declarations: [],
