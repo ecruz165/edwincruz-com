@@ -17,7 +17,7 @@ export class MarkdownViewerComponent implements OnInit {
 
   getMarkdownByPath(path: string): Observable<any> {
     // @ts-ignore
-    return this.httpClient.get<string>(path,{ responseType: 'text' });
+    return this.httpClient.get<string>(path, {responseType: 'text'});
   }
 
 

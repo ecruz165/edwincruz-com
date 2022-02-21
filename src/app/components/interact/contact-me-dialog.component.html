@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Contact Me Options</h1>
+<div mat-dialog-content fxLayout="column" fxLayoutGap="32px" dense>
+  <a mat-flat-button color="primary" href="mailto:{{data.email}}">
+    <mat-icon >email </mat-icon>
+    Send me a email</a>
+  <a mat-flat-button color="primary" href="sms:{{data.sms}}">
+    <mat-icon >sms </mat-icon>
+    Send me a text
+  </a>
+  <a mat-flat-button color="primary" href="{{data.vCardPathForIos}}">
+    <fa-icon mat-icon [icon]="['fas','file']"> </fa-icon>
+    Download vCard
+  </a>
+    <img class="svg" src="{{data.qrCodePath}}" />
+
+</div>

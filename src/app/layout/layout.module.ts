@@ -11,6 +11,7 @@ import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import {ProfileCardComponent} from "../components/profile-card/profile-card.component";
 import {InteractComponent} from "../components/interact/interact.component";
 import {MatCardModule} from "@angular/material/card";
+import {ContactMeDialogComponent} from "../components/interact/contact-me-dialog.component";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatCardModule} from "@angular/material/card";
     LayoutComponent,
     MainToolbarComponent,
     ProfileCardComponent,
-    InteractComponent
+    InteractComponent,
+    ContactMeDialogComponent
   ],
   imports: [
     CommonModule,
