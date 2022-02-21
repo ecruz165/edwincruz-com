@@ -1,17 +1,16 @@
 <section fxLayout="row wrap" fxLayoutAlign="space-between center" >
-  <section fxFlexOrder="1" fxFlex.xs="42" fxFlex.gt-xs="33" fxFlexOrder.gt-xs="1" class="">
+  <section      fxFlexOrder="1" fxFlex.xs="42"  fxFlex.sm="31" fxFlexOrder.sm="1" fxFlex.gt-sm="30">
     <app-profile-card></app-profile-card>
   </section>
-  <section fxFlexOrder="2" fxFlex.xs="42" fxFlex.gt-xs="30" fxFlexOrder.gt-xs="3" style="display: flex;justify-content: flex-end;" class="">
+  <section      fxFlexOrder="2" fxFlex.xs="42"  fxFlex.sm="31" fxFlexOrder.sm="3" fxFlex.gt-sm="30" fxFlexOrder.gt-sm="3" style="display: flex;justify-content: flex-end;">
     <app-interact></app-interact>
   </section>
-
-  <mat-toolbar fxFlexOrder="3" fxFlex.xs="100" fxFlex.gt-xs="33" fxFlexOrder.gt-xs="2" fxFlexAlign="center" style="padding:0;">
-    <span [routerLink]="'/blog'"><fa-icon [icon]="['fas', 'blog']"></fa-icon></span>
+  <mat-toolbar  fxFlexOrder="3" fxFlex.xs="100" fxFlex.sm="30" fxFlexOrder.sm="2" fxFlex.gt-sm="35" fxFlexOrder.gt-sm="2" fxFlexAlign="center" style="padding:0;">
+    <span [routerLink]="'/blog'"><fa-icon [icon]="['fas', 'blog']" title="Blog"></fa-icon></span>
     <span>|</span>
-    <span [routerLink]="'/home'"><fa-icon [icon]="['fas', 'home']"></fa-icon></span>
+    <span [routerLink]="'/home'"><fa-icon [icon]="['fas', 'home']" title="Home"></fa-icon></span>
     <span>|</span>
-    <span [routerLink]="'/resume'"><fa-icon [icon]="['fas', 'file']"></fa-icon></span>
+    <span [routerLink]="'/resume'"><fa-icon [icon]="['fas', 'file']" title="Resume"></fa-icon></span>
   </mat-toolbar>
 
 
