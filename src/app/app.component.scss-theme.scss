@@ -20,6 +20,15 @@
       filter: invert(0);
     }
   }
+
+  .selectedMenuItem {
+    font-size:xxx-large;
+    @if $is-dark {
+      color: white;
+    } @else {
+      color: black;
+    }
+  }
 }
 
 @function get-content-offset($density: default) {
