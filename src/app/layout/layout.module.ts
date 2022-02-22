@@ -12,6 +12,7 @@ import {ProfileCardComponent} from "../components/profile-card/profile-card.comp
 import {InteractComponent} from "../components/interact/interact.component";
 import {MatCardModule} from "@angular/material/card";
 import {ContactMeDialogComponent} from "../components/interact/contact-me-dialog.component";
+import {QRCodeModule} from "angularx-qrcode";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ContactMeDialogComponent} from "../components/interact/contact-me-dialog
     FlexLayoutModule,
     MaterialModule,
     MatCardModule,
-    FontawesomeSetModule
+    FontawesomeSetModule,
+    QRCodeModule
   ]
 })
 export class AppLayoutModule {

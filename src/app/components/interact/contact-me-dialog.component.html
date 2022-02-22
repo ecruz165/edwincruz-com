@@ -11,6 +11,7 @@
     <fa-icon mat-icon [icon]="['fas','file']"> </fa-icon>
     Download vCard
   </a>
-    <img class="svg" src="{{data.qrCodePath}}" />
+  <qrcode [qrdata]="qrCodeContent" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+<!--    <img class="svg" src="{{data.qrCodePath}}" />-->
 
 </div>
