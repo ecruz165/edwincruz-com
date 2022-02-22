@@ -40,6 +40,7 @@
     "@types/highlightjs": "^9.12.2",
     "@types/marked": "^4.0.2",
     "@types/reveal": "^4.2.0",
+    "angularx-qrcode": "^13.0.3",
     "aws-serverless-express": "^3.4.0",
     "express": "^4.17.3",
     "highlight.js": "^11.4.0",
@@ -65,7 +66,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "markdown-autodocs": "^1.0.103",
-    "serverless": "^2.72.2",
+    "serverless": "^3.3.0",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^8.5.0",
     "typescript": "~4.4.4"
