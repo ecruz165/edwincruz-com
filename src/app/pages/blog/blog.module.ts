@@ -9,11 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCardModule} from "@angular/material/card";
 import {MarkdownViewerModule} from "../../modules/markdown-viewer/markdown-viewer.module";
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
+    component: BlogListComponent
+  },{
+    path: ':dateString/:id',
     component: BlogComponent
   }
 ]
@@ -21,7 +25,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     BlogComponent,
-    BlogLayoutComponent
+    BlogLayoutComponent,
+    BlogListComponent
   ],
   imports: [
     CommonModule,

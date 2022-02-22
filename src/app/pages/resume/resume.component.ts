@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ResumeComponent implements OnInit {
 
+  url = '/docs/resume/edwin-m-cruz.md';
+
   constructor() {
   }
 

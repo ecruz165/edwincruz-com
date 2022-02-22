@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -9,7 +9,8 @@ import {Observable} from "rxjs";
   styleUrls: ['./markdown-viewer.component.scss']
 })
 export class MarkdownViewerComponent implements OnInit {
-
+  @Input()
+  pageUrl?: string;
   markdown = '';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private httpClient: HttpClient,) {
@@ -20,12 +21,9 @@ export class MarkdownViewerComponent implements OnInit {
     return this.httpClient.get<string>(path, {responseType: 'text'});
   }
 
-
-  ngOnInit(): void {
+  loadMarkdown(url: string) {
     const marked = require('marked');
     const hljs = require('highlight.js');
-
-    const url = '/docs/resume/edwin-m-cruz.md';
     this.getMarkdownByPath(url).subscribe(markdownString => {
 
 
@@ -46,6 +44,14 @@ export class MarkdownViewerComponent implements OnInit {
       this.markdown = marked.parse(markdownString);
 
     })
+  }
+
+  ngOnInit(): void {
+    const url = this?.pageUrl;
+    if (url !== undefined && url !== null) {
+
+      this.loadMarkdown(url);
+    }
   }
 
 }
