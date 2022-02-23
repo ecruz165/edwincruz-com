@@ -87,6 +87,16 @@ export class CdnConstruct extends Construct {
                 forwardedValues: {
                   queryString: true
                 }
+              },     {
+                pathPattern: '/docs/*',
+                isDefaultBehavior: false,
+                functionAssociations: [{
+                  eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+                  function: redirectToNonWWW,
+                }],
+                forwardedValues: {
+                  queryString: true
+                }
               }, {
                 pathPattern: '*.*',
                 isDefaultBehavior: false,

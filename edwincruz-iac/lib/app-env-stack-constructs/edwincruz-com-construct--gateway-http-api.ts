@@ -53,6 +53,12 @@ export class HttpApiConstruct extends Construct {
     const webAssetsIntegration = new apigwv2int.HttpUrlIntegration(`${projectKey}WebAssetsIntegration`, assetsPath);
     console.log('URL to Web Assets: ' + assetsPath)
 
+
+    const docsPath = `https://${projectName}--${envLabel}.s3.amazonaws.com/dist/${projectName}/browser/docs`;
+    const webDocsIntegration = new apigwv2int.HttpUrlIntegration(`${projectKey}WebDocsIntegration`, docsPath);
+    console.log('URL to Web Docs: ' + docsPath)
+
+
     this.httpApi = new apigwv2.HttpApi(this, `${projectKey}HttpApi`, {
       createDefaultStage: false,
       defaultIntegration: webBaseIntegration,
@@ -62,6 +68,11 @@ export class HttpApiConstruct extends Construct {
       path: '/assets',
       methods: [apigwv2.HttpMethod.ANY],
       integration: webAssetsIntegration
+    });
+    this.httpApi.addRoutes({
+      path: '/docs',
+      methods: [apigwv2.HttpMethod.ANY],
+      integration: webDocsIntegration
     });
     this.httpApi.addRoutes({
       path: '/',
