@@ -44,22 +44,29 @@ main {
   padding-right: 16px;
 }
 .paddingHorizontal {
-  padding-left:16px;
-  padding-right:16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
+
 .paddingVertical {
-  padding-top:16px;
-  padding-bottom:16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .bottomMargin {
-  margin-bottom:32px;
+  margin-bottom: 32px;
 }
 
 mat-card {
   border-radius: 16px !important;
-  margin-bottom:32px;
+  margin-bottom: 32px;
   display: block;
 }
 
 
+@media (max-width: 600px) {
+  .mat-card-header-text {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

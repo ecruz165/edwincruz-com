@@ -1,15 +1,13 @@
-<mat-card class="example-card">
-  <h2>Recommendations</h2>
-  <h3>INDUSTRY EXPERTS</h3>
-  <p>Accelerate your learning by following these experts and using their published content and courses.</p>
+<mat-card>
+  <h2>Recommended Industry Experts for those looking to accelerate their learning</h2>
 </mat-card>
-
-<mat-card fxLayout="row" *ngFor="let expert of industryExperts" >
+<section fxLayout.md="row wrap">
+<mat-card fxLayout="row" *ngFor="let expert of industryExperts"   fxFlex.md="25">
   <mat-card-header fxFlex="70" >
     <mat-card-title-group >
       <mat-card-title><a href="{{expert.website}}" target="{{expert.target}}"><h3>{{expert.name}}</h3></a></mat-card-title>
       <mat-card-subtitle style="visibility:visible">
-        <mat-chip-list>
+        <mat-chip-list dense>
           <mat-chip *ngFor="let skill of expert.expertise" style="font-size: smaller">
             {{skill}}
           </mat-chip>
@@ -23,3 +21,4 @@
 </mat-card>
 
 
+</section>

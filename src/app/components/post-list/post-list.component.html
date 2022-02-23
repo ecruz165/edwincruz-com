@@ -2,20 +2,17 @@
   <h2>Latest Blog Posts</h2>
 </mat-card>
 
-<mat-card fxLayout.xs="column" fxLayout="row">
+<mat-card fxLayout.xs="column" fxLayoutAlign.xs="none start"  fxLayout="row" fxLayoutAlign.xs="space" fxLayoutAlign="space-between start" fxLayoutGap="32px" fxLayoutGap.gt-sm="16px"
+          *ngFor="let post of postList" >
 
-  <mat-card-content fxFlex="40" style="background-image: url('/assets/stock/stock-001-480.jpg') ; height:320px;width:100%; background-size: cover; background-position: center;">
-    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>
+  <mat-card-content fxFlex="40"  fxFlex.xs="100" >
+    <div style="background-image: url('/assets/stock/stock-001-480.jpg') ; height:320px;width:100%; background-size: cover; background-position: center;"><br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/></div>
   </mat-card-content>
 
-  <mat-card-header fxFlex="60" >
-    <mat-card-title-group >
-      <mat-card-title class="bottomMargin">Recommended hardware specifications for Java and Typescript Development</mat-card-title>
-      <mat-card-subtitle>In 2022, you do not need what is considered currently a high-end computer to do software
-        development. However, if you work on complex projects that require spinning up several components on your local
-        development environment you will benefit from having a mid-level laptop or better.
+  <mat-card-header fxFlex="60" fxFlex.xs="100" >
+      <mat-card-title class="bottomMargin"><a style="text-decoration: none" [href]="'/blog/2022-mar13/' + post.key">{{post.title}}</a></mat-card-title>
+      <mat-card-subtitle>{{post.description}}
       </mat-card-subtitle>
-    </mat-card-title-group>
   </mat-card-header>
 
 </mat-card>

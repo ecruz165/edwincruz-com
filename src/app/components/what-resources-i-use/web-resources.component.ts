@@ -7,11 +7,11 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
   styleUrls: ['./web-resources.component.scss'],
   animations: [
     trigger('visibilityState', [
-      state('hideDetails', style({margin: '0 0 466px 0', minHeight: '78px'})),
-      state('showDetails', style({margin: '0 0 0 0', minHeight: '544px'})),
+      state('hideDetails', style({ minHeight: '78px'})),
+      state('showDetails', style({ minHeight: '78px'})),
       transition('hideDetails => showDetails', [
         group([
-          animate(200, style({margin: '0 0 0 0', minHeight: '544px'})),
+          animate(200, style({ minHeight: '544px'})),
           query('@childVisibilityState', animateChild()),
         ])
       ]),
@@ -19,7 +19,7 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
       transition('showDetails => hideDetails', [
         group([
           query('@childVisibilityState', animateChild()),
-          animate(200, style({margin: '0 0 466px 0', minHeight: '78px'}))
+          animate(200, style({ minHeight: '78px'}))
         ])
       ])
 
@@ -84,7 +84,7 @@ export class WebResourcesComponent implements OnInit {
       ]
     },
     {
-      category: 'Blog/Article Resources',
+      category: 'Blog/Articles',
       items: [
         {
           title: 'InDepth.dev',

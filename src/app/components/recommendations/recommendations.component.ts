@@ -24,7 +24,7 @@ export class RecommendationsComponent implements OnInit {
       picUrl: '/assets/pics/dr-heinz-m-kabutz-200.jpg'
     }, {
       name: 'Eugen Baeldung',
-      expertise: ['Spring REST', 'Spring Data', 'Spring Security'],
+      expertise: ['Java', 'Spring','Security'],
       website: 'https://www.baeldung.com/',
       target: '_external',
       picUrl: '/assets/pics/eugen-baeldung-200.jpg'

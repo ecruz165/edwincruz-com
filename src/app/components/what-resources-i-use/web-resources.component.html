@@ -1,7 +1,8 @@
-<mat-card           style="margin:0 0 466px 0"
+<mat-card
                     [@visibilityState]="visibilityState"
                     (mouseenter)="toggle()"
                     (mouseleave)="toggle()">
+  <!--  style="margin:0 0 466px 0"-->
   <h2>What do I use for learning, keeping up with trends and productivity?</h2>
 
   <mat-card-content style="opacity: 0; display: none;"
@@ -15,7 +16,7 @@
           <mat-panel-description></mat-panel-description>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <mat-selection-list  [multiple]="false">
+          <mat-selection-list  [multiple]="false" dense>
             <mat-list-option *ngFor="let item of resource.items" >
               <div mat-line>{{item.title}}</div>
               <div style="font-size:smaller" mat-line>{{item.description}}</div>

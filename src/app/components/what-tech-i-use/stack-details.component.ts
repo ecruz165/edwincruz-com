@@ -7,11 +7,14 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
   styleUrls: ['./stack-details.component.scss'],
   animations: [
     trigger('visibilityState', [
-      state('hideDetails', style({margin: '0 0 466px 0', minHeight: '78px'})),
-      state('showDetails', style({margin: '0 0 0 0', minHeight: '544px'})),
+      state('hideDetails', style({ minHeight: '78px'})),
+      // margin: '0 0 466px 0',
+      state('showDetails', style({ minHeight: '544px'})),
+      //margin: '0 0 0 0',
       transition('hideDetails => showDetails', [
         group([
-          animate(200, style({margin: '0 0 0 0', minHeight: '544px'})),
+          animate(200, style({ minHeight: '544px'})),
+          //margin: '0 0 0 0',
           query('@childVisibilityState', animateChild()),
         ])
       ]),
@@ -109,7 +112,13 @@ export class StackDetailsComponent implements OnInit {
           lastUsed: '',
           lastUsedDescription: ''
         }, {
-          name: 'Ag-Grid and Ag-Charts',
+          name: 'Ag-Grid',
+          skillLevel: '',
+          since: '',
+          lastUsed: '',
+          lastUsedDescription: ''
+        },{
+          name: 'Ag-Charts',
           skillLevel: '',
           since: '',
           lastUsed: '',

@@ -1,7 +1,8 @@
-<mat-card           style="margin:0 0 466px 0"
+<mat-card
                     [@visibilityState]="visibilityState"
                     (mouseenter)="toggle()"
                     (mouseleave)="toggle()">
+<!--    style="margin:0 0 466px 0"-->
   <h2>What technologies, frameworks, and APIs do I have experience using?</h2>
 
   <mat-card-content style="opacity: 0; display: none;"
@@ -15,7 +16,7 @@
           <mat-panel-description></mat-panel-description>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <mat-list>
+          <mat-list dense>
             <mat-list-item *ngFor="let item of category.items">
               {{item.name}}
             </mat-list-item>

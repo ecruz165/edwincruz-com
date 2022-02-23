@@ -8,11 +8,14 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
   styleUrls: ['./status.component.scss'],
   animations: [
     trigger('visibilityState', [
-      state('hideDetails', style({margin: '0 0 116px 0', minHeight: '52px'})),
-      state('showDetails', style({margin: '0 0 0 0', minHeight: '168px'})),
+      state('hideDetails', style({ minHeight: '52px'})),
+      //margin: '0 0 116px 0',
+      state('showDetails', style({ minHeight: '168px'})),
+      //margin: '0 0 0 0',
       transition('hideDetails => showDetails', [
         group([
-          animate(100, style({margin: '0 0 0 0', minHeight: '168px'})),
+          animate(100, style({ minHeight: '168px'})),
+          // margin: '0 0 0 0',
           query('@childVisibilityState', animateChild()),
         ])
       ]),
@@ -20,7 +23,8 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
       transition('showDetails => hideDetails', [
         group([
           query('@childVisibilityState', animateChild()),
-          animate(100, style({margin: '0 0 116px 0', minHeight: '52px'}))
+          animate(100, style({ minHeight: '52px'}))
+          //margin: '0 0 116px 0',
         ])
       ])
 

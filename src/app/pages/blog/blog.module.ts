@@ -12,6 +12,7 @@ import {MarkdownViewerModule} from "../../modules/markdown-viewer/markdown-viewe
 import { BlogListComponent } from './blog-list/blog-list.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -35,7 +36,7 @@ const routes: Routes = [
     HttpClientModule,
     AppLayoutModule,
     MatCardModule,
-    MarkdownViewerModule
+    MarkdownViewerModule,
   ]
 })
 export class BlogModule {
