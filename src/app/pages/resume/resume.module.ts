@@ -10,6 +10,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCardModule} from "@angular/material/card";
 import {MarkdownViewerModule} from "../../modules/markdown-viewer/markdown-viewer.module";
 import {FontawesomeSetModule} from "../../modules/fontawesome/fontawesome.module";
+import {MaterialModule} from "../../modules/material/material.module";
 
 
 const routes: Routes = [
@@ -26,13 +27,12 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    AppLayoutModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
-    HttpClientModule,
-    AppLayoutModule,
-    MatCardModule,
     MarkdownViewerModule,
-    FontawesomeSetModule
+    FontawesomeSetModule,
+    MaterialModule,
   ]
 })
 export class ResumeModule {

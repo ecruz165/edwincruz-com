@@ -1,16 +1,21 @@
-<section fxLayout="column" fxLayoutAlign="space-between center" class="bottomMargin">
+<section fxLayout="column" fxLayoutAlign="start center" class="bottomMargin">
   <h1 class="mat-display-1" style="margin:8px;">Resume</h1>
   <p><a href="/assets/docs/resume/edwin-m-cruz.pdf" mat-icon-button target="_resume" style="text-decoration:none">
     <fa-icon [icon]="['fas', 'download']" style="font-size:large"></fa-icon>
     Download
   </a></p>
-</section>
 
+  <section style="justify-content:center;">
 
-<section fxLayout="column" fxLayoutAlign="start center">
-  <mat-card style="display:block;max-width:800px;">
-    <mat-card-content>
-      <app-markdown-viewer [pageUrl]="url"></app-markdown-viewer>
-    </mat-card-content>
-  </mat-card>
+    <mat-card fxLayout.xs="column" fxLayout="row" fxLayoutGap="32px" fxLayoutGap.gt-sm="16px"
+              fxFlex.lt-md="100" fxFlex.md="80" fxFlex.lg="65" fxFlex.xl="50">
+
+      <mat-card-content fxFlex="100">
+        <app-markdown-viewer [pageUrl]="url"></app-markdown-viewer>
+      </mat-card-content>
+
+    </mat-card>
+
+  </section>
+
 </section>

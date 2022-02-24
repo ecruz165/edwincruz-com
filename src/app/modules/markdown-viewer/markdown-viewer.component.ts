@@ -8,10 +8,19 @@ import {Observable} from "rxjs";
   templateUrl: './markdown-viewer.component.html',
   styleUrls: ['./markdown-viewer.component.scss']
 })
-export class MarkdownViewerComponent implements OnInit {
-  @Input()
-  pageUrl?: string;
+export class MarkdownViewerComponent {
+  PAGE_URL?:string;
+
   markdown = '';
+
+  @Input()
+  set pageUrl(url: string) {
+    this.PAGE_URL = url;
+    this.loadMarkdown(url);
+  }
+  get pageUrl():string {
+    return this.PAGE_URL!==undefined?this.PAGE_URL:'';
+  }
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private httpClient: HttpClient,) {
   }
@@ -44,14 +53,6 @@ export class MarkdownViewerComponent implements OnInit {
       this.markdown = marked.parse(markdownString);
 
     })
-  }
-
-  ngOnInit(): void {
-    const url = this?.pageUrl;
-    if (url !== undefined && url !== null) {
-
-      this.loadMarkdown(url);
-    }
   }
 
 }

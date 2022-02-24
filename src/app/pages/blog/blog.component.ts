@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {IntentEventPublisherService} from "../../modules/intent-detection/services/intent-event-publisher.service";
-import {IntentInfo} from "../../modules/intent-detection/model/intent-event.interface";
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
+import {BlogService} from "../../services/blog.service";
+import {Blog} from "../../services/blog.model";
 
 @Component({
   selector: 'app-blog',
@@ -10,30 +10,26 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  public intentInfo: IntentInfo | undefined;
-
-  url: string='';
+  url: string = '';
+  blog?: Blog;
 
   constructor(
     @Inject(DOCUMENT) public document: Document,
     private route: ActivatedRoute,
-    private intentPublisher: IntentEventPublisherService) {
-    intentPublisher.event$.subscribe((next) => this.onIntentUpdate(next));
+    private blogService: BlogService) {
   }
 
   ngOnInit(): void {
-
-
     const id = this.route.snapshot.paramMap.get('id');
-    if (id !== undefined && id !== null){
-      this.url = `/docs/blog/${id}.md`;
-      console.log(id);
+    if (id !== undefined && id !== null) {
+      this.blogService.getBlogPostByKey(id)
+        .subscribe(next => {
+          this.blog = next;
+          if (next != undefined){
+            this.url = next.postPath + next.postFileName;
+          }
+        })
     }
-
-  }
-
-  private onIntentUpdate(next: IntentInfo) {
-        this.intentInfo = next;
   }
 
 }

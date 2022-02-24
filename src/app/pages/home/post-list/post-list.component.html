@@ -1,0 +1,18 @@
+<mat-card>
+  <h2>Latest Blog Posts</h2>
+</mat-card>
+
+<mat-card fxLayout.xs="column" fxLayoutAlign.xs="none start"  fxLayout="row" fxLayoutAlign.xs="space" fxLayoutAlign="space-between start" fxLayoutGap="32px" fxLayoutGap.gt-sm="16px"
+          *ngFor="let blog of list" >
+
+  <mat-card-content fxFlex="40"  fxFlex.xs="100" >
+    <div [style]="'background-image: url('+ blog.leadImage +') ; height:300px;width:100%; background-size: cover; background-position: center;'"><br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/>    <br/></div>
+  </mat-card-content>
+
+  <mat-card-header fxFlex="60" fxFlex.xs="100" >
+      <mat-card-title class="bottomMargin"><a style="text-decoration: none" [routerLink]="'/blog/2022-0223/' + blog.key">{{blog.title}}</a></mat-card-title>
+      <mat-card-subtitle>{{blog.description}}
+      </mat-card-subtitle>
+  </mat-card-header>
+
+</mat-card>

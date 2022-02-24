@@ -13,6 +13,7 @@ import {InteractComponent} from "../components/interact/interact.component";
 import {MatCardModule} from "@angular/material/card";
 import {ContactMeDialogComponent} from "../components/interact/contact-me-dialog.component";
 import {QRCodeModule} from "angularx-qrcode";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -28,11 +29,12 @@ import {QRCodeModule} from "angularx-qrcode";
   imports: [
     CommonModule,
     RouterModule,
-    FlexLayoutModule,
-    MaterialModule,
-    MatCardModule,
+    HttpClientModule,
     FontawesomeSetModule,
-    QRCodeModule
+    FlexLayoutModule,
+    MatCardModule,
+    QRCodeModule,
+    MaterialModule
   ]
 })
 export class AppLayoutModule {

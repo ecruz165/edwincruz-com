@@ -1,17 +1,24 @@
-<section fxLayout="column" fxLayoutAlign="space-between center" class="bottomMargin">
+<section fxLayout="column" fxLayoutAlign="start center" class="bottomMargin">
   <h1 class="mat-display-1" style="margin:8px;">Blog</h1>
   <p>Thoughts of a SaSS Product Software Engineer.</p>
-</section>
 
+  <section style="justify-content:center;">
 
+    <mat-card fxLayout="column" fxLayoutGap="32px" fxLayoutGap.gt-sm="16px"
+              fxFlex.lt-md="100" fxFlex.md="80" fxFlex.lg="65" fxFlex.xl="50">
 
-  <section fxLayout="column" fxLayoutAlign="start center">
-     <mat-card  style="display:block;max-width:800px;" >
-        <mat-card-content><app-markdown-viewer  [pageUrl]="url"></app-markdown-viewer></mat-card-content>
-      </mat-card>
+      <mat-card-header>
+        <img [src]="blog?.leadImage" />
+      </mat-card-header>
+      <mat-card-content fxFlex="100">
+        <app-markdown-viewer  [pageUrl]="url"></app-markdown-viewer>
+      </mat-card-content>
+
+    </mat-card>
+
   </section>
 
-
+</section>
 
 
 <!--

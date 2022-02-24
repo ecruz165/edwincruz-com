@@ -88,7 +88,7 @@ export class CdnConstruct extends Construct {
                   queryString: true
                 }
               },     {
-                pathPattern: '/docs/*',
+                pathPattern: '/docs/*/*.md',
                 isDefaultBehavior: false,
                 functionAssociations: [{
                   eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
