@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Blog} from './blog.model';
-import {catchError, filter, map, Observable, throwError} from 'rxjs';
-import {take, tap} from "rxjs/operators";
+import {map, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +13,17 @@ export class BlogService {
   }
 
   public getAllBlogPosts(): Observable<Blog[]> {
-    return this.httpClient.get<Blog[]>('/docs/blog/_blog-data.json')
+    return this.httpClient.get<Blog[]>('/docs/blog/_data.json')
   }
 
   public getBlogPostByKey(key: string) {
-    return this.httpClient.get<Blog[]>('/docs/blog/_blog-data.json')
+    return this.httpClient.get<Blog[]>('/docs/blog/_data.json')
       .pipe(
         map(blogList => {
-          return blogList.find(blog => {
-            return blog.key === key;
-          })
-        }
+            return blogList.find(blog => {
+              return blog.key === key;
+            })
+          }
         )
       );
   }

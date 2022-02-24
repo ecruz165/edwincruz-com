@@ -6,10 +6,7 @@
 
     <mat-card fxLayout="column" fxLayoutGap="32px" fxLayoutGap.gt-sm="16px"
               fxFlex.lt-md="100" fxFlex.md="80" fxFlex.lg="65" fxFlex.xl="50">
-
-      <mat-card-header>
-        <img [src]="blog?.leadImage" />
-      </mat-card-header>
+      <div [style]="'background-image: url('+ blog?.leadImage +');background-size: cover; background-position: center; height:480px;'"></div>
       <mat-card-content fxFlex="100">
         <app-markdown-viewer  [pageUrl]="url"></app-markdown-viewer>
       </mat-card-content>

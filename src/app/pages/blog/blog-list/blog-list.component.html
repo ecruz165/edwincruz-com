@@ -1,4 +1,4 @@
-<section fxLayout="column" fxLayoutAlign="start center" class="bottomMargin">
+<section fxLayout="column" fxLayoutAlign="start center" >
   <h1 class="mat-display-1" style="margin:8px;">Blog</h1>
   <p class="bottomMargin">Thoughts of a SaSS Product Software Engineer.</p>
 
@@ -14,9 +14,9 @@
       </mat-card-content>
 
       <mat-card-header fxFlex="100">
-        <mat-card-title class="bottomMargin"><a style="text-decoration: none"  [routerLink]="'/blog/2022-0223/' + blog.key">{{blog.title}}</a>
+        <mat-card-title class="bottomMargin"><a style="text-decoration: none; "  [routerLink]="'/blog/2022-0223/' + blog.key">{{blog.title}}</a>
         </mat-card-title>
-        <mat-card-subtitle>{{blog.description}}
+        <mat-card-subtitle><i><br/>February 23, 2022 -</i> {{blog.description}}
         </mat-card-subtitle>
       </mat-card-header>
 
