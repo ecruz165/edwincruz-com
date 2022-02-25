@@ -68,3 +68,10 @@ $edwincruz-light-theme-color-set: common.apply-extra-colors($edwincruz-light-the
 h1, h2, h3, h4, h5, h6, p, a, li {
   color: mat.get-color-from-palette($light-theme-foreground-palette, secondary-text);
 }
+
+.mat-menu-item {
+  background: white;
+}
+.mat-menu-item:hover:not([disabled]), .mat-menu-item.cdk-program-focused:not([disabled]), .mat-menu-item.cdk-keyboard-focused:not([disabled]), .mat-menu-item-highlighted:not([disabled]) {
+  background: rgba(244,244,244,.9);
+}

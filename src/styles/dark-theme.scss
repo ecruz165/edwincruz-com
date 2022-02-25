@@ -68,3 +68,10 @@ $edwincruz-dark-theme-set: common.apply-extra-colors($edwincruz-dark-theme, $edw
 h1, h2, h3, h4, h5, h6, p, a, li {
   color: mat.get-color-from-palette($dark-theme-foreground-palette, secondary-text);
 }
+
+.mat-menu-item {
+  background: black;
+}
+.mat-menu-item:hover:not([disabled]), .mat-menu-item.cdk-program-focused:not([disabled]), .mat-menu-item.cdk-keyboard-focused:not([disabled]), .mat-menu-item-highlighted:not([disabled]) {
+  background: rgba(13,13,13,.9);
+}
