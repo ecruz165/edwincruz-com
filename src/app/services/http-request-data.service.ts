@@ -2,6 +2,7 @@ import {Inject, Injectable, Injector, Optional, PLATFORM_ID} from '@angular/core
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
 
+//https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +20,13 @@ export class HttpRequestDataService {
   public getApplicationUrl(): string {
     let url = '';
     if (isPlatformServer(this.platformId)) {
-      const request = this.injector.get(REQUEST);
-      url = request.protocol + '://' + request.get('host');
+      try {
+        const request = this.injector.get(REQUEST);
+        url = request.protocol + '://' + request.get('host');
+      } catch (error) {
+        // try catch needed for prerender to works
+        url = 'http://localhost:4200';
+      }
     } else if (isPlatformBrowser(this.platformId)) {
       const location = window.location;
       url = location.protocol + '//' + location.host;
