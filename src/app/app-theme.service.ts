@@ -1,9 +1,10 @@
 import {Inject, Injectable, Injector, Optional, PLATFORM_ID, Renderer2, RendererFactory2} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
-import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {APP_BASE_HREF, DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
 import {getSunrise, getSunset} from 'sunrise-sunset-js';
-import {IntentInfo} from "./modules/intent-detection/model/intent-event.interface";
 import {BehaviorSubject, filter, Observable} from "rxjs";
+import {HttpRequestDataService} from "./services/http-request-data.service";
 
 interface IThemeMode {
   is_dark: boolean;
@@ -38,8 +39,11 @@ export class AppThemeService {
   public theme$: Observable<IThemeMode> = this.themeBS.asObservable().pipe(filter((val) => !!val));
 
   constructor(
+    private httpRequestDataService: HttpRequestDataService,
     private injector: Injector,
-    @Optional() @Inject(REQUEST) private request: any,
+    @Optional() @Inject(APP_BASE_HREF) private appBaseHref: any,
+    @Optional() @Inject('serverUrl') private serverUrl: string,
+    @Optional() @Inject(REQUEST) private request: Request,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document,
     rendererFactory: RendererFactory2
@@ -89,16 +93,21 @@ export class AppThemeService {
     };
   }
 
+
   private getBaseUrl(): string {
-    let baseUrl = '';
+
+    let baseUrl = this.httpRequestDataService.getApplicationUrl();
+    console.log('getBaseUrl::: ' + baseUrl);
+
     if (isPlatformBrowser(this.platformId)) {
-      const location = window.location;
+      const location = this.document.location;
       baseUrl = `${location.protocol}//${location.hostname}${location.port === "80" ? "" : ":" + location.port}`;
     } else if (isPlatformServer(this.platformId)) {
-      const request = this.injector.get(REQUEST);
-      baseUrl = `${request.protocol}://${request.header("x-forwarded-host")}`;
+      console.log(this.request);
+      baseUrl = `${this.request.protocol}://${this.request.header("x-forwarded-host")}`;
     }
-    return '';
+    console.log('baseUrl::'+baseUrl);
+    return baseUrl;
   }
 
   private onPositionError() {
@@ -156,8 +165,8 @@ export class AppThemeService {
     const baseUrl = this.getBaseUrl();
     this.loadStylesheet('app-styles', baseUrl, `styles.css`, true, true);
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
-    const themeHighlightJS = `stackoverflow-${mode?.is_dark ? 'dark': 'light'}.css`;
-    this.loadStylesheet('app-theme-highlightjs', baseUrl, `/assets/highlight.js/styles/${themeHighlightJS}`, true, true);
+    const themeHighlightJS = `stackoverflow-${mode?.is_dark ? 'dark' : 'light'}.css`;
+    this.loadStylesheet('app-theme-highlight-js', baseUrl, `/assets/highlight.js/styles/${themeHighlightJS}`, true, true);
     if (mode) {
       this.themeBS.next(mode);
     }
@@ -178,5 +187,9 @@ export class AppThemeService {
 
   private getDefaultThemeModeName(): string {
     return this.getTimeOfDay();
+  }
+
+  private getFullApplicationUrl(resource: string){
+    return this.httpRequestDataService.getApplicationUrl() + resource;
   }
 }
