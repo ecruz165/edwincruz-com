@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {HttpRequestDataService} from "../../services/http-request-data.service";
 
 @Component({
   selector: 'app-resume',
@@ -8,8 +10,13 @@ import {Component, OnInit} from '@angular/core';
 export class ResumeComponent implements OnInit {
 
   url = '/docs/resume/edwin-m-cruz.md';
+  baseUrl: string;
+  constructor(private httpClient: HttpClient,
+              private httpRequestDataService: HttpRequestDataService) {
 
-  constructor() {
+
+    this.baseUrl = httpRequestDataService.getApplicationUrl();
+    this.url = this.baseUrl+this.url;
   }
 
   ngOnInit(): void {
