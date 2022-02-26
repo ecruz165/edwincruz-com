@@ -40,10 +40,6 @@ export class AppThemeService {
 
   constructor(
     private httpRequestDataService: HttpRequestDataService,
-    private injector: Injector,
-    @Optional() @Inject(APP_BASE_HREF) private appBaseHref: any,
-    @Optional() @Inject('serverUrl') private serverUrl: string,
-    @Optional() @Inject(REQUEST) private request: Request,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document,
     rendererFactory: RendererFactory2
@@ -95,18 +91,7 @@ export class AppThemeService {
 
 
   private getBaseUrl(): string {
-
     let baseUrl = this.httpRequestDataService.getApplicationUrl();
-    console.log('getBaseUrl::: ' + baseUrl);
-
-    if (isPlatformBrowser(this.platformId)) {
-      const location = this.document.location;
-      baseUrl = `${location.protocol}//${location.hostname}${location.port === "80" ? "" : ":" + location.port}`;
-    } else if (isPlatformServer(this.platformId)) {
-      console.log(this.request);
-      baseUrl = `${this.request.protocol}://${this.request.header("x-forwarded-host")}`;
-    }
-    console.log('baseUrl::'+baseUrl);
     return baseUrl;
   }
 
