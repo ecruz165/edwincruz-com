@@ -1,7 +1,5 @@
-import {Inject, Injectable, Injector, Optional, PLATFORM_ID, Renderer2, RendererFactory2} from '@angular/core';
-import {APP_BASE_HREF, DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { Request } from 'express';
+import {Inject, Injectable, PLATFORM_ID, Renderer2, RendererFactory2} from '@angular/core';
+import {DOCUMENT, isPlatformBrowser, isPlatformServer} from "@angular/common";
 import {getSunrise, getSunset} from 'sunrise-sunset-js';
 import {BehaviorSubject, filter, Observable} from "rxjs";
 import {HttpRequestDataService} from "./services/http-request-data.service";
@@ -91,7 +89,7 @@ export class AppThemeService {
 
 
   private getBaseUrl(): string {
-    let baseUrl = this.httpRequestDataService.getApplicationUrl();
+    let baseUrl = this.httpRequestDataService.getApplicationUrl() + '/';
     return baseUrl;
   }
 
@@ -174,7 +172,7 @@ export class AppThemeService {
     return this.getTimeOfDay();
   }
 
-  private getFullApplicationUrl(resource: string){
+  public getFullApplicationUrl(resource: string) {
     return this.httpRequestDataService.getApplicationUrl() + resource;
   }
 }

@@ -25,7 +25,6 @@ export class HttpRequestDataService {
       const location = window.location;
       url = location.protocol + '//' + location.host;
     }
-
     return url;
   }
 
