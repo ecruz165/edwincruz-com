@@ -8,7 +8,8 @@
               fxFlex.lt-md="100" fxFlex.md="80" fxFlex.lg="65" fxFlex.xl="50">
 
       <mat-card-content fxFlex="100">
-        <app-markdown-viewer [pageUrl]="url"></app-markdown-viewer>
+        <section [innerHTML]="parsedMarkdown"></section>
+
       </mat-card-content>
 
     </mat-card>

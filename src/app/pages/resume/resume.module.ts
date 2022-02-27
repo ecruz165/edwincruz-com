@@ -1,14 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ResumeComponent} from "./resume.component";
-
 import {RouterModule, Routes} from '@angular/router';
 import {ResumeLayoutComponent} from "./resume-layout.component";
 import {AppLayoutModule} from "../../layout/layout.module";
-import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatCardModule} from "@angular/material/card";
-import {MarkdownViewerModule} from "../../modules/markdown-viewer/markdown-viewer.module";
 import {FontawesomeSetModule} from "../../modules/fontawesome/fontawesome.module";
 import {MaterialModule} from "../../modules/material/material.module";
 
@@ -30,7 +26,6 @@ const routes: Routes = [
     AppLayoutModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
-    MarkdownViewerModule,
     FontawesomeSetModule,
     MaterialModule,
   ]
