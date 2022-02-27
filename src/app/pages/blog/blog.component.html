@@ -1,6 +1,6 @@
-<section fxLayout="column" fxLayoutAlign="start center" class="bottomMargin">
+<section fxLayout="column" fxLayoutAlign="start center">
   <h1 class="mat-display-1" style="margin:8px;">Blog</h1>
-  <p>Thoughts of a SaSS Product Software Engineer.</p>
+  <p class="bottomMargin">Thoughts of a SaSS Product Software Engineer.</p>
 
   <section style="justify-content:center;">
 
@@ -8,7 +8,7 @@
               fxFlex.lt-md="100" fxFlex.md="80" fxFlex.lg="65" fxFlex.xl="50">
       <div [style]="'background-image: url('+ blog?.leadImage +');background-size: cover; background-position: center; height:480px;'"></div>
       <mat-card-content fxFlex="100">
-        <app-markdown-viewer  [pageUrl]="url"></app-markdown-viewer>
+        <section [innerHTML]="parsedMarkdown"></section>
       </mat-card-content>
 
     </mat-card>
