@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AppSplashScreenMatrixService} from "./app-splash-screen-matrix.service";
 import {AppLayoutModule} from "./layout/layout.module";
 import {HttpRequestDataService} from "./services/http-request-data.service";
+import {MarkdownConverterService} from "./services/markdown-converter.service";
 
 
 export function showSplashScreen(splashScreenService: AppSplashScreenMatrixService) {
@@ -54,7 +55,8 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
       useFactory: initializeAppTheme,
       multi: true,
       deps: [AppThemeService]
-    }
+    },
+    MarkdownConverterService
   ],
   bootstrap: [AppComponent]
 })
