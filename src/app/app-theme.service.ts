@@ -145,11 +145,11 @@ export class AppThemeService {
   }
 
   private setThemeMode(theme: ITheme | undefined, mode: IThemeMode | undefined) {
-    const baseUrl = this.getBaseUrl();
+    const baseUrl = '/';
     this.loadStylesheet('app-styles', baseUrl, `styles.css`, true, true);
     this.loadStylesheet('app-theme', baseUrl, `${mode?.file_name}`, true, true);
     const themeHighlightJS = `stackoverflow-${mode?.is_dark ? 'dark' : 'light'}.css`;
-    this.loadStylesheet('app-theme-highlight-js', baseUrl, `/assets/highlight.js/styles/${themeHighlightJS}`, true, true);
+    this.loadStylesheet('app-theme-highlight-js', baseUrl, `assets/highlight.js/styles/${themeHighlightJS}`, true, true);
     if (mode) {
       this.themeBS.next(mode);
     }

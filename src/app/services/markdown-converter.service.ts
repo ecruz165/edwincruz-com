@@ -16,11 +16,10 @@ export class MarkdownConverterService {
   }
 
   convert(resourceRelUrl: string): Observable<string> {
-    const markdownUrl = this.composeUMarkdownUrl(resourceRelUrl);
+    const markdownUrl = this.composeMarkdownUrl(resourceRelUrl);
     const parseMarkdown: Promise<string> = this.getMarkdownByPath(markdownUrl)
       .then(this.parseMarkdown)
       .then(this.setValues);
-
     return from(parseMarkdown);
   }
 
@@ -48,7 +47,7 @@ export class MarkdownConverterService {
 
     let html$ = of(marked.parse(markdownString));
     let result = await firstValueFrom(html$).then(value => {
-      return value
+      return value;
     });
     const resultString: string = result.toString();
     return resultString;
@@ -56,18 +55,19 @@ export class MarkdownConverterService {
 
   private async getMarkdownByPath(path: string): Promise<string> {
     // @ts-ignore
-    let markdown$ = this.httpClient.get<string>(path, {responseType: 'text'})
+    let markdown$ = this.httpClient.get<string>(path, {responseType: 'text'});
     let result = await firstValueFrom(markdown$).then(value => {
-      return value
+      return value;
     });
     const resultString: string = result.toString();
     return resultString;
   }
 
-  private composeUMarkdownUrl(resourceRelUrl: string): string {
+  private composeMarkdownUrl(resourceRelUrl: string): string {
     const baseUrl = this.httpRequestDataService.getApplicationUrl();
+    console.log('baseUrl: ' + baseUrl + ', resourceRelUrl:' + resourceRelUrl);
     const url = `${baseUrl}${resourceRelUrl}`;
-    return url
+    return url;
   }
 
 }

@@ -1,6 +1,7 @@
 import {Inject, Injectable, Injector, Optional, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
+import {environment} from "../../environments/environment";
 
 //https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
 @Injectable({
@@ -18,6 +19,9 @@ export class HttpRequestDataService {
    * http://localhost:4200
    */
   public getApplicationUrl(): string {
+    if (environment.production) {
+      return 'https://edwincruz.com';
+    }
     let url = '';
     if (isPlatformServer(this.platformId)) {
       try {

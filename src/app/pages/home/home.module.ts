@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppLayoutModule} from "../../layout/layout.module";
 import {HomeComponent} from "./home.component";
-import {WorkHistoryCarouselComponent} from "../../components/work-history-carousel/work-history-carousel.component";
 import {ProfileSummaryComponent} from "../../components/profile-summary/profile-summary.component";
 import {StackDetailsComponent} from "../../components/what-tech-i-use/stack-details.component";
 import {StatusComponent} from "../../components/what-am-i-up-to/status.component";
@@ -27,8 +26,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-
-    WorkHistoryCarouselComponent,
     ProfileSummaryComponent,
     StackDetailsComponent,
     StatusComponent,
