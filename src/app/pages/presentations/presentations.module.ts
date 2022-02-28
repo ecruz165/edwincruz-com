@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {PresentationsComponent} from "./presentations.component";
 import {SlidesComponent} from '../../components/slides/slides.component';
 

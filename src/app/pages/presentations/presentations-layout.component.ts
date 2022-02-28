@@ -1,8 +1,4 @@
-import {CommonModule} from '@angular/common';
-import {Component, NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-
-import {FlexLayoutModule} from '@angular/flex-layout';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-presentations-layout',

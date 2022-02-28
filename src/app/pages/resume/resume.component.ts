@@ -14,7 +14,8 @@ export class ResumeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.markdownConverterService.convert('/docs/resume/edwin-m-cruz.md').subscribe(next => {
+    this.markdownConverterService.convert('/docs/resume/edwin-m-cruz.md')
+      .subscribe(next => {
       this.parsedMarkdown = next;
     });
   }

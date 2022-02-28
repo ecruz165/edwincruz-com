@@ -17,7 +17,7 @@ function isDefined<T>(arg: T | null | undefined): arg is T {
 })
 export class BlogComponent implements OnInit {
   blog?: Blog;
-  parsedMarkdown: string = '';
+  parsedMarkdown?: string;
 
   constructor(
     private route: ActivatedRoute,
