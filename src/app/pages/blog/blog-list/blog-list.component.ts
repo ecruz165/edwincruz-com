@@ -10,13 +10,14 @@ import {Blog} from "../../../services/blog.model";
 export class BlogListComponent implements OnInit {
   list?:Blog[];
 
-  constructor(blogService: BlogService) {
-    blogService.getAllBlogPosts().subscribe(next => {
-      this.list = next;
-    });
+  constructor(
+    private blogService: BlogService) {
   }
 
   ngOnInit(): void {
+    this.blogService.getAllBlogPosts().subscribe(next => {
+      this.list = next;
+    });
   }
 
 }

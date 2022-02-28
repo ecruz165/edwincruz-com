@@ -32,7 +32,7 @@ Tech leader and sole contributor as full-time volunteer for IYM which is a non-p
 ### Kinesso / IPG Mediabrands ( April 2019 - March 2020 )
 Java Tech Lead ( CONTRACT via Motion Recruitment )
 
-Led Angular/Java full stack development for two major products with hands on responsibilities. Products have both UI and API exposed to customers. Worked closely with product team supporting and supplying technical support with the planning of new features. Responsible for a team of ten offshore resources to deliver quality software in two-week sprints. Produce tech road maps of non-functional requirements and tech-debt incurred. Tech stack includes Angular, Spring boot, MySQL, Redis and Docker on the Amazon Web Services platform. Tools used in addition to tech stack: Slack, Sonar, JFrog Artifactory, Jenkins, Test Rails, AppDynamics, Atlassian Jira & Confluence, GitHub, Splunk, Intellij, JProbe
+Led Angular/Java full stack development for two major SaaS products with hands on responsibilities. Products have both UI and API exposed to customers. Worked closely with product team supporting and supplying technical support with the planning of new features. Responsible for a team of ten offshore resources to deliver quality software in two-week sprints. Produce tech road maps of non-functional requirements and tech-debt incurred. Tech stack includes Angular, Spring boot, MySQL, Redis and Docker on the Amazon Web Services platform. Tools used in addition to tech stack: Slack, Sonar, JFrog Artifactory, Jenkins, Test Rails, AppDynamics, Atlassian Jira & Confluence, GitHub, Splunk, Intellij, JProbe
 
 ---
 ### Freelance and Philanthropic Activities

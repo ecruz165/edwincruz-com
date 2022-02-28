@@ -16,7 +16,6 @@ function isDefined<T>(arg: T | null | undefined): arg is T {
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  url: string = '';
   blog?: Blog;
   parsedMarkdown: string = '';
 
@@ -27,13 +26,13 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.getBlogKeyFromPath()
-        .pipe(
-          switchMap(key => this.findBlogByKey(key)),
-          switchMap( blog => this.loadBlogAsConvertedMarkdown(blog.postPath+blog.postFileName))
-        ).subscribe( next =>{
-          this.parsedMarkdown = next;
-      })
+    this.getBlogKeyFromPath()
+      .pipe(
+        switchMap(key => this.findBlogByKey(key)),
+        switchMap(blog => this.loadBlogAsConvertedMarkdown(blog.postPath + blog.postFileName))
+      ).subscribe(next => {
+      this.parsedMarkdown = next;
+    })
   }
 
   private getBlogKeyFromPath(): Observable<string> {
@@ -50,7 +49,7 @@ export class BlogComponent implements OnInit {
       .pipe(
         filter(isDefined),
         take(1),
-        tap(blog=> this.blog = blog)
+        tap(blog => this.blog = blog)
       )
   }
 
