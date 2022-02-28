@@ -65,7 +65,6 @@ export class MarkdownConverterService {
 
   private composeMarkdownUrl(resourceRelUrl: string): string {
     const baseUrl = this.httpRequestDataService.getApplicationUrl();
-    console.log('baseUrl: ' + baseUrl + ', resourceRelUrl:' + resourceRelUrl);
     const url = `${baseUrl}${resourceRelUrl}`;
     return url;
   }
