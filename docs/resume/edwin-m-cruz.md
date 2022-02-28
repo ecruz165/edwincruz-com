@@ -17,7 +17,7 @@ Atlassian Jira, Jetbrains IntelliJ, Visual Studio Code, Lucid Charts, Balsamiq M
 ### Inspiring Young Minds ( since April 2020 )
 #### https://iymscholars.org
 
-Tech Lead Volunteer
+*Tech Lead Volunteer*
 
 Tech leader and sole contributor as full-time volunteer for IYM which is a non-profit organization. Enabled organization to pivot during pandemic to support their community via a custom-built platform and further enhanced automations needed for key business processes through the integration of various third-party APIs. 
 - Developing Portal and Microservices backend for organization on the AWS Cloud using Google Angular for frontend and Spring framework backend. 
@@ -30,7 +30,8 @@ Tech leader and sole contributor as full-time volunteer for IYM which is a non-p
 
 ---
 ### Kinesso / IPG Mediabrands ( April 2019 - March 2020 )
-Java Tech Lead ( CONTRACT via Motion Recruitment )
+
+*Java Tech Lead ( CONTRACT via Motion Recruitment )*
 
 Led Angular/Java full stack development for two major SaaS products with hands on responsibilities. Products have both UI and API exposed to customers. Worked closely with product team supporting and supplying technical support with the planning of new features. Responsible for a team of ten offshore resources to deliver quality software in two-week sprints. Produce tech road maps of non-functional requirements and tech-debt incurred. Tech stack includes Angular, Spring boot, MySQL, Redis and Docker on the Amazon Web Services platform. Tools used in addition to tech stack: Slack, Sonar, JFrog Artifactory, Jenkins, Test Rails, AppDynamics, Atlassian Jira & Confluence, GitHub, Splunk, Intellij, JProbe
 
