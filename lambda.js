@@ -14,6 +14,7 @@ const binaryMimeTypes = [
   "text/html",
   "text/javascript",
   "text/plain",
+  "text/md",
   "audio/mp3",
   "audio/mpeg",
   "text/text",
