@@ -6,11 +6,11 @@
     <app-interact></app-interact>
   </section>
   <mat-toolbar  fxFlexOrder="3" fxFlex.xs="100" fxFlex.sm="30" fxFlexOrder.sm="2" fxFlex.gt-sm="35" fxFlexOrder.gt-sm="2" fxFlexAlign="center" style="padding:0;">
-    <span [className]="selectedMenuItem==='blog' ? 'selectedMenuItem' : ''"  [routerLink]="'/blog'" (click)="onClick('blog')"><fa-icon [icon]="['fas', 'blog']" title="Blog"></fa-icon></span>
+    <span [className]="selectedMenuItem==='blog' ? 'selectedMenuItem' : ''"   (click)="onClick('blog')"><fa-icon [icon]="['fas', 'blog']" title="Blog"></fa-icon></span>
     <span>|</span>
-    <span [className]="selectedMenuItem==='home' ? 'selectedMenuItem' : ''"  [routerLink]="'/home'" (click)="onClick('home')"><fa-icon [icon]="['fas', 'home']" title="Home"></fa-icon></span>
+    <span [className]="selectedMenuItem==='home' ? 'selectedMenuItem' : ''"   (click)="onClick('home')"><fa-icon [icon]="['fas', 'home']" title="Home"></fa-icon></span>
     <span>|</span>
-    <span [className]="selectedMenuItem==='resume' ? 'selectedMenuItem' : ''"  [routerLink]="'/resume'" (click)="onClick('resume')"><fa-icon [icon]="['fas', 'file']" title="Resume"></fa-icon></span>
+    <span [className]="selectedMenuItem==='resume' ? 'selectedMenuItem' : ''"   (click)="onClick('resume')"><fa-icon [icon]="['fas', 'file']" title="Resume"></fa-icon></span>
   </mat-toolbar>
 
 

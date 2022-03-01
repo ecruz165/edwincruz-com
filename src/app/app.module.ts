@@ -11,6 +11,7 @@ import {AppSplashScreenMatrixService} from "./app-splash-screen-matrix.service";
 import {AppLayoutModule} from "./layout/layout.module";
 import {HttpRequestDataService} from "./services/http-request-data.service";
 import {MarkdownConverterService} from "./services/markdown-converter.service";
+import {PageNotFoundComponent} from "./pages/error/page-not-found/page-not-found.component";
 
 
 export function showSplashScreen(splashScreenService: AppSplashScreenMatrixService) {
@@ -29,6 +30,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
   declarations: [
 
     AppComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

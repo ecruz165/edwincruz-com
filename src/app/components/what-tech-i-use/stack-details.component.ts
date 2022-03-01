@@ -7,13 +7,13 @@ import {animate, animateChild, group, query, state, style, transition, trigger} 
   styleUrls: ['./stack-details.component.scss'],
   animations: [
     trigger('visibilityState', [
-      state('hideDetails', style({ minHeight: '78px'})),
+      state('hideDetails', style({minHeight: '78px'})),
       // margin: '0 0 466px 0',
-      state('showDetails', style({ minHeight: '544px'})),
+      state('showDetails', style({minHeight: '544px'})),
       //margin: '0 0 0 0',
       transition('hideDetails => showDetails', [
         group([
-          animate(200, style({ minHeight: '544px'})),
+          animate(200, style({minHeight: '544px'})),
           //margin: '0 0 0 0',
           query('@childVisibilityState', animateChild()),
         ])
@@ -46,8 +46,8 @@ export class StackDetailsComponent implements OnInit {
   toggle() {
     this.viewable = !this.viewable;
     this.visibilityState = this.viewable ? 'showDetails' : 'hideDetails';
-    console.log(this.viewable);
   }
+
   toolset = [
     {
       category: 'Languages',
@@ -117,7 +117,7 @@ export class StackDetailsComponent implements OnInit {
           since: '',
           lastUsed: '',
           lastUsedDescription: ''
-        },{
+        }, {
           name: 'Ag-Charts',
           skillLevel: '',
           since: '',

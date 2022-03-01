@@ -36,9 +36,9 @@ export class BlogComponent implements OnInit {
   }
 
   private getBlogKeyFromPath(): Observable<string> {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== undefined && id !== null && id.length ! > 10) {
-      return of(id);
+    const key = this.route.snapshot.paramMap.get('key');
+    if (key !== undefined && key !== null && key.length ! > 10) {
+      return of(key);
     } else {
       throw Error('invalid blog key');
     }

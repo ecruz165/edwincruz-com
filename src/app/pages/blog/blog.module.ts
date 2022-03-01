@@ -2,29 +2,43 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {BlogComponent} from "./blog.component";
 import {RouterModule, Routes} from '@angular/router';
-import {BlogLayoutComponent} from "./blog-layout.component";
 import {AppLayoutModule} from "../../layout/layout.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BlogListComponent} from './blog-list/blog-list.component';
 import {MaterialModule} from "../../modules/material/material.module";
 import {FontawesomeSetModule} from "../../modules/fontawesome/fontawesome.module";
+import {PageNotFoundComponent} from "../error/page-not-found/page-not-found.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: BlogListComponent
+    pathMatch: 'full',
+    component: BlogListComponent,
+  },
+  {
+    path: ':dateString',
+    children: [
+      {
+        path: '',
+        component: PageNotFoundComponent
+      },
+      {
+        path: ':key',
+        component: BlogComponent,
+      }
+    ]
   }, {
-    path: ':dateString/:id',
-    component: BlogComponent
+    path: '**',
+    component: PageNotFoundComponent
   }
 ]
 
 @NgModule({
   declarations: [
     BlogComponent,
-    BlogLayoutComponent,
-    BlogListComponent
+    BlogListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +47,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FontawesomeSetModule,
     MaterialModule,
-
   ]
 })
 export class BlogModule {

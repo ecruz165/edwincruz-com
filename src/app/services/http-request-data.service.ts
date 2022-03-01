@@ -19,9 +19,9 @@ export class HttpRequestDataService {
    * http://localhost:4200
    */
   public getApplicationUrl(): string {
-    if (environment.production) {
-      return 'https://edwincruz.com';
-    }
+//    if (environment.production) {
+//      return 'https://edwincruz.com';
+//    }
     let url = '';
     if (isPlatformServer(this.platformId)) {
       try {
