@@ -82,19 +82,19 @@ export class HttpApiConstruct extends Construct {
 
     // noticed each route that shares a method required unique integration
     this.addRoute(
-      'Blog', apigwv2.HttpMethod.GET,true,
+      'Blog', apigwv2.HttpMethod.GET,true, 3,
       `${projectKey}AngularIntegrationBlog`, lambdaFunction);
 
     this.addRoute(
-      'Home', apigwv2.HttpMethod.GET, false,
+      'Home', apigwv2.HttpMethod.GET, false, 1,
       `${projectKey}AngularIntegrationHome`, lambdaFunction);
 
     this.addRoute(
-      'Resume', apigwv2.HttpMethod.GET,false,
+      'Resume', apigwv2.HttpMethod.GET,false,1,
       `${projectKey}AngularIntegrationResume`, lambdaFunction);
 
     this.addRoute(
-      'Presentations', apigwv2.HttpMethod.GET,true,
+      'Presentations', apigwv2.HttpMethod.GET,true,2,
       `${projectKey}AngularIntegrationPresentations`, lambdaFunction);
 
     const customDomain = new apigwv2.DomainName(this, 'DomainName', {
@@ -131,23 +131,27 @@ export class HttpApiConstruct extends Construct {
 
   }
 
-  private addRoute(pathName: string, methodTrigger: apigwv2.HttpMethod, isGreedy:boolean, integrationName: string, lambdaFunction: lambda.IFunction) {
-    const targetIntegration = new apigwv2int.HttpLambdaIntegration(integrationName + pathName, lambdaFunction, {
-      parameterMapping: new apigwv2.ParameterMapping()
-        .overwritePath(apigwv2.MappingValue.requestPath())
-    });
-    this.httpApi.addRoutes({
-      path: `/${pathName.toLowerCase()}`,
-      methods: [methodTrigger],
-      integration: targetIntegration
-    });
-    if (isGreedy){
-      this.httpApi.addRoutes({
-        path: `/${pathName.toLowerCase()}/{proxy+}`,
-        methods: [methodTrigger],
-        integration: targetIntegration
-      });
+  private addRoute(pathName: string, methodTrigger: apigwv2.HttpMethod, isGreedy:boolean, depth: number, integrationName: string, lambdaFunction: lambda.IFunction) {
+      for (let i=0;i<depth;i++) {
+        const targetIntegration = new apigwv2int.HttpLambdaIntegration(integrationName + pathName+'L'+i, lambdaFunction, {
+          parameterMapping: new apigwv2.ParameterMapping()
+            .overwritePath(apigwv2.MappingValue.requestPath())
+        });
+        this.httpApi.addRoutes({
+          path: this.generatePath(pathName.toLowerCase(), i, depth, isGreedy),
+          methods: [methodTrigger],
+          integration: targetIntegration
+        });
+      }
+  }
+
+  private generatePath(basePath: string, targetDepth: number, maxDepth: number, isGreedy: boolean) {
+    let path: string = '';
+    for (let j=0; j <= targetDepth; j++) {
+      path = path + ( j===0 ? `/${basePath}` : (isGreedy && j==maxDepth-1) ? `/{proxy+}` : `/{key${j}}` );
+      console.log(path);
     }
+    return path;
   }
 
 }
