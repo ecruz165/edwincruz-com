@@ -26,7 +26,11 @@ export class HttpRequestDataService {
     if (isPlatformServer(this.platformId)) {
       try {
         const request = this.injector.get(REQUEST);
-        url = request.protocol + '://' + request.get('host');
+        if (!environment.production) {
+          url =  'https://edwincruz.com';
+        } else {
+          url = request.protocol + '://' + request.get('host');
+        }
       } catch (error) {
         // try catch needed for prerender to works
       }
