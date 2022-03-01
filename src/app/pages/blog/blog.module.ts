@@ -6,7 +6,6 @@ import {AppLayoutModule} from "../../layout/layout.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BlogListComponent} from './blog-list/blog-list.component';
 import {MaterialModule} from "../../modules/material/material.module";
-import {FontawesomeSetModule} from "../../modules/fontawesome/fontawesome.module";
 import {PageNotFoundComponent} from "../error/page-not-found/page-not-found.component";
 
 
@@ -45,7 +44,6 @@ const routes: Routes = [
     AppLayoutModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
-    FontawesomeSetModule,
     MaterialModule,
   ]
 })
