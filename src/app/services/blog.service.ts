@@ -12,10 +12,11 @@ export class BlogService implements OnInit {
 
   constructor(private httpClient: HttpClient,
               private httpRequestDataService: HttpRequestDataService) {
+    this.baseUrl = this.httpRequestDataService.getApplicationUrl();
   }
 
   ngOnInit(): void {
-    this.baseUrl = this.httpRequestDataService.getApplicationUrl();
+
   }
 
   public getAllBlogPosts(): Observable<Blog[]> {

@@ -14,14 +14,13 @@ export class TransferStateInterceptor implements HttpInterceptor {
   ) {
   }
 
-  // @ts-ignore
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     // For this demo application, we will only worry about State Transfer for get requests.
     if (request.method !== 'GET') {
       return next.handle(request);
     }
-
 
     // Use the request url as the key.
     const stateKey: StateKey<string> = makeStateKey<string>(request.url);
@@ -32,6 +31,7 @@ export class TransferStateInterceptor implements HttpInterceptor {
         tap((value: any) => this.transferState.set(stateKey, value.statusText))
       );
     }
+
     // For any http requests made in the browser, first check State Transfer for a
     // response corresponding to the request url.
     if (isPlatformBrowser(this.platformId)) {
@@ -48,5 +48,7 @@ export class TransferStateInterceptor implements HttpInterceptor {
         return next.handle(request);
       }
     }
+
+    return next.handle(request);
   }
 }

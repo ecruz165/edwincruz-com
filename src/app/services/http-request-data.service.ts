@@ -29,9 +29,8 @@ export class HttpRequestDataService {
         url = request.protocol + '://' + request.get('host');
       } catch (error) {
         // try catch needed for prerender to works
-        url = 'http://localhost:4200';
       }
-    } else if (isPlatformBrowser(this.platformId)) {
+    } else  {
       const location = window.location;
       url = location.protocol + '//' + location.host;
     }
