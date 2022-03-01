@@ -82,19 +82,19 @@ export class HttpApiConstruct extends Construct {
 
     // noticed each route that shares a method required unique integration
     this.addRoute(
-      'Blog', apigwv2.HttpMethod.GET,
+      'Blog', apigwv2.HttpMethod.GET,true,
       `${projectKey}AngularIntegrationBlog`, lambdaFunction);
 
     this.addRoute(
-      'Home', apigwv2.HttpMethod.GET,
+      'Home', apigwv2.HttpMethod.GET, false,
       `${projectKey}AngularIntegrationHome`, lambdaFunction);
 
     this.addRoute(
-      'Resume', apigwv2.HttpMethod.GET,
+      'Resume', apigwv2.HttpMethod.GET,false,
       `${projectKey}AngularIntegrationResume`, lambdaFunction);
 
     this.addRoute(
-      'Presentations', apigwv2.HttpMethod.GET,
+      'Presentations', apigwv2.HttpMethod.GET,true,
       `${projectKey}AngularIntegrationPresentations`, lambdaFunction);
 
     const customDomain = new apigwv2.DomainName(this, 'DomainName', {
@@ -131,16 +131,23 @@ export class HttpApiConstruct extends Construct {
 
   }
 
-  private addRoute(pathName: string, methodTrigger: apigwv2.HttpMethod, integrationName: string, lambdaFunction: lambda.IFunction) {
+  private addRoute(pathName: string, methodTrigger: apigwv2.HttpMethod, isGreedy:boolean, integrationName: string, lambdaFunction: lambda.IFunction) {
     const targetIntegration = new apigwv2int.HttpLambdaIntegration(integrationName + pathName, lambdaFunction, {
       parameterMapping: new apigwv2.ParameterMapping()
         .overwritePath(apigwv2.MappingValue.requestPath())
     });
     this.httpApi.addRoutes({
-      path: '/' + pathName.toLowerCase(),
+      path: `/${pathName.toLowerCase()}`,
       methods: [methodTrigger],
       integration: targetIntegration
     });
+    if (isGreedy){
+      this.httpApi.addRoutes({
+        path: `/${pathName.toLowerCase()}/{proxy+}`,
+        methods: [methodTrigger],
+        integration: targetIntegration
+      });
+    }
   }
 
 }
