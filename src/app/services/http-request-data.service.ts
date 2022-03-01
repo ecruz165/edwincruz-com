@@ -26,7 +26,7 @@ export class HttpRequestDataService {
     if (isPlatformServer(this.platformId)) {
       try {
         const request = this.injector.get(REQUEST);
-        if (!environment.production) {
+        if (environment.production) {
           url =  'https://edwincruz.com';
         } else {
           url = request.protocol + '://' + request.get('host');
