@@ -35,7 +35,7 @@ export class TransferStateInterceptor implements HttpInterceptor {
     // For any http requests made in the browser, first check State Transfer for a
     // response corresponding to the request url.
     if (isPlatformBrowser(this.platformId)) {
-      const transferStateResponse = this.transferState.get<any>(stateKey, null);
+      const transferStateResponse = this.transferState.get<any>(stateKey, '');
       if (transferStateResponse) {
         const response = new HttpResponse({body: transferStateResponse, status: 200});
 
