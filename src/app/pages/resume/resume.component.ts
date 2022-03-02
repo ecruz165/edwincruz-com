@@ -10,7 +10,8 @@ import {MarkdownConverterService} from "../../services/markdown-converter.servic
 export class ResumeComponent implements OnInit {
   parsedMarkdown?: string;
 
-  constructor(private markdownConverterService: MarkdownConverterService) {
+  constructor(
+    private markdownConverterService: MarkdownConverterService) {
   }
 
   ngOnInit(): void {
