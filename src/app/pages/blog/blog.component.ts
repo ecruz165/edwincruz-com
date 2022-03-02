@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../services/blog.service";
 import {Blog} from "../../services/blog.model";
 import {MarkdownConverterService} from "../../services/markdown-converter.service";
-import {filter, Observable, of, switchMap} from "rxjs";
+import {filter, map, Observable, of, switchMap} from "rxjs";
 import {take, tap} from "rxjs/operators";
 
 function isDefined<T>(arg: T | null | undefined): arg is T {
@@ -26,18 +26,19 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBlogKeyFromPath()
+   this.getBlogKeyFromPath()
       .pipe(
         switchMap(key => this.findBlogByKey(key)),
-        switchMap(blog => this.loadBlogAsConvertedMarkdown(blog.postPath + blog.postFileName))
+        switchMap(blog => this.markdownConverterService.convert(blog.postPath + blog.postFileName))
       ).subscribe(next => {
       this.parsedMarkdown = next;
     })
+
   }
 
   private getBlogKeyFromPath(): Observable<string> {
     const key = this.route.snapshot.paramMap.get('key');
-    if (key !== undefined && key !== null && key.length ! > 10) {
+    if (key !== undefined && key !== null) {
       return of(key);
     } else {
       throw Error('invalid blog key');
@@ -51,10 +52,6 @@ export class BlogComponent implements OnInit {
         take(1),
         tap(blog => this.blog = blog)
       )
-  }
-
-  private loadBlogAsConvertedMarkdown(url: string): Observable<string> {
-    return this.markdownConverterService.convert(url);
   }
 
 }
