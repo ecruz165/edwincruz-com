@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from "./layout/layout/layout.component";
+import {PageNotFoundComponent} from "./pages/error/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/presentations/presentations.module').then(m => m.PresentationsModule)
       }
     ]
+  }, {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
