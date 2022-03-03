@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {BlogComponent} from "./blog.component";
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes, UrlSegment} from '@angular/router';
 import {AppLayoutModule} from "../../layout/layout.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BlogListComponent} from './blog-list/blog-list.component';
@@ -16,17 +16,19 @@ const routes: Routes = [
     component: BlogListComponent,
   },
   {
-    path: ':dateString',
-    children: [
-      {
-        path: '',
-        component: PageNotFoundComponent
-      },
-      {
-        path: ':key',
-        component: BlogComponent,
+    matcher: (url) => {
+      if (url.length === 1 ) {
+        return {
+          consumed: url,
+          posParams: {
+            key: new UrlSegment(url[0].path, {})
+          }
+        };
       }
-    ]
+
+      return null;
+    },
+    component: BlogComponent
   }
 ]
 

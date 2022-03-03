@@ -26,6 +26,6 @@ export class BlogListComponent implements OnInit {
   }
 
   onClick(blog: Blog) {
-    this.router.navigateByUrl(`/blog/2022-0301/${blog.key}`);
+    this.router.navigateByUrl(`/blog/${blog.key}`);
   }
 }
