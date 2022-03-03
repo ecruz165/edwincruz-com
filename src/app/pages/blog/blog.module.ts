@@ -27,9 +27,6 @@ const routes: Routes = [
         component: BlogComponent,
       }
     ]
-  }, {
-    path: '**',
-    component: PageNotFoundComponent
   }
 ]
 

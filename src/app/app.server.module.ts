@@ -3,23 +3,17 @@ import {ServerModule, ServerTransferStateModule} from '@angular/platform-server'
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
 import {FlexLayoutServerModule} from "@angular/flex-layout/server";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {UniversalRelativeInterceptor} from "./interceptors/universal-relative.interceptor";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   imports: [
     AppModule,
     ServerModule,
-    FlexLayoutServerModule,
     ServerTransferStateModule,
+    FlexLayoutServerModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UniversalRelativeInterceptor,
-      multi: true
-    },
-],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppServerModule {
