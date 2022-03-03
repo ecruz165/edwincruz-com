@@ -11,6 +11,7 @@ import {AppLayoutModule} from "./layout/layout.module";
 import {HttpRequestDataService} from "./services/http-request-data.service";
 import {MarkdownConverterService} from "./services/markdown-converter.service";
 import {UniversalRelativeInterceptor} from "./interceptors/universal-relative.interceptor";
+import {BrowserModule} from "@angular/platform-browser";
 
 
 export function showSplashScreen(splashScreenService: AppSplashScreenMatrixService) {
@@ -30,6 +31,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     AppComponent,
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,

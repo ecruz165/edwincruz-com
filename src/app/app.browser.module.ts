@@ -8,7 +8,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 @NgModule({
   imports: [
     AppModule,
-    BrowserModule,
+
     BrowserTransferStateModule,
     FlexLayoutModule,
     BrowserModule.withServerTransition({appId: 'serverApp'})
