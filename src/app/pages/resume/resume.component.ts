@@ -1,5 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {MarkdownConverterService} from "../../services/markdown-converter.service";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+
+
+function isDefined(next: string) {
+  if (next !== undefined && next !== null) {
+    return true;
+  }
+  return false;
+}
 
 //https://stackoverflow.com/questions/35763730/difference-between-constructor-and-ngoninit
 @Component({
@@ -8,17 +17,21 @@ import {MarkdownConverterService} from "../../services/markdown-converter.servic
   styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
-  parsedMarkdown?: string;
+  parsedMarkdown: SafeHtml = '';
 
   constructor(
-    private markdownConverterService: MarkdownConverterService) {
+    private markdownConverterService: MarkdownConverterService,
+    private sanitized: DomSanitizer) {
   }
 
   ngOnInit(): void {
+
     this.markdownConverterService.convert('/docs/resume/edwin-m-cruz.md')
       .subscribe(next => {
-      this.parsedMarkdown = next;
-    });
+        if (isDefined(next)) {
+          this.parsedMarkdown = this.sanitized.bypassSecurityTrustHtml(next);
+        }
+      });
   }
 
 }
