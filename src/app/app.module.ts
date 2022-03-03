@@ -1,17 +1,16 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {AppThemeService} from "./app-theme.service";
-//import {TransferStateInterceptor} from "./interceptors/transfer-state.interceptor";
+import {TransferStateInterceptor} from "./interceptors/transfer-state.interceptor";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppSplashScreenMatrixService} from "./app-splash-screen-matrix.service";
 import {AppLayoutModule} from "./layout/layout.module";
 import {HttpRequestDataService} from "./services/http-request-data.service";
 import {MarkdownConverterService} from "./services/markdown-converter.service";
 import {UniversalRelativeInterceptor} from "./interceptors/universal-relative.interceptor";
-import {environment} from "../environments/environment";
 
 
 export function showSplashScreen(splashScreenService: AppSplashScreenMatrixService) {
@@ -31,7 +30,7 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
     AppComponent,
   ],
   imports: [
-    environment.production ? BrowserAnimationsModule : NoopAnimationsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     AppLayoutModule,
@@ -42,11 +41,11 @@ export function initializeAppTheme(appThemeService: AppThemeService) {
       provide: HTTP_INTERCEPTORS,
       useClass: UniversalRelativeInterceptor,
       multi: true
-    },  /*   {
+    }, {
       provide: HTTP_INTERCEPTORS,
       useClass: TransferStateInterceptor,
       multi: true
-    },*/{
+    },{
       provide: APP_INITIALIZER,
       useFactory: showSplashScreen,
       multi: true,
