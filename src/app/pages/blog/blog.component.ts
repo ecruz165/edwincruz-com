@@ -5,7 +5,7 @@ import {Blog} from "../../services/blog.model";
 import {MarkdownConverterService} from "../../services/markdown-converter.service";
 import {filter, Observable, of, switchMap} from "rxjs";
 import {take, tap} from "rxjs/operators";
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {DomSanitizer, Meta, SafeHtml, Title} from "@angular/platform-browser";
 
 function isDefined<T>(arg: T | null | undefined): arg is T {
   return arg !== null && arg !== undefined;
@@ -24,13 +24,25 @@ export class BlogComponent implements OnInit {
     private route: ActivatedRoute,
     private blogService: BlogService,
     private markdownConverterService: MarkdownConverterService,
-    private sanitized: DomSanitizer) {
+    private sanitized: DomSanitizer,
+    private titleService: Title,
+    private metaTagService: Meta
+  ) {
   }
 
   ngOnInit(): void {
+
     this.getBlogKeyFromPath()
       .pipe(
         switchMap(key => this.findBlogByKey(key)),
+        tap (blog => {
+          this.titleService.setTitle(blog.title);
+          this.metaTagService.updateTag(
+            {
+              name: 'description',
+              content: blog.description
+            });
+        }),
         switchMap(blog => this.markdownConverterService.convert(blog.postPath + blog.postFileName))
       ).subscribe(next => {
       if (isDefined(next)) {
