@@ -17,9 +17,11 @@ Atlassian Jira, Jetbrains IntelliJ, Visual Studio Code, Lucid Charts, Balsamiq M
 ### Inspiring Young Minds ( since April 2020 )
 #### https://iymscholars.org
 
-*Tech Lead Volunteer*
+*Tech Lead Volunteer* / Partner of SaaS Product
 
-Tech leader and sole contributor as full-time volunteer for IYM which is a non-profit organization. Enabled organization to pivot during pandemic to support their community via a custom-built platform and further enhanced automations needed for key business processes through the integration of various third-party APIs. 
+Started out as a Tech advisor and then became a sole contributor as full-time volunteer for IYM which is a non-profit organization. Enabled organization to pivot to
+support their community via a custom-built platform and further enhanced automations needed for key business processes through the integration of
+various third-party APIs. Became fully invested and built platform to be a SaaS Product for similar organizations.
 - Developing Portal and Microservices backend for organization on the AWS Cloud using Google Angular for frontend and Spring framework backend. 
 - Integrated various REST API into portal: Zoom, Twilio, MailChimp, Jotform and Airtable.
 - Conducted business process mapping, stakeholder analysis sessions and wire-framed main use cases. 
