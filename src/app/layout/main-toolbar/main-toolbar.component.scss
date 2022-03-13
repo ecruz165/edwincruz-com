@@ -1,8 +1,13 @@
 mat-toolbar{
-  max-width:320px;
+  min-width: 380px;
+  width:75%;
   border-radius: 24px;
   justify-content:space-around;
   margin: 32px 0;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+ height:unset;
+  padding: 8px 0;
 }
 
 .bottomMargin {

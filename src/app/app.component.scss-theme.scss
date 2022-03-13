@@ -23,6 +23,9 @@
 
   .selectedMenuItem {
     font-size:xxx-large;
+    span {
+      display: none;
+    }
     @if $is-dark {
       color: white;
     } @else {

@@ -1,17 +1,29 @@
 <section fxLayout="row wrap" fxLayoutAlign="space-between center" >
+
   <section      fxFlexOrder="1" fxFlex.xs="42"  fxFlex.sm="31" fxFlexOrder.sm="1" fxFlex.gt-sm="30">
     <app-profile-card></app-profile-card>
   </section>
-  <section      fxFlexOrder="2" fxFlex.xs="42"  fxFlex.sm="31" fxFlexOrder.sm="3" fxFlex.gt-sm="30" fxFlexOrder.gt-sm="3" style="display: flex;justify-content: flex-end;">
+  <section      fxFlexOrder="2" fxFlex.xs="42"  fxFlex.sm="31" fxFlexOrder.sm="2" fxFlex.gt-sm="30" fxFlexOrder.gt-sm="3" style="display: flex;justify-content: flex-end;">
     <app-interact></app-interact>
   </section>
-  <mat-toolbar  fxFlexOrder="3" fxFlex.xs="100" fxFlex.sm="30" fxFlexOrder.sm="2" fxFlex.gt-sm="35" fxFlexOrder.gt-sm="2" fxFlexAlign="center" style="padding:0;">
-    <span [className]="selectedMenuItem==='blog' ? 'selectedMenuItem' : ''"   (click)="onClick('blog')"><fa-icon [icon]="['fas', 'blog']" title="Blog"></fa-icon></span>
-    <span>|</span>
-    <span [className]="selectedMenuItem==='home' ? 'selectedMenuItem' : ''"   (click)="onClick('home')"><fa-icon [icon]="['fas', 'home']" title="Home"></fa-icon></span>
-    <span>|</span>
-    <span [className]="selectedMenuItem==='resume' ? 'selectedMenuItem' : ''"   (click)="onClick('resume')"><fa-icon [icon]="['fas', 'file']" title="Resume"></fa-icon></span>
-  </mat-toolbar>
+  <section fxFlexOrder="3" fxFlex.xs="100" fxFlex.sm="100" fxFlexOrder.sm="3" fxFlex.gt-sm="35" fxFlexOrder.gt-sm="2" fxLayout="column" fxLayoutAlign="start center" >
+    <mat-toolbar >
+      <div [className]="selectedMenuItem==='blog' ? 'selectedMenuItem' : ''" (click)="onClick('blog')" fxLayout="column" fxLayoutAlign="start center">
+        <fa-icon [icon]="['fas', 'blog']" title="Blog"></fa-icon>
+        <span>Blog</span>
+      </div>
+      <div>|</div>
+      <div [className]="selectedMenuItem==='home' ? 'selectedMenuItem' : ''"   (click)="onClick('home')" fxLayout="column" fxLayoutAlign="start center">
+        <fa-icon [icon]="['fas', 'home']" title="Home"></fa-icon>
+        <span>Home</span>
+      </div>
+      <div>|</div>
+      <div [className]="selectedMenuItem==='resume' ? 'selectedMenuItem' : ''"   (click)="onClick('resume')"  fxLayout="column" fxLayoutAlign="start center">
+        <fa-icon [icon]="['fas', 'file']" title="Resume"></fa-icon>
+        <span>Resume</span>
+      </div>
+    </mat-toolbar>
 
+  </section>
 
 </section>
