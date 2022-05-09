@@ -24,15 +24,16 @@ Atlassian Jira, Jetbrains IntelliJ, Visual Studio Code, Lucid Charts, Balsamiq M
 ### Inspiring Young Minds ( since April 2020 )
 #### https://iymscholars.org
 
-*Solutions Architect / Full Stack Software Engineer
+*Solutions Architect / Full Stack Software Engineer*
 
 I started as a tech advisor and then became a sole contributor as a full-time volunteer for IYM, a non-profit organization. Enabled the organization to pivot to support their community via a custom-built platform and further enhanced automation needed for critical business processes by integrating various third-party APIs. Matured into a venture using IYM as a client/partner to identify a minimum viable product for a SaaS product.
 
--	Developing Portal and Microservices backend for the organization on the AWS Cloud using Google Angular for frontend and Spring framework backend.
--	Integrated various REST API into the portal: Zoom, Twilio, MailChimp, Jotform, Airtable, and PayPal.
--	Conducted business process mapping, stakeholder analysis sessions, and wireframed prominent use cases.
--	Designed and developed a business supporting database with a RESTful interface.
--	Implemented UAA solution based on OAuth/OpenID Spring Security which integrates with Azure AD for staff accounts.
+
+- Developing Portal and Microservices backend for the organization on the AWS Cloud using Google Angular for frontend and Spring framework backend. 
+- Integrated various REST API into the portal: Zoom, Twilio, MailChimp, Jotform, Airtable, and PayPal. 
+- Conducted business process mapping, stakeholder analysis sessions, and wireframed prominent use cases. 
+- Designed and developed a business supporting database with a RESTful interface. 
+- Implemented UAA solution based on OAuth/OpenID Spring Security which integrates with Azure AD for staff accounts.
 
 
 

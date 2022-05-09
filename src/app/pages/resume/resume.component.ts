@@ -40,7 +40,7 @@ export class ResumeComponent implements OnInit {
       }
     );
 
-    this.markdownConverterService.convert('/docs/resume/edwin-m-cruz.md')
+    this.markdownConverterService.convert('/docs/resume/edwin-m-cruz--updated-2022-0508.md')
       .subscribe(next => {
         if (isDefined(next)) {
           this.parsedMarkdown = this.sanitized.bypassSecurityTrustHtml(next);
