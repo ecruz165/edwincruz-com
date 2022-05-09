@@ -2,31 +2,37 @@
 New York, NY
 
 ### Summary
-Senior Lead Software Engineer working hands-on throughout tech-stacks using Java and Typescript libraries and frameworks on AWS Platform.
+I am a Lead Software Engineer delivering cloud solutions using Java and Typescript on the AWS Platform.
 
-I'm an enthusiastic engineer seeking complex projects that leverage my Java and Typescript foundation to bring next-generation platforms to life. Skills range across several areas: software design, continuous integration/deployment, strategic planning, project management, system integration, information architecture, user-experience design, and extensive knowledge of front-end and back-end technologies and frameworks.
+I am a enthusiastic architect and developer seeking complex projects that leverage my Java and Typescript foundation to bring next-generation
+platforms to life. Skills range across several areas: software design, CI/CD pipeline design, strategic planning, project management, system
+integration, information architecture, user-experience design, and extensive knowledge of frontend and backend technologies and frameworks.
 
-Past solutions use Multi-threading Java, Messaging, Batching implemented with Core Java, Spring Boot, Spring Integration/Batch, Hibernate, and Ehcache.
+Past solutions use Multithreading design patterns, Messaging and Batching implemented with core Java, Spring Boot, Spring Integration/Batch,
+Hibernate, and Ehcache.
 
-Most recent software projects leverage Angular and Spring Framework on AWS platform: AWS CDK, AWS Fargate, AWS Lambda, AWS Gateway, Amazon Aurora RDS, S3, SQS, and SES. Additional APIs/frameworks used recently include Zoom API, Twilio API, Mailchimp API, AirTable API, and JotForm API.
+Most recent software projects leverage Angular and Spring Framework on the AWS platform: AWS CDK, AWS Fargate, AWS Lambda, AWS
+Gateway, Amazon Aurora RDS, S3, SQS, and SES. Additional APIs/frameworks used recently include Zoom API, Twilio API, Mailchimp API,
+AirTable API, and JotForm API.
+
 
 ### Development Tools
 Atlassian Jira, Jetbrains IntelliJ, Visual Studio Code, Lucid Charts, Balsamiq Mockup Wireframes, Postman, Adobe Creative Suite Master...
+
 
 ## Representative Accomplishments
 ### Inspiring Young Minds ( since April 2020 )
 #### https://iymscholars.org
 
-*Tech Lead Volunteer* / Partner of SaaS Product
+*Solutions Architect / Full Stack Software Engineer
 
-Started out as a Tech advisor and then became a sole contributor as full-time volunteer for IYM which is a non-profit organization. Enabled organization to pivot to
-support their community via a custom-built platform and further enhanced automations needed for key business processes through the integration of
-various third-party APIs. Became fully invested and built platform to be a SaaS Product for similar organizations.
-- Developing Portal and Microservices backend for organization on the AWS Cloud using Google Angular for frontend and Spring framework backend. 
-- Integrated various REST API into portal: Zoom, Twilio, MailChimp, Jotform and Airtable.
-- Conducted business process mapping, stakeholder analysis sessions and wire-framed main use cases. 
-- Designed and developed business supporting database with RESTFUL interface. 
-- Implemented UAA solution based on OAuth/OpenID Spring Security which integrates with Azure AD for staff accounts.
+I started as a tech advisor and then became a sole contributor as a full-time volunteer for IYM, a non-profit organization. Enabled the organization to pivot to support their community via a custom-built platform and further enhanced automation needed for critical business processes by integrating various third-party APIs. Matured into a venture using IYM as a client/partner to identify a minimum viable product for a SaaS.
+
+-	Developing Portal and Microservices backend for the organization on the AWS Cloud using Google Angular for frontend and Spring framework backend.
+-	Integrated various REST API into the portal: Zoom, Twilio, MailChimp, Jotform, Airtable, and PayPal.
+-	Conducted business process mapping, stakeholder analysis sessions, and wireframed prominent use cases.
+-	Designed and developed a business supporting database with a RESTful interface.
+-	Implemented UAA solution based on OAuth/OpenID Spring Security which integrates with Azure AD for staff accounts.
 
 
 
@@ -35,7 +41,7 @@ various third-party APIs. Became fully invested and built platform to be a SaaS 
 
 *Java Tech Lead ( CONTRACT via Motion Recruitment )*
 
-Led Angular/Java full stack development for two major SaaS products with hands on responsibilities. Products have both UI and API exposed to customers. Worked closely with product team supporting and supplying technical support with the planning of new features. Responsible for a team of ten offshore resources to deliver quality software in two-week sprints. Produce tech road maps of non-functional requirements and tech-debt incurred. Tech stack includes Angular, Spring boot, MySQL, Redis and Docker on the Amazon Web Services platform. Tools used in addition to tech stack: Slack, Sonar, JFrog Artifactory, Jenkins, Test Rails, AppDynamics, Atlassian Jira & Confluence, GitHub, Splunk, Intellij, JProbe
+Lead engineer working on Angular/Java Full Stack development for two major SaaS products. Products have both UI and API exposed to customers. Worked closely with product team supporting and supplying technical support with the planning of new features. Responsible for a group of ten offshore resources to deliver quality software in two-week sprints. Produced tech road maps of non-functional requirements and tech debt incurred. Tech stack included Angular, Spring boot, MySQL, Redis, and Docker on the Amazon Web Services platform. Tools used in addition to tech stack: Slack, Sonar, JFrog Artifactory, Jenkins, Test Rails, AppDynamics, Atlassian Jira & Confluence, GitHub, Splunk, Intellij, JProbe
 
 ---
 ### Freelance and Philanthropic Activities
@@ -56,35 +62,37 @@ Technical Director and co-founder of youth program offering competitive basketba
 ### Citigroup: Future Operations Systems ( October 2004 - May 2015 )
 *VP / Project Lead / Java Developer*
 
-Project Lead for development of standalone and web applications leveraging best practiced architectural patterns and frameworks. Led the adoption of agile practices and have assisted in setting standards for development, testing, and documentation. Responsible for resolving Level 2/3 Support issues raised by Front Office and Operations end-users, producing requirements and conducting code reviews for work produced by offshore team.
+Project Lead for development of standalone and web applications leveraging best practiced architectural patterns and frameworks. Led the adoption of agile practices and assisted in setting standards for development, testing, and documentation. Responsible for resolving Level 2/3 Support issues raised by Front Office and Operations end-users, producing requirements, and conducting code reviews for work produced by the offshore team.
 
 #### NON-US FUTURES TRADE FLOWS
-
-Led design and development of continuous flows for the clearing of non-US future trades. (Spring Framework, Spring Boot, Spring Integration, Bootstrap, Thymeleaf )
+Led design and development of continuous flows to clear non-US future trades. (Spring Framework, Spring Boot, Spring Integration, Bootstrap, Thymeleaf )
 
 #### DPS WEB SERVICES 
-Led design and development of web services interface to the Deliveries Payments System. (Spring Boot, Apache CXF, REST)
+Led design and development of web services interface to the Deliveries Payments System. (Spring Boot, Apache CXF, RESTful HTTP)
 
 #### ETD MONITOR SERVER/PROBES
-Designed and developed a framework along with java server process that connects to various implemented probes that transform collected notifications to events in a Dashboard. (Core Java, Threads, JMX, Groovy, Spring)
+Designed and developed a framework and java server process that connects to various implemented probes that transform collected notifications into events in a Dashboard. (Core Java, Threads, JMX, Groovy, Spring)
 
 #### COMMISSION ALLOCATION MANAGER (COBRA)
-Delivered a user interface that manages the allocation rules for commissions allocated to traders. Played a hand=on Lead role managing a couple of developers in Chennai, India. (Java 6, GWT 2.2, Spring Framework 3.0.5, SmartGWT 2.4)
+Delivered a user interface that manages the allocation rules for commissions allocated to traders. In addition to being a hands-on contributor, I also Led a few developers. (Java, GWT, Spring Framework, SmartGWT)
 
 #### EXPRO DASHBOARD
-Led the design of EXPRO Dashboard. Primary responsibility included defining User Interface components and their functionality gathered from Level One Support and other stakeholder end users. Lead the mentorship and code review of offshore team to ramp up offshore to team GWT to support ongoing development. (Java 6, GWT 2.2, Spring Framework 3.0.5, SmartGWT 2.4)
+Led the design of EXPRO Dashboard. Primary responsibility included defining User Interface components, and their functionality gathered from Level One Support and other stakeholder end users. Led the mentorship and code review of an offshore team to ramp up offshore to team GWT to support ongoing development. (Java, GWT, Spring Framework, SmartGWT)
 
 #### EXPRO BUS
-Led the design and development of EXPRO Messaging Bus. Primary responsibility included defining the messaging format and building message adapters for publishers / subscriber systems. In addition, managed and mentored offshore java team which assisted in development and testing of platform. (Java 6, Spring Framework 3.1, Hibernate 3.5, Spring Integration/ Batch 2.04)
+Led the design and development of EXPRO Messaging Bus. Primary responsibility included defining the messaging format and building message adapters for publishers/subscriber systems. In addition, I managed and mentored an offshore java team that assisted in the development and testing of the platform. (Java, Spring Framework, Hibernate, Spring Integration/ Batch)
 
 #### POST CLEARING- GMI REAL-TIME MESSAGE FEEDS
-Developed a custom standalone application that translates and enriches in real-time GMIRTGF1 EBCDIC records to DMZ databases. (Solaris 8, Java 5, Threads, Spring Framework 2.5, Hibernate 2.1, Sybase ASE 12.5.3)
+Developed a custom standalone application that translates and enriches real-time GMIRTGF1 EBCDIC records to DMZ databases. (Solaris, Java, Threads, Spring Framework, Hibernate, Sybase ASE)
 
-#### GICAP PROJECT TEAM LEAD
-Participated in a special project team on an extracurricular effort to recruit and build out a portal application that would become a single-entry point for all applications for all Operations under GICAP initiative. Role required many face to face meeting with senior management and technology teams.
+#### POST CLEARING- FIXML TRADE FLOW PROCESSING SYSTEM
+Developed a custom standalone application that interfaced with exchanges' Clearing APIs for CME, NYMEX, and ICE (NYBOT). This project matured into a Common Framework, which provided the applications with adapters to support different message sources, including Message Queues, Web Services, and files. (Solaris, Java, Spring Framework, Hibernate, Sybase ASE)
+
+#### BACK OFFICE WEB PORTAL
+Led development of web application that enabled Operations staff to search customer Futures and Commodity trades and perform other back-office data maintenance. (Solaris, Java, Adobe JRun, Struts, Spring Framework, Spring Security, Sybase ASE)
 
 #### GICAP OPERATIONS PORTAL
-Lead Development of the UI and managed construction of portal.  (BEA WebLogic Portal 9.2, BEA WebLogic AS Server 6.1, Oracle 10g Database, Bordland jBuilder 9 Enterprise, Embarcadero DBArtisan Version 7.1.0, Macromedia Dreamweaver Mx, Rational ClearCase 2002, Sparx Systems Enterprise Architect 3.5.1)
+Participated in a special project team on an extra-curricular effort to recruit and build out a portal application that would become a single-entry point for all applications for all of Operations under GICAP initiative. Role required many face-to-face meetings with senior management and technology teams. In addition, lead development of the UI and managed portal construction. (BEA WebLogic Portal, BEA WebLogic AS Server, Oracle Database, Borland JBuilder Enterprise, Embarcadero DBArtisan Version, Macromedia Dreamweaver Mx, Rational ClearCase, Sparx Systems Enterprise Architect)
 
 ---
 ### Your Project Consulting ( April 2002 – October 2004 )

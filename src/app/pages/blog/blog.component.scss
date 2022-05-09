@@ -9,6 +9,46 @@
   z-index: 10;
 }
 
+bio-image {
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  position: relative;
+}
+
+.bio-image, .bio-image *, .bio-image :after, .bio-image :before {
+  box-sizing: border-box;
+}
+.bio-image {
+  --bio-image-border-width: 5px;
+}
+.bio-image-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.2) rotateZ(calc(11 * 1deg));
+  transition: transform .2s ease-out;
+}
+
+bio-image, .bio-image *, .bio-image :after, .bio-image :before {
+  box-sizing: border-box;
+}
+
+.bio-image-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.2)rotateZ(calc(11 * 1deg));
+}
+
+
 
 #balloon {
   height: 125px;
