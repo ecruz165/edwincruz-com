@@ -16,7 +16,7 @@ export class LambdaAngularConstruct extends Construct {
     const {pathToLambdaCodeAsZipAsset} = props;
 
     this.lambdaFunction = new lambda.Function(this, 'LambdaAngularFunction', {
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       memorySize: 1024,
       timeout: Duration.seconds(30),
       // handler points to file lambda.js and calls exported handler function
