@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Edwin M. Cruz: Lead Software Engineer delivering cloud solutions using Java and Typescript.");
+    this.titleService.setTitle("Edwin M. Cruz: Lead Software Engineer delivering cloud solutions using Java and Typescript. (v220526)");
     this.metaTagService.updateTag(
       {
         name: 'description',
